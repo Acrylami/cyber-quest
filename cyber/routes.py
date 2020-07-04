@@ -1,8 +1,8 @@
 import os
 from flask import render_template, url_for, request, redirect, flash, session
-from site import app, db
-from site.models import *
-from site.forms import *
+from cyber import app, db
+from cyber.models import *
+from cyber.forms import *
 from flask_login import login_user, current_user, logout_user, login_required
 from sqlalchemy import *
 

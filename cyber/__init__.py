@@ -12,4 +12,4 @@ db = SQLAlchemy(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 
-from site import routes
+from cyber import routes
