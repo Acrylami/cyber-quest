@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>{{ title }}</h1>
+
+<table class="">
+  <tr><th>Product</th><th>Quantity</th><th>Price</th><th>Total</th></tr>
+
+  {% for key, value in display_cart.items() %}
+  <tr>
+    <!-- <td>{{ key }}</td> -->
+    <td>{{ value["title"] }}</td>
+    <td>{{ value["quantity"] }}</td>
+    <td>£{{ value["price"] }}</td>
+    <td>£{{ (value["quantity"] * value["price"]) }}</td>
+
+    <td>
+      <form action="{{ url_for('delete_book', book_id=key|int) }}" method="POST">
+        <input class="" type="submit" value="Delete">
+      </form>
+    </td>
+  </tr>
+  {% endfor %}
+
+</table>
+<h3>Total: £{{ total }} </h3>
+<h3>Number of items: {{ total_quantity }} </h3>
+
+{% endblock content %}

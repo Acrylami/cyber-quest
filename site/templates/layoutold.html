@@ -1,0 +1,43 @@
+<!doctype html>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+  <title>{{ title }}</title>
+</head>
+
+<body>
+  <div id="header">
+    <a href="{{ url_for('home') }}" class="header">Home</a>&nbsp|
+    <a href="{{ url_for('about') }}" class="header">About Us</a>&nbsp|
+    {% if current_user.is_authenticated %}
+    Hello, {{ current_user.username }}!
+    <a class="nav-item nav-link" href="{{ url_for('logout') }}">Logout</a>&nbsp|
+    {% else %}
+    Hello, Guest! &nbsp| <a href="{{ url_for('login') }}">Login&nbsp;</a>
+    or <a href="{{ url_for('register') }}">Register</a>&nbsp|
+    {% endif %}
+
+
+  </div>
+
+  <div>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class=flashes>
+      {% for message in messages %}
+      <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+  </div>
+
+  <div id="content">
+    {% block content %}
+    {% endblock %}
+  </div>
+
+</body>
+</html>

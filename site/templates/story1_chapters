@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Stories</h1>
+<div class="card-header card-header-primary">
+    <h4 class="card-title">Material Design Icons</h4>
+    <p class="card-category">Handcrafted by our friends from
+      <a target="_blank" href="https://design.google.com/icons/">Google</a>
+    </p>
+</div>
+<div class="row">
+    <div class="col-xl-4 col-lg-12">
+      <div class="card card-chart">
+        <div class="card-header card-header-success">
+          <div class="ct-chart" id="dailySalesChart"></div>
+        </div>
+        <div class="card-body">
+          <h4 class="card-title">Viper in the Dusk</h4>
+          <p class="card-category">A countdown to a large-scale terrorist act... Can you stop it?</p>
+        </div>
+        <div class="card-footer">
+          <div class="stats">
+            32 % Complete
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 col-lg-12">
+      <div class="card card-chart">
+        <div class="card-header card-header-warning">
+          <div class="ct-chart" id="websiteViewsChart"></div>
+        </div>
+        <div class="card-body">
+          <h4 class="card-title">Story 2</h4>
+          <p class="card-category">A serial killer with a flair for streaming their gruesome acts- who's next?</p>
+        </div>
+        <div class="card-footer">
+          <div class="stats">
+            0 % Complete
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+{% endblock content %}

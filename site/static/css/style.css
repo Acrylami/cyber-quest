@@ -1,0 +1,28 @@
+body {
+  font-family:helvetica, sans-serif;
+  background-color: #fff7fe;
+}
+
+h1 {
+  padding-left: 20px;
+  font-family:sans-serif;
+  color:#cc3300;
+}
+
+a {
+  text-decoration:none;
+  color:#000099;
+  /*color:#104e77;*/
+}
+
+a:hover {
+  /*color:#77b6e2;*/
+  color:#0cc3300;
+}
+
+#header {
+    padding:10px 100px;
+    font-size:18px;
+    overflow:auto;
+    background-color: #ffffe6;
+}
