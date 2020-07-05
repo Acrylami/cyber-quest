@@ -29,8 +29,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <!-- CSS Files -->
   <link href="../static/css/material-dashboard.css?v=2.1.0" rel="stylesheet" />
-  <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="../static/demo/demo.css" rel="stylesheet" />
+  <link href="../static/css/style.css" rel="stylesheet" />
 </head>
 
 <body class="dark-edition">
@@ -41,8 +40,8 @@
 
         Tip 2: you can also add an image using data-image tag
     -->
-      <div class="logo"><a href="http://www.creative-tim.com" class="simple-text logo-normal">
-          Creative Tim
+      <div class="logo"><a href="{{ url_for('home') }}" class="simple-text logo-normal">
+          CyberQuest
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
@@ -102,7 +101,7 @@
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " id="navigation-example">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="javascript:void(0)">Dashboard</a>
+            <a class="navbar-brand" href="javascript:void(0)">{{ title }}</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation" data-target="#navigation-example">
             <span class="sr-only">Toggle navigation</span>
