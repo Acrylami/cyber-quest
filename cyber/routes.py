@@ -5,6 +5,7 @@ from cyber.models import *
 from cyber.forms import *
 from flask_login import login_user, current_user, logout_user, login_required
 from sqlalchemy import *
+from flask.helpers import flash
 
 @app.route("/")
 @app.route("/home")
@@ -73,6 +74,21 @@ def viper_chapters():
 def viper_chapter_1():
     return render_template('viper-chapter-1.html', title='Chapter 1')
 
+@app.route("/viper-chapter-2")
+def viper_chapter_2():
+    return render_template('viper-chapter-2.html', title='Chapter 2')
+
+@app.route("/viper-chapter-3")
+def viper_chapter_3():
+    return render_template('viper-chapter-3.html', title='Chapter 3')
+
+@app.route("/viper-chapter-4")
+def viper_chapter_4():
+    return render_template('viper-chapter-4.html', title='Chapter 4')
+
+@app.route("/viper-chapter-5")
+def viper_chapter_5():
+    return render_template('viper-chapter-5.html', title='Chapter 5')
 
 @app.route("/training-caesar")
 def training_caesar():

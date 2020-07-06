@@ -8,6 +8,16 @@
             <p class="card-category">Pick your adventure...</p>
         </div>
     </div>
+    <script src="../static/js/plugins/bootstrap-notify.js"></script>
+    <script>
+    $.notify({
+        // options
+        message: 'Hello World' 
+    },{
+        // settings
+        type: 'danger'
+    });
+    </script>
     <div class="row">
         <div class="col-xl-4 col-lg-12">
             <a href="{{ url_for('viper') }}">

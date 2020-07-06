@@ -41,3 +41,8 @@
     color: #dddddd !important;
 }
 
+.disabled {
+    pointer-events: none; 
+    cursor: default;     
+}
+

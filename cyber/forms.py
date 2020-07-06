@@ -1,6 +1,6 @@
-from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, SelectField, BooleanField
-from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError, Regexp
+from flask_wtf import FlaskForm, RecaptchaField
+from wtforms import *
+from wtforms.validators import *
 from cyber.models import User
 
 
@@ -8,8 +8,8 @@ class RegistrationForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired('Please enter your username'), Length(min=3, max=15)])
     email = StringField('Email',
                         validators=[DataRequired(), Email()])
-    password = PasswordField('Password', validators=[DataRequired(),Regexp('^.{6,8}$',
-                              message='Your password should be between 6 and 8 characters long.')])
+    password = PasswordField('Password', validators=[DataRequired(),Regexp('^.{8,24}$',
+                              message='Your password should be between 8 and 24 characters long.')])
     confirm_password = PasswordField('Confirm Password',
                                      validators=[DataRequired(), EqualTo('password', message='Passwords must match')])
     submit = SubmitField('Register')
