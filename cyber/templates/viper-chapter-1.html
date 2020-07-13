@@ -1,5 +1,19 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<h1>Chapter 1 or something</h1>
+<div class="content">
+    <div class="container-fluid">
+        <h1>Chapter 1 or something</h1>
+        <button onclick="sweetie()">Click me</button>
+        <script>
+            function sweetie() {
+                swal("hey", "yooo");
+            }
+        </script>
+
+<!--
+<iframe mozallowfullscreen="true" allow="autoplay; fullscreen *; geolocation; microphone; camera; midi" frameborder="0" src="//v6p9d9t4.ssl.hwcdn.net/html/2467298/index.html" msallowfullscreen="true" allowfullscreen="true" webkitallowfullscreen="true" id="game_drop" allowtransparency="true" width="720" height="1080%"></iframe>
+-->
+    </div>
+</div>
 {% endblock content %}

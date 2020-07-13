@@ -30,32 +30,33 @@
     <!-- CSS Files -->
     <link href="../static/css/material-dashboard.css?v=2.1.0" rel="stylesheet" />
     <link href="../static/css/style.css" rel="stylesheet" />
-        <!--  Notifications Plugin    -->
+    <link href="../static/css/sweetalert.css" rel="stylesheet" />
+    <!--  Notifications Plugin    -->
     <script src="../static/js/plugins/bootstrap-notify.js"></script>
     <script>
-        
-    $.notify({
-        // options
-        message: 'Hello World' 
-    },{
-        // settings
-        type: 'danger'
-    });
-        
-    function showNotification(from, align, msg){
-      $.notify({
-          icon: "add_alert",
-          message: msg
+        $.notify({
+            // options
+            message: 'Hello World'
+        }, {
+            // settings
+            type: 'danger'
+        });
 
-      },{
-          type: 'success',
-          timer: 3000,
-          placement: {
-              from: from,
-              align: align
-          },
-      });
-    }
+        function showNotification(from, align, msg) {
+            $.notify({
+                icon: "add_alert",
+                message: msg
+
+            }, {
+                type: 'success',
+                timer: 3000,
+                placement: {
+                    from: from,
+                    align: align
+                },
+            });
+        }
+
     </script>
 </head>
 
@@ -122,21 +123,23 @@
             <!-- Navbar -->
             <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " id="navigation-example">
                 <div class="container-fluid">
-                    
-                    
-                  {% with messages = get_flashed_messages() %}
-                  {% if messages %}
-                  {% for message in messages %}
 
-                  
+
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    {% for message in messages %}
+
+
                     <script>
-                     setTimeout(() => {  showNotification('top','center', '{{ message }}'); }, 200);
-                     
+                        setTimeout(() => {
+                            showNotification('top', 'center', '{{ message }}');
+                        }, 200);
+
                     </script>
-                  {% endfor %}
-                  {% endif %}
-                  {% endwith %}
-                    
+                    {% endfor %}
+                    {% endif %}
+                    {% endwith %}
+
 
                     <div class="navbar-wrapper">
                         <a class="navbar-brand" href="javascript:void(0)">{{ title }}</a>
@@ -279,6 +282,9 @@
     <script src="../static/js/material-dashboard.js?v=2.1.0"></script>
     <!-- Material Dashboard DEMO methods, don't include it in your project! -->
     <script src="../static/demo/demo.js"></script>
+    <!--<script src="../static/js/plugins/sweetalert.min.js"></script> -->
+
+    <script src="http://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
         $(document).ready(function() {
             $().ready(function() {
