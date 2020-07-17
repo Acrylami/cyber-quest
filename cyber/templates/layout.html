@@ -153,7 +153,12 @@
                     <div class="collapse navbar-collapse justify-content-end">
 
                         <ul class="navbar-nav">
-
+                            <li>
+                                <a href="{{ url_for('register') }}"><button type="button" class="login btn btn-success">Register</button></a>
+                            </li>
+                            <li>
+                                <a href="{{ url_for('login') }}"><button type="button" class="login btn btn-success">Login</button></a>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link" href="javscript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="material-icons">notifications</i>
