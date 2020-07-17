@@ -1,0 +1,170 @@
+{% extends "layout.html" %}
+{% block content %}
+      <div class="content">
+        <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light bg-success">
+          <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="true" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="#Cryptography">Cryptography <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#OSINT">OSINT</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Steganography</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <br>
+            
+    <div class="card card-plain training-title">
+        <div class="card-header card-header-primary">
+            <a name="Cryptography"><h4 class="card-title opaque">Cryptography</h4></a>    
+            <p class="card-category opaque">Crack some codes</p>
+        </div>
+    </div>
+
+        <div class="row">
+            <div class="col-xl-4 col-lg-12">
+                <a href="{{ url_for('training_caesar') }}">
+                  <div class="card card-chart">
+                    <div class="card-body training">
+                      <h4 class="card-title">Caesar Cipher</h4>
+                      <p class="card-category">Training Description here. More Description. There's lots to write about this one.</p>
+                      <img src="https://live.staticflickr.com/257/20235659265_bbcdcf9cdf_b.jpg">
+                    </div>
+                    <div>
+                      <div class="stats card-header-success points">
+                        100 points<i class="material-icons">check</i>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+            </div>
+
+            <div class="col-xl-4 col-lg-12">
+                <a href="{{ url_for('training_caesar') }}">
+                  <div class="card card-chart">
+                    <div class="card-body training">
+                      <h4 class="card-title">Substitution Cipher</h4>
+                      <p class="card-category">Training Description here. More Description.</p>
+                      <img src="https://p0.pikist.com/photos/996/886/numbers-cipher-calculation-list-tabulation-group-rank-classify-thumbnail.jpg">
+                    </div>
+                    <div>
+                      <div class="stats incomplete points">
+                        100 points
+                      </div>
+                    </div>
+                  </div>
+                </a>
+            </div>
+        </div>
+            
+            
+        <div class="card card-plain">
+            <div class="card-header card-header-primary">
+                <a name="OSINT"><h4 class="card-title">Open Source Intelligence (OSINT)</h4></a>
+                <p class="card-category">Work out your e-muscles!</p>
+            </div>
+        </div>    
+        
+
+        <div class="row">
+            <div class="col-xl-4 col-lg-12">
+                <a href="{{ url_for('training_caesar') }}">
+                  <div class="card card-chart">
+                    <div class="card-body training">
+                      <h4 class="card-title">Image Metadata</h4>
+                      <p class="card-category">Training Description here. More Description. There's lots to write about this one.</p>
+                      <img src="https://p0.pxfuel.com/preview/644/124/1019/technology-camera-old-retro-royalty-free-thumbnail.jpg">
+                    </div>
+                    <div>
+                      <div class="stats card-header-success points">
+                        100 points<i class="material-icons">check</i>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+            </div>
+
+            <div class="col-xl-4 col-lg-12">
+                <a href="{{ url_for('training_caesar') }}">
+                  <div class="card card-chart">
+                    <div class="card-body training">
+                      <h4 class="card-title">Wayback Machine</h4>
+                      <p class="card-category">Training Description here. More Description.</p>
+                      <img src="https://storage.needpix.com/rsynced_images/time-2801595_1280.jpg">
+                    </div>
+                    <div>
+                      <div class="stats incomplete points">
+                        100 points
+                      </div>
+                    </div>
+                  </div>
+                </a>
+            </div>
+            <div class="col-xl-4 col-lg-12">
+                <a href="{{ url_for('training_caesar') }}">
+                  <div class="card card-chart">
+                    <div class="card-body training">
+                      <h4 class="card-title">Twitter</h4>
+                      <p class="card-category">Training Description here. More Description.</p>
+                      <img src="https://www.publicdomainpictures.net/pictures/250000/velka/twitter.jpg">
+                    </div>
+                    <div>
+                      <div class="stats incomplete points">
+                        100 points
+                      </div>
+                    </div>
+                  </div>
+                </a>
+            </div>
+        </div>        
+            
+        <div class="row">
+            <div class="col-xl-4 col-lg-12">
+                <a href="{{ url_for('training_caesar') }}">
+                  <div class="card card-chart">
+                    <div class="card-body training">
+                      <h4 class="card-title">Twitter 2</h4>
+                      <p class="card-category">Training Description here. More Description. There's lots to write about this one.</p>
+                      <img src="https://cdn.pixabay.com/photo/2018/02/16/16/07/twitter-3157979_960_720.jpg">
+                    </div>
+                    <div>
+                      <div class="stats card-header-success points">
+                        100 points<i class="material-icons">check</i>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+            </div>
+
+            <div class="col-xl-4 col-lg-12">
+                <a href="{{ url_for('training_caesar') }}">
+                  <div class="card card-chart">
+                    <div class="card-body training">
+                      <h4 class="card-title">Advanced OSINT</h4>
+                      <p class="card-category">Training Description here. More Description.</p>
+                      <img src="https://p0.pxfuel.com/preview/910/50/503/earth-internet-globalisation-technology.jpg">
+                    </div>
+                    <div>
+                      <div class="stats incomplete points">
+                        100 points
+                      </div>
+                    </div>
+                  </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
