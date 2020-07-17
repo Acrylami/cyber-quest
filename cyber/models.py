@@ -24,8 +24,31 @@ class User(UserMixin, db.Model):
     def verify_password(self, password):
         return check_password_hash(self.password_hash, password)
 
+class Training(db.Model):
+    __tablename__ = 'training'
+
+    training_name = db.Column(db.String(50), nullable=False, primary_key=True)
+    description = db.Column(db.String(200), nullable=False)
+    display_name = db.Column(db.String(50), nullable=False)
+    category = db.Column(db.String(50), nullable=False)
+    points = db.Column(db.Integer, nullable=False)
+
+
+
+class TrainingProgress(db.Model):
+    __tablename__ = 'training-progress'
+    u_id = db.Column(db.Integer, nullable=False, primary_key=True)
+    t_id = db.Column(db.String(50), nullable=False, primary_key=True)
+    complete = db.Column(db.Boolean, nullable=False)
+    date_completed = db.Column(db.DateTime, nullable=False)
+
+    
+
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
+
+
+
 
 

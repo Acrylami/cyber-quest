@@ -1,170 +1,200 @@
 {% extends "layout.html" %}
 {% block content %}
-      <div class="content">
-        <div class="container-fluid">
+<div class="content">
+    <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-light bg-success">
-          <div class="container">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="true" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link" href="#Cryptography">Cryptography <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#OSINT">OSINT</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Steganography</a>
-                </li>
-              </ul>
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="true" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#Cryptography">Cryptography <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#OSINT">OSINT</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Steganography</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-          </div>
         </nav>
         <br>
-            
-    <div class="card card-plain training-title">
-        <div class="card-header card-header-primary">
-            <a name="Cryptography"><h4 class="card-title opaque">Cryptography</h4></a>    
-            <p class="card-category opaque">Crack some codes</p>
-        </div>
-    </div>
 
-        <div class="row">
-            <div class="col-xl-4 col-lg-12">
-                <a href="{{ url_for('training_caesar') }}">
-                  <div class="card card-chart">
-                    <div class="card-body training">
-                      <h4 class="card-title">Caesar Cipher</h4>
-                      <p class="card-category">Training Description here. More Description. There's lots to write about this one.</p>
-                      <img src="https://live.staticflickr.com/257/20235659265_bbcdcf9cdf_b.jpg">
-                    </div>
-                    <div>
-                      <div class="stats card-header-success points">
-                        100 points<i class="material-icons">check</i>
-                      </div>
-                    </div>
-                  </div>
-                </a>
-            </div>
 
-            <div class="col-xl-4 col-lg-12">
-                <a href="{{ url_for('training_caesar') }}">
-                  <div class="card card-chart">
-                    <div class="card-body training">
-                      <h4 class="card-title">Substitution Cipher</h4>
-                      <p class="card-category">Training Description here. More Description.</p>
-                      <img src="https://p0.pikist.com/photos/996/886/numbers-cipher-calculation-list-tabulation-group-rank-classify-thumbnail.jpg">
-                    </div>
-                    <div>
-                      <div class="stats incomplete points">
-                        100 points
-                      </div>
-                    </div>
-                  </div>
-                </a>
-            </div>
-        </div>
-            
-            
-        <div class="card card-plain">
+
+
+        <!-- General -->
+        <!-- there's currently no generall.....
+        <div class="card card-plain training-title">
             <div class="card-header card-header-primary">
-                <a name="OSINT"><h4 class="card-title">Open Source Intelligence (OSINT)</h4></a>
-                <p class="card-category">Work out your e-muscles!</p>
-            </div>
-        </div>    
-        
-
-        <div class="row">
-            <div class="col-xl-4 col-lg-12">
-                <a href="{{ url_for('training_caesar') }}">
-                  <div class="card card-chart">
-                    <div class="card-body training">
-                      <h4 class="card-title">Image Metadata</h4>
-                      <p class="card-category">Training Description here. More Description. There's lots to write about this one.</p>
-                      <img src="https://p0.pxfuel.com/preview/644/124/1019/technology-camera-old-retro-royalty-free-thumbnail.jpg">
-                    </div>
-                    <div>
-                      <div class="stats card-header-success points">
-                        100 points<i class="material-icons">check</i>
-                      </div>
-                    </div>
-                  </div>
+                <a name="Cryptography">
+                    <h4 class="card-title opaque">General</h4>
                 </a>
-            </div>
-
-            <div class="col-xl-4 col-lg-12">
-                <a href="{{ url_for('training_caesar') }}">
-                  <div class="card card-chart">
-                    <div class="card-body training">
-                      <h4 class="card-title">Wayback Machine</h4>
-                      <p class="card-category">Training Description here. More Description.</p>
-                      <img src="https://storage.needpix.com/rsynced_images/time-2801595_1280.jpg">
-                    </div>
-                    <div>
-                      <div class="stats incomplete points">
-                        100 points
-                      </div>
-                    </div>
-                  </div>
-                </a>
-            </div>
-            <div class="col-xl-4 col-lg-12">
-                <a href="{{ url_for('training_caesar') }}">
-                  <div class="card card-chart">
-                    <div class="card-body training">
-                      <h4 class="card-title">Twitter</h4>
-                      <p class="card-category">Training Description here. More Description.</p>
-                      <img src="https://www.publicdomainpictures.net/pictures/250000/velka/twitter.jpg">
-                    </div>
-                    <div>
-                      <div class="stats incomplete points">
-                        100 points
-                      </div>
-                    </div>
-                  </div>
-                </a>
-            </div>
-        </div>        
-            
-        <div class="row">
-            <div class="col-xl-4 col-lg-12">
-                <a href="{{ url_for('training_caesar') }}">
-                  <div class="card card-chart">
-                    <div class="card-body training">
-                      <h4 class="card-title">Twitter 2</h4>
-                      <p class="card-category">Training Description here. More Description. There's lots to write about this one.</p>
-                      <img src="https://cdn.pixabay.com/photo/2018/02/16/16/07/twitter-3157979_960_720.jpg">
-                    </div>
-                    <div>
-                      <div class="stats card-header-success points">
-                        100 points<i class="material-icons">check</i>
-                      </div>
-                    </div>
-                  </div>
-                </a>
-            </div>
-
-            <div class="col-xl-4 col-lg-12">
-                <a href="{{ url_for('training_caesar') }}">
-                  <div class="card card-chart">
-                    <div class="card-body training">
-                      <h4 class="card-title">Advanced OSINT</h4>
-                      <p class="card-category">Training Description here. More Description.</p>
-                      <img src="https://p0.pxfuel.com/preview/910/50/503/earth-internet-globalisation-technology.jpg">
-                    </div>
-                    <div>
-                      <div class="stats incomplete points">
-                        100 points
-                      </div>
-                    </div>
-                  </div>
-                </a>
+                <p class="card-category opaque">Any general</p>
             </div>
         </div>
+        -->
+
+        <!-- For every training entry in that category, display it in neat rows -->
+        {% set counter = 0 %}
+        <div class="row">
+            {% for training in general %}
+            {% set counter = counter + 1 %}
+            {% if counter % 3 == 0 %}
+        </div>
+        <div class="row">
+            {% endif %}
+            <div class="col-xl-4 col-lg-12">
+                <a href="{{ url_for('training2', training_name=training.training_name)}}">
+                    <div class="card card-chart">
+                        <div class="card-body training">
+                            <h4 class="card-title">{{ training.display_name }}</h4>
+                            <p class="card-category">{{ training.description }}</p>
+                            <img src="../static/img/training/{{ training.training_name }}.png">
+                        </div>
+                        <div>
+                            <div class="stats card-header-success points">
+                                {{ training.points }}<i class="material-icons">check</i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            {% endfor %}
+        </div>
+        <!-- End general -->
+
+
+
+        <!-- Crypto -->
+        <div class="card card-plain training-title">
+            <div class="card-header card-header-primary">
+                <a name="Cryptography">
+                    <h4 class="card-title opaque">Cryptography</h4>
+                </a>
+                <p class="card-category opaque">Crack some codes</p>
+            </div>
+        </div>
+
+        <!-- For every training entry in that category, display it in neat rows -->
+        {% set counter = 0 %}
+        <div class="row">
+            {% for training in crypto %}
+            {% set counter = counter + 1 %}
+            {% if counter % 3 == 0 %}
+        </div>
+        <div class="row">
+            {% endif %}
+            <div class="col-xl-4 col-lg-12">
+                <a href="{{ url_for('training2', training_name=training.training_name)}}">
+                    <div class="card card-chart">
+                        <div class="card-body training">
+                            <h4 class="card-title">{{ training.display_name }}</h4>
+                            <p class="card-category">{{ training.description }}</p>
+                            <img src="../static/img/training/{{ training.training_name }}.png">
+                        </div>
+                        <div>
+                            <div class="stats card-header-success points">
+                                {{ training.points }}<i class="material-icons">check</i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            {% endfor %}
+        </div>
+        <!-- End crypto -->
+
+        <!-- Steganography -->
+        <div class="card card-plain training-title">
+            <div class="card-header card-header-primary">
+                <a name="Cryptography">
+                    <h4 class="card-title opaque">Steganography</h4>
+                </a>
+                <p class="card-category opaque">Hiding secrets in messages</p>
+            </div>
+        </div>
+
+        <!-- For every training entry in that category, display it in neat rows -->
+        {% set counter = 0 %}
+        <div class="row">
+            {% for training in stego %}
+            {% set counter = counter + 1 %}
+            {% if counter % 3 == 0 %}
+        </div>
+        <div class="row">
+            {% endif %}
+            <div class="col-xl-4 col-lg-12">
+                <a href="{{ url_for('training2', training_name=training.training_name)}}">
+                    <div class="card card-chart">
+                        <div class="card-body training">
+                            <h4 class="card-title">{{ training.display_name }}</h4>
+                            <p class="card-category">{{ training.description }}</p>
+                            <img src="../static/img/training/{{ training.training_name }}.png">
+                        </div>
+                        <div>
+                            <div class="stats card-header-success points">
+                                {{ training.points }}<i class="material-icons">check</i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            {% endfor %}
+        </div>
+        <!-- End OSINT -->
+
+
+        <!-- Steganography -->
+        <div class="card card-plain training-title">
+            <div class="card-header card-header-primary">
+                <a name="Cryptography">
+                    <h4 class="card-title opaque">Open Source Intelligence (OSINT)</h4>
+                </a>
+                <p class="card-category opaque">It's virtual detective time!</p>
+            </div>
+        </div>
+
+        <!-- For every training entry in that category, display it in neat rows -->
+        {% set counter = 0 %}
+        <div class="row">
+            {% for training in osint %}
+            {% set counter = counter + 1 %}
+            {% if counter % 3 == 0 %}
+        </div>
+        <div class="row">
+            {% endif %}
+            <div class="col-xl-4 col-lg-12">
+                <a href="{{ url_for('training2', training_name=training.training_name)}}">
+                    <div class="card card-chart">
+                        <div class="card-body training">
+                            <h4 class="card-title">{{ training.display_name }}</h4>
+                            <p class="card-category">{{ training.description }}</p>
+                            <img src="../static/img/training/{{ training.training_name }}.png">
+                        </div>
+                        <div>
+                            <div class="stats card-header-success points">
+                                {{ training.points }}<i class="material-icons">check</i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            {% endfor %}
+        </div>
+        <!-- End steganography -->
+
     </div>
 </div>
+
 
 
 {% endblock content %}

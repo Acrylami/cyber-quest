@@ -60,7 +60,12 @@ def stories():
 
 @app.route("/training")
 def training():
-    return render_template('training.html', title='Training')
+    #training_entries = Training.query.all()
+    crypto = Training.query.filter(Training.category == 'cryptography')
+    osint = Training.query.filter(Training.category == 'osint')
+    stego = Training.query.filter(Training.category == 'steganography')
+    general = Training.query.filter(Training.category == 'general')
+    return render_template('training.html', crypto=crypto, osint=osint, stego=stego, general=general, title='Training')
 
 @app.route("/viper")
 def viper():
@@ -90,9 +95,18 @@ def viper_chapter_4():
 def viper_chapter_5():
     return render_template('viper-chapter-5.html', title='Chapter 5')
 
-@app.route("/training-caesar")
-def training_caesar():
-    return render_template('training-caesar.html', title='Caesar Cipher Training')
+@app.route("/training/<string:training_name>", methods=['GET'])
+def training2(training_name):
+    #training = Training.query.filter(Training.training_name == training_name)
+    training = Training.query.get_or_404(training_name)
+    file_name = training.training_name + ".html"
+    return render_template(file_name, title=training.display_name)
+
+'''
+@app.route("/training/caesar-cipher")
+def caesar_cipher():
+    return render_template('training-caesar.html', title='Caesar Cipher')
+'''
 #Flask lab 3: implementation of Cart.  Needs 'session' import!
 # https://github.com/kkschick/ubermelon-shopping-app/blob/master/melons.py MELONS
 
