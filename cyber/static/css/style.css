@@ -36,6 +36,7 @@
     z-index: 1;
 }
 
+/*
 .story-images img {
     opacity: 0.3;
     position: absolute;
@@ -46,6 +47,33 @@
     height: 100%;
     object-fit: cover;
     z-index: 1;
+}
+
+
+box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(0, 188, 212, 0.4);
+*/
+
+.story-images {
+    padding: 0px !important;
+    box-shadow: none !important;
+}
+
+.img-container {
+    position: relative;
+}
+
+
+
+.story-images img {
+    position: relative;
+    overflow: hidden;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    z-index: 1;
+    border-radius: 0.19rem;
 }
 
 .iframe-container {
@@ -62,6 +90,61 @@
     position: absolute;
     top: 0;
     width: 100%;
+}
+
+.difficulty {
+    padding: 1px 10px;
+    border-radius: 0.2rem;
+    color: #ffffff;
+    font-weight: 400;
+    font-size: .75rem;
+    text-transform: uppercase;
+    /*text-shadow: 0.4px 0.4px 0.4px #aaaaaa;*/
+}
+
+.teacher-inside {
+    position: absolute !important;
+    bottom: 0 !important;
+
+}
+
+.pr {
+    background: linear-gradient(60deg, #290a36, #110417) !important;
+    background: linear-gradient(60deg, #7b1fa2, #913f9e)
+}
+
+.teacher-btn {
+    background: linear-gradient(90deg, #00d2ff 0%, #3a47d5 100%) !important;
+    box-shadow: 0 2px 2px 0 rgba(0, 210, 255, 0.14), 0 3px 1px -2px rgba(0, 210, 255, 0.2), 0 1px 5px 0 rgba(0, 210, 255, 0.12) !important;
+    border-color: #00d2ff !important;
+
+}
+
+.teacher-outside {}
+
+
+.no-padding {
+    padding: 0;
+}
+
+.after-nav {
+    margin-top: 100px;
+}
+
+.fixed-pos {
+    position: fixed;
+}
+
+.easy {
+    background: #759B2D;
+}
+
+.medium {
+    background: #C08C0C;
+}
+
+.hard {
+    background: #FF5233;
 }
 
 /* 4x3 Aspect Ratio */
@@ -101,142 +184,92 @@
 
 
 
-/* PROGRESS TRACK FOR TRAINING */
-@import "compass/css3";
-
-@import url(https://fonts.googleapis.com/css?family=Pathway+Gothic+One|Open+Sans:400,700);
-
-$font-stack: 14px/14px Helvetica,
-sans-serif;
-$primary-color: #FF6699;
-$base-color: #bbb;
-$break-large: 800px;
-$break-medium: 640px;
-$break-small: 480px;
-
-body {
-    background: #6699CC;
-    padding-top: 20px;
-}
-
-// Progress Tracker
-@import url(https://fonts.googleapis.com/css?family=Pathway+Gothic+One|Open+Sans:400,700);
-
-body {
-    background: #6699CC;
-    padding-top: 20px;
-}
-
-.track-progress {
-    margin: 0;
-    margin-bottom: 30px;
-    padding: 10px 10px 0 10px;
-    background: white;
-    height: 80px;
-    border-radius: 10px;
-    -moz-box-shadow: 0 4px 6px -5px black;
-    -webkit-box-shadow: 0 4px 6px -5px black;
-    box-shadow: 0 4px 6px -5px black;
-}
-
-.track-progress li {
-    list-style-type: none;
-    display: inline-block;
-    position: relative;
-    font: 14px/14px Helvetica, sans-serif;
-    text-transform: uppercase;
-    text-align: center;
-    color: #bbb;
-    border-bottom: 4px #bbb solid;
-    line-height: 3em;
-    width: 25%;
-    float: left;
-}
-
-.track-progress li:after {
-    content: "\00a0\00a0";
-    /*non-breaking space */
-}
-
-.track-progress li:before {
-    position: relative;
-    bottom: -2.5em;
-    float: left;
-    left: 50%;
-    line-height: 1em;
-}
-
-@media (max-width: 800px) {
-    .track-progress li {
-        font-size: 0.7em;
-    }
-}
-
-.track-progress li span {
-    padding-left: 0.75em;
-}
-
-@media (max-width: 640px) {
-    .track-progress li span {
-        display: none;
-    }
-}
-
-.track-progress li.done {
-    color: #bbb;
-    font-weight: bold;
-    border-bottom: 4px #FF6699 solid;
-}
-
-.track-progress li.done:before {
-    content: "";
-    background: #FF6699;
-    height: 1.2em;
-    width: 1.2em;
-    line-height: 1.2em;
-    border: none;
-    border-radius: 1.2em;
-}
-
-.track-progress li.todo:before {
-    content: "";
-    background: white;
-    border: 0.25em solid #bbb;
-    height: 1.2em;
-    width: 1.2em;
-    border-radius: 1.2em;
-}
-
-.track-progress em {
-    display: none;
-    font-weight: 700;
-    padding-left: 0.75em;
-}
-
-@media (max-width: 640px) {
-    .track-progress em {
-        display: inline;
-    }
-}
-
-.track-progress p {
-    margin: 0 auto;
-    max-width: 500px;
-    width: 75%;
-    margin-top: 25px;
-    font: 18px/28px 'Open Sans', sans-serif;
-    color: #eee;
-}
-
-.track-progress p em {
-    display: block;
-    font-size: 23px;
-    font-weight: 700;
-    font-style: normal;
-    color: white;
-}
 
 .login {
     padding: 10px 20px !important;
     margin-left: 20px !important;
 }
+
+
+/* progress */
+.container {
+    width: 600px;
+    margin: 10px auto;
+    padding-top: 10px;
+}
+
+.progressbar {
+    counter-reset: step;
+}
+
+#viper-background p h1 {
+    z-index: 5 !important;
+}
+
+
+#viper-background img {
+    opacity: 0.6;
+    position: absolute;
+    overflow: hidden;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    z-index: 4;
+    border-radius: 0.17rem;
+}
+
+.progressbar li {
+    list-style-type: none;
+    width: 25%;
+    float: left;
+    font-size: 12px;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    color: #7d7d7d;
+}
+
+.progressbar li:before {
+    width: 30px;
+    height: 30px;
+    content: counter(step);
+    counter-increment: step;
+    line-height: 30px;
+    border: 2px solid #7d7d7d;
+    display: block;
+    text-align: center;
+    margin: 0 auto 10px auto;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.progressbar li:after {
+    width: 100%;
+    height: 2px;
+    content: '';
+    position: absolute;
+    background-color: #7d7d7d;
+    top: 15px;
+    left: -50%;
+    z-index: -1;
+}
+
+.progressbar li:first-child:after {
+    content: none;
+}
+
+.progressbar li.active {
+    color: green;
+}
+
+.progressbar li.active:before {
+    border-color: #55b776;
+}
+
+.progressbar li.active + li:after {
+    background-color: #55b776;
+}
+
+/* progress end */

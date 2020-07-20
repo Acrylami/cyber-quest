@@ -8,6 +8,7 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(15), unique=True, nullable=False)
     email = db.Column(db.String(60), unique=True, nullable=False)
     password_hash = db.Column(db.String(128))
+    points = db.Column(db.Integer)
     #password = db.Column(db.String(60), nullable=False)
 
     def __repr__(self):

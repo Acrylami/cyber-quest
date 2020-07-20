@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+{% block scoreboard_activation %} active {% endblock %}
+{% block content %}
+
+<div class="content">
+    <div class="container-fluid">
+
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title ">Scoreboard</h4>
+                        <p class="card-category"> Here are the top scorers so far! Can you get a spot on the leaderboard?</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        Username
+                                    </th>
+                                    <th>
+                                        Points
+                                    </th>
+                                </thead>
+                                <tbody>
+
+
+
+                                    {% for user in topscorers %}
+                                    <tr>
+                                        <td>
+                                            {{ user.username }}
+                                        </td>
+                                        <td>
+                                            {{ user.points }}
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+</div>
+
+
+{% endblock content %}

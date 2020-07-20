@@ -21,7 +21,7 @@
     <link rel="icon" type="image/png" href="../static/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>
-        {{ title }}
+        CyberQuest
     </title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
@@ -67,34 +67,11 @@
         Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
         Tip 2: you can also add an image using data-image tag
-    -->
-            <div class="logo"><a href="{{ url_for('home') }}" class="simple-text logo-normal">
-                    CyberQuest
-                </a></div>
-            <div class="sidebar-wrapper">
-                <ul class="nav">
+
                     <li class="nav-item active  ">
                         <a class="nav-link" href="./dashboard.html">
                             <i class="material-icons">dashboard</i>
                             <p>Dashboard</p>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="{{ url_for('stories') }}">
-                            <i class="material-icons">library_books</i>
-                            <p>Stories</p>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="{{ url_for('training') }}">
-                            <i class="material-icons">fitness_center</i>
-                            <p>Training</p>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="./user.html">
-                            <i class="material-icons">person</i>
-                            <p>User Profile</p>
                         </a>
                     </li>
                     <li class="nav-item ">
@@ -109,15 +86,59 @@
                             <p>Login</p>
                         </a>
                     </li>
+    -->
+            <div class="logo"><a href="{{ url_for('home') }}" class="simple-text logo-normal">
+                    CyberQuest
+                </a></div>
+            <div class="sidebar-wrapper">
+                <ul class="nav">
 
-                    <!-- <li class="nav-item active-pro ">
-                <a class="nav-link" href="./upgrade.html">
-                    <i class="material-icons">unarchive</i>
-                    <p>Upgrade to PRO</p>
-                </a>
-            </li> -->
+                    <li class="nav-item {% block stories_activation %} {% endblock %}">
+                        <a class="nav-link" href="{{ url_for('stories') }}">
+                            <i class="material-icons">library_books</i>
+                            <p>Stories</p>
+                        </a>
+                    </li>
+                    <li class="nav-item {% block training_activation %} {% endblock %}">
+                        <a class="nav-link" href="{{ url_for('training') }}">
+                            <i class="material-icons">fitness_center</i>
+                            <p>Training</p>
+                        </a>
+                    </li>
+                    <li class="nav-item {% block scoreboard_activation %} {% endblock %}">
+                        <a class="nav-link" href="{{ url_for('scoreboard') }}">
+                            <i class="material-icons">show_chart</i>
+                            <p>Scoreboard</p>
+                        </a>
+                    </li>
+                    {% if current_user.is_authenticated %}
+                    <li class="nav-item {% block user_activation %} {% endblock %}">
+                        <a class="nav-link" href="{{ url_for('profile') }}">
+                            <i class="material-icons">person</i>
+                            <p>User Profile</p>
+                        </a>
+                    </li>
+
+                    {% else %}
+                    <div class="teacher-outside">
+                        <div class="teacher-inside">
+                            <li>
+                                <a class="nav-link"><button class="teacher-btn btn btn-primary" type="button">Teacher/Educator?</button></a>
+                            </li>
+                        </div>
+                    </div>
+                    {% endif %}
                 </ul>
+                <!--
+                <ul class="nav">
+                    <li class="align-bottom">
+                        <a class="nav-link"><button class="btn btn-primary" type="button" style="bottom: 0px;">I'm a teacher</button></a>
+                    </li>
+                </ul>
+-->
             </div>
+
+
         </div>
         <div class="main-panel">
             <!-- Navbar -->
@@ -153,12 +174,28 @@
                     <div class="collapse navbar-collapse justify-content-end">
 
                         <ul class="navbar-nav">
+                            {% if current_user.is_authenticated %}
+
+                            <!--
                             <li>
-                                <a href="{{ url_for('register') }}"><button type="button" class="login btn btn-success">Register</button></a>
+                                <h4 class-title mt-0> Current user: {{ current_user.username}} </h4>
+                            </li>
+                            -->
+                            <li>
+                                <a href="{{ url_for('logout') }}"><button type="button" class="login btn btn-primary">
+                                        <div class="opaque">Logout</div>
+                                    </button></a>
+                            </li>
+                            {% else %}
+                            <li>
+                                <a href="{{ url_for('register') }}"><button type="button" class="login btn btn-primary">
+                                        <div class="opaque">Register</div>
+                                    </button></a>
                             </li>
                             <li>
-                                <a href="{{ url_for('login') }}"><button type="button" class="login btn btn-success">Login</button></a>
+                                <a href="{{ url_for('login') }}"><button type="button" class="login btn btn-primary">Login</button></a>
                             </li>
+                            {% endif %}
                             <li class="nav-item dropdown">
                                 <a class="nav-link" href="javscript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="material-icons">notifications</i>
@@ -239,7 +276,7 @@
                 </li>
                 <li class="active">
                     <a class="img-holder switch-trigger" href="javascript:void(0)">
-                        <img src="../static/img/sidebar-2.png" alt="">
+                        <img src="../static/img/sidebar-3.png" alt="">
                     </a>
                 </li>
                 <li class="button-container">

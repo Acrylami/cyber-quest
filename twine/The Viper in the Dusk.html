@@ -195,7 +195,8 @@ img {
 
 
 </style><script role="script" id="twine-user-script" type="text/twine-javascript">$('#ui-bar').remove();
-$(document.head).find('#style-ui-bar').remove();</script><tw-passagedata pid="1" name="Start" tags="start" position="402,171" size="100,100">&lt;img src=&quot;https://cdn.pixabay.com/photo/2017/06/15/09/32/hand-painting-2404598_960_720.png&quot;&gt;
+$(document.head).find('#style-ui-bar').remove();
+</script><tw-passagedata pid="1" name="Start" tags="start" position="402,171" size="100,100">&lt;img src=&quot;https://cdn.pixabay.com/photo/2017/06/15/09/32/hand-painting-2404598_960_720.png&quot;&gt;
 
 In a world similar to your own...
 
@@ -248,7 +249,7 @@ Amazing, right?&lt;/div&gt;
 &lt;&lt;/linkappend&gt;&gt;\</tw-passagedata><tw-passagedata pid="8" name="NeedMoney" tags="" position="345,1029" size="100,100">&lt;div class=&quot;pascal&quot;&gt;
 Well you know, it may seem a little strange but it&#39;s actually a really important job! You have no idea how much information we have to keep top secret, that&#39;s why the pay is so good hahahaha!
 &lt;/div&gt;
-You get the feeling that perhaps Pascal shouldn&#39;t be shouting about this so loudly...
+&lt;&lt;linkappend &quot;You get the feeling that perhaps Pascal shouldn&#39;t be shouting about this so loudly...&quot; t8n&gt;&gt;\
 &lt;div class=&quot;pascal&quot;&gt;
 I wouldn&#39;t have taken the job, but I really need the money right now. You see-
 &lt;/div&gt;
@@ -256,7 +257,8 @@ Pascal is interrupted by a tray of drinks gently placed on our table
 &lt;div class=&quot;server&quot;&gt;
 Here are your drinks, esteemed guests. Please enjoy~
 &lt;/div&gt;
-[[Have a sip|Taste]]</tw-passagedata><tw-passagedata pid="9" name="Taste" tags="" position="348,1178" size="100,100">&lt;img src=&quot;C:\Users\Snore\Documents\Twine\Stories\images\coffee.png&quot;&gt;
+[[Have a sip|Taste]]
+&lt;&lt;/linkappend&gt;&gt;\</tw-passagedata><tw-passagedata pid="9" name="Taste" tags="" position="348,1178" size="100,100">&lt;img src=&quot;https://www.dropbox.com/s/dxvukw98l3xe6ha/coffee.png?dl=1&quot;&gt;
 &lt;div class=&quot;pascal&quot;&gt;
 Huh! Not too bad for something without chocolate in it. Don&#39;t you think, $name?
 
@@ -315,12 +317,12 @@ Perl told you it was possible to manually enter a secret code into the control s
 </tw-passagedata><tw-passagedata pid="18" name="Test Elevator Code" tags="" position="379,2194" size="100,100">&lt;&lt;if $elevator_code is &quot;11001&quot;&gt;&gt;
 	The screen lights up green and the doors open. Wow, it really worked! I guess you&#39;re the only thing smart about this elevator!
 &lt;&lt;else&gt;&gt;
-  The screen flashes red and displays an error. The code &quot;$elevator_code&quot; must have been wrong.
+  The screen flashes red and displays an error. The code &quot;$elevator_code&quot; must have been wrong. 
 
-  [[Maybe I&#39;ll try another code|Enter Code]]
+  [[I&#39;ll try another code|Enter Code]]
   [[This is taking too long, I&#39;ll just take the stairs|Stairs]]
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="19" name="Enter Code" tags="" position="392,2073" size="100,100">&lt;&lt;if hasVisited(&quot;Test Elevator Code&quot;)&gt;&gt;
-	Time to try another code. Maybe I should revisit my &lt;i&gt;Binary Numbers Training&lt;/i&gt;
+	Time to try another code. Maybe I should revisit my &lt;i&gt;&lt;a href=&quot;http://127.0.0.1:5000/training/caesar-cipher&quot;&gt;Binary Numbers Training&lt;/a&gt;&lt;/i&gt;
 &lt;&lt;else&gt;&gt;
 	Your coworkers decided they wanted the binary code of the office number instead. &lt;i&gt;How useles...&lt;/i&gt;
 &lt;&lt;/if&gt;&gt;
@@ -329,10 +331,13 @@ Perl told you it was possible to manually enter a secret code into the control s
 
 The office is the 25th in the building. If you could just find a way to convert the number 25 into binary that should do the trick!
 
-&lt;div class=&quot;tip&quot;&gt;Luckily, you had training on binary numbers on your first day here. Now if you could just remember it...&lt;/div&gt;
-
-&lt;&lt;textbox &quot;$elevator_code&quot; &quot;PLEASE ENTER MANUAL OVERRIDE CODE&quot;&gt;&gt;
-
+&lt;div class=&quot;tip&quot;&gt;Luckily, you had &lt;a href=&quot;http://127.0.0.1:5000/training/caesar-cipher&quot;&gt;training on binary numbers&lt;/a&gt; on your first day here. Now if you could just remember it...&lt;/div&gt;
+&lt;div class=&quot;hack&quot;&gt;
+PLEASE ENTER MANUAL OVERRIDE CODE
+&lt;/div&gt;
+&lt;div class=&quot;input&quot;&gt;
+&lt;&lt;textbox &quot;$elevator_code&quot; &quot;&quot;&gt;&gt;
+&lt;/div&gt;
 [[Beep boop! Enter the secret code! |Test Elevator Code]]</tw-passagedata><tw-passagedata pid="20" name="Stairs" tags="" position="624,1783" size="100,100">&lt;img src=&quot;https://www.dropbox.com/s/i1eo7mkdyhi24i1/staircase.png?dl=1&quot;&gt;
 
 If the elevator isn&#39;t working, it will be easier just to take the stairs.
