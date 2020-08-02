@@ -25,9 +25,6 @@
     </title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
-    <!-- bootstrap import -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <!-- CSS Files -->
@@ -63,9 +60,9 @@
     </script>
 </head>
 
-<body class="dark-edition">
+<body class="light-edition">
     <div class="wrapper ">
-        <div class="sidebar" data-color="green" data-background-color="black" data-image="../static/img/sidebar-2.png">
+        <div class="sidebar" data-color="green" data-background-color="black" data-image="">
             <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
@@ -99,19 +96,19 @@
                     <li class="nav-item {% block stories_activation %} {% endblock %}">
                         <a class="nav-link" href="{{ url_for('stories') }}">
                             <i class="material-icons">library_books</i>
-                            <p>Stories</p>
+                            <p>Lesson Plans</p>
                         </a>
                     </li>
                     <li class="nav-item {% block training_activation %} {% endblock %}">
                         <a class="nav-link" href="{{ url_for('training') }}">
                             <i class="material-icons">fitness_center</i>
-                            <p>Training</p>
+                            <p>About</p>
                         </a>
                     </li>
                     <li class="nav-item {% block scoreboard_activation %} {% endblock %}">
                         <a class="nav-link" href="{{ url_for('scoreboard') }}">
                             <i class="material-icons">show_chart</i>
-                            <p>Scoreboard</p>
+                            <p>Instructions</p>
                         </a>
                     </li>
                     {% if current_user.is_authenticated %}
@@ -126,7 +123,7 @@
                     <div class="teacher-outside">
                         <div class="teacher-inside">
                             <li>
-                                <a class="nav-link" href="{{ url_for('education') }}"><button class="teacher-btn btn btn-primary" type="button">Teacher/Educator?</button></a>
+                                <a class="nav-link" href="{{ url_for('stories') }}"><button class="teacher-btn btn btn-primary" type="button">Back to Student site!</button></a>
                             </li>
                         </div>
                     </div>
@@ -175,7 +172,7 @@
                         <span class="navbar-toggler-icon icon-bar"></span>
                     </button>
                     <div class="collapse navbar-collapse justify-content-end">
-
+                        <!--
                         <ul class="navbar-nav">
                             {% if current_user.is_authenticated %}
 
@@ -184,6 +181,7 @@
                                 <h4 class-title mt-0> Current user: {{ current_user.username}} </h4>
                             </li>
                             -->
+                        <!--
                             <li>
                                 <a href="{{ url_for('logout') }}"><button type="button" class="login btn btn-primary">
                                         <div class="opaque">Logout</div>
@@ -224,6 +222,7 @@
                                 </a>
                             </li>
                         </ul>
+                    -->
                     </div>
                 </div>
             </nav>

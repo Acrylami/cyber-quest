@@ -4,6 +4,7 @@ from flask_login import LoginManager
 from flask_bootstrap import Bootstrap
 
 app = Flask(__name__)
+Bootstrap(app)
 app.config['SECRET_KEY'] = '6c56ad55dbd1c8779d65f05b9335ec9d'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://c1803625:Venrodam1234@csmysql.cs.cf.ac.uk:3306/c1803625'
 #SPECIFY YOUR MYSQL CREDIENTIALS:

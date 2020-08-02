@@ -1,127 +1,74 @@
-{% extends "layout.html" %}
+{% extends "training-layout.html" %}
+<!-- this layout just goes back ../ for all the links so it doesn't break since it's in the /training/ directory -->
+<!-- may be needed for other pages too -->
 
 {% block content %}
 
-<div id="page-top"></div>
-<div class="container-fluid">
-    <div class="nav-tabs-navigation">
-        <div class="nav-tabs-wrapper">
-            <ul class="nav nav-tabs" data-tabs="tabs">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#home" data-toggle="tab">1</a>
-                </li>
-                <li class="nav-item">
-                    <a id="page2" class="nav-link" href="#updates" data-toggle="tab">2</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="#history" data-toggle="tab">3</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-<!--
-<ol class="track-progress">
-
-    <li class="done">
-        <em>1</em>
-        <span>Encryption</span>
-    </li>
-
-
-    <li class="done">
-        <em>2</em>
-        <span>Multiple shifts</span>
-    </li>
-
-
-    <li class="todo">
-        <em>3</em>
-        <span>Final Challenge</span>
-    </li>
-
-</ol>
--->
-
-
-
-<!--
-<a class="nav-link active" href="#home" data-toggle="tab"></a>
-<a id="page2" class="nav-link" href="#updates" data-toggle="tab"></a>
-<a class="nav-link" href="#history" data-toggle="tab"></a>
--->
-
-
 <div class="content">
     <div class="container-fluid">
-
-
-        <div class="tab-content">
-            <div class="tab-pane active" id="home">
-
-
-                <div class="row">
-                    <div class="container">
-                        <ul class="progressbar" data-tabs="tabs">
-                            <a href="#updates" data-toggle="tab">
-                                <li class="active">login</li>
-                            </a>
-                            <li>choose interest</li>
-                            <li>add friends</li>
-                            <li>View map</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="row">
-
-                    <div class="card training_card">
-                        <!--<div class="card-header card-header-primary">
+        <div class="row">
+            <div class="card training_card">
+                <!--<div class="card-header card-header-primary">
                             <h4 class="card-title">How does it work?</h4>
-                        </div>-->
-                        <div class="card-bod training_cardy">
-                            <p><i>Encryption</i> is the word for taking a normal message and changing it so it is hard or impossible to read. The caesar cipher was used by the Roman emperor Julius Caesar to <i>encrypt</i> his letters</p>
-
-                            <p>Every letter in your secret message is shifted by a number you choose. For a caesar shift of 2, "A" would become "C". But with a caesar shift of 3, "A" would become "D".</p>
-
-                            <p>First decide how many letters you want to 'shift' your secret message. Let's choose a caesary shift of 1.</p>
-                            <img src="../static/img/training/shift1.png" width=100%>
-                            <br><br>
-                            <p>Say the secret message you want to encrypt is... "BAD", with a caesar shift of 1. To get the secret message, we will shift each letter by one place. "B" will become "C", "A will become "B", and "D" will become "E". </p>
-                        </div>
+                        </div> -->
+                <div class="card-bod training_cardy">
+                    <div class="d-flex justify-content-center">
+                        <h1>Cryptography</h1>
                     </div>
-                </div>
-                <div class="row">
-
-                    <div class="card text-center challenge">
-                        <div class="card-header card-header-success">
-                            Challenge
-                        </div>
-                        <div class="card-body text-center">
-                            <p>Can you encrypt the word "CAB" with a caesar shift of 1?</p>
-                            <button type="button" position="absolute" text-align="center !important" margin="0 auto !important" class="btn btn-success" onclick="caesar_1()"><i class="material-icons">double_arrow</i>Accept Challenge for 50 points</button>
-                            <!--<button type="button" position="absolute" text-align="center !important" margin="0 auto !important" class="btn btn-default" onclick="document.getElementById('page2').click()"><i class="material-icons">skip_next</i>Skip</button>-->
-                            <button type="button" position="absolute" text-align="center !important" margin="0 auto !important" class="btn btn-default" onclick="window.location.href='#updates'" data-toggle="tab"><i class="material-icons">skip_next</i>Skip</button>
-                        </div>
+                    <div class="d-flex justify-content-center">
+                        <h3>Caesar Cipher</h3>
                     </div>
+                    <div class="d-flex justify-content-center">
+                        <h4>100 points</h4>
+                    </div>
+                    <p><i>Encryption</i> is the word for taking a normal message and changing it so it is hard or impossible to read. The caesar cipher was used by the Roman emperor Julius Caesar to <i>encrypt</i> his letters</p>
+
+                    <p>Every letter in your secret message is shifted by a number you choose. For a caesar shift of 2, "A" would become "C". But with a caesar shift of 3, "A" would become "D".</p>
+
+                    <p>First decide how many letters you want to 'shift' your secret message. Let's choose a caesary shift of 1.</p>
+                    <img src="../../static/img/training/shift1.png" width=100%>
+                    <br><br>
+                    <p>Say the secret message you want to encrypt is... "BAD", with a caesar shift of 1. To get the secret message, we will shift each letter by one place. "B" will become "C", "A will become "B", and "D" will become "E". </p>
                 </div>
-
-
             </div>
-
-
-
-            <div class="tab-pane" id="updates">
-                <p> I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that&#x2019;s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. I think that&#x2019;s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. </p>
-            </div>
-            <div class="tab-pane" id="history">
-                <p> I think that&#x2019;s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that&#x2019;s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at.</p>
-            </div>
-
         </div>
+
+        <div class="row">
+            <div class="card text-center challenge">
+                <div class="card-header card-header-success">
+                    Challenge
+                </div>
+                <div class="card-body text-center">
+                    <p>Can you encrypt the word "CAB" with a caesar shift of 1?</p>
+                    <button type="button" position="absolute" text-align="center !important" margin="0 auto !important" class="btn btn-success" onclick="caesar_1()"><i class="material-icons">double_arrow</i>Accept Challenge for 50 points</button>
+                    <!--<button type="button" position="absolute" text-align="center !important" margin="0 auto !important" class="btn btn-default" onclick="document.getElementById('page2').click()"><i class="material-icons">skip_next</i>Skip</button>-->
+                    <button type="button" position="absolute" text-align="center !important" margin="0 auto !important" class="btn btn-default" onclick="window.location.href='#updates'" data-toggle="tab"><i class="material-icons">skip_next</i>Skip</button>
+                </div>
+            </div>
+        </div>
+
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </nav>
+
 
     </div>
 </div>
+
+
+
+
 
 <script>
     function caesar_1() {
@@ -141,7 +88,7 @@
                         })
                         .then(link => {
                             document.getElementById('page2').click()
-                            ScrollToResolver(document.getElementById('page-top')); //doesn't WORK
+
                             //set cool completed training in db
                         });
                 } else {
@@ -152,20 +99,6 @@
             })
 
 
-    }
-
-    function ScrollToResolver(elem) {
-        var jump = parseInt(elem.getBoundingClientRect().top * .2);
-        document.body.scrollTop += jump;
-        document.documentElement.scrollTop += jump;
-        if (!elem.lastjump || elem.lastjump > Math.abs(jump)) {
-            elem.lastjump = Math.abs(jump);
-            setTimeout(function() {
-                ScrollToResolver(elem);
-            }, "100");
-        } else {
-            elem.lastjump = null;
-        }
     }
 
 </script>

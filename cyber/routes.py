@@ -62,11 +62,61 @@ def stories():
 @app.route("/training")
 def training():
     #training_entries = Training.query.all()
+<<<<<<< Updated upstream
     crypto = Training.query.filter(Training.category == 'cryptography')
     osint = Training.query.filter(Training.category == 'osint')
     stego = Training.query.filter(Training.category == 'steganography')
     general = Training.query.filter(Training.category == 'general')
     return render_template('training.html', crypto=crypto, osint=osint, stego=stego, general=general, title='CyberQuest- Training')
+=======
+
+    #query training progress for this user
+    #must check that a user is logged in first
+    
+    '''
+    pull all training entries
+    pull training entry for that training name and current user
+    if result returned, set completed flag to one
+    else set flag to zero
+    '''
+    crypto = []
+    osint = []
+    stego = []
+    general = []
+    
+    training_entries = Training.query.all()
+    testvar = "hi"
+    for entry in training_entries:
+        if (current_user.is_authenticated):
+        #get progress entries with this training name and current user
+            u_progress = TrainingProgress.query.filter(TrainingProgress.u_name == current_user.username).filter(TrainingProgress.t_name == entry.training_name)
+            #check if there is an entry present for that
+            if (u_progress.count() > 0):
+                #if there is, mark flag as completed
+                entry.completed = True
+            else:
+                entry.completed = False
+
+        if (entry.category == 'cryptography'):
+            crypto.append(entry)
+        elif (entry.category == 'osint'):
+            osint.append(entry)
+        elif (entry.category == 'steganography'):
+            stego.append(entry)
+        elif (entry.category == 'general'):
+            general.append(entry)
+        else:
+            #nothing? error occured
+            print('Error occurred, category unknown')
+
+    
+    #crypto = Training.query.filter(Training.category == 'cryptography')
+    #osint = Training.query.filter(Training.category == 'osint')
+    #stego = Training.query.filter(Training.category == 'steganography')
+    #general = Training.query.filter(Training.category == 'general')
+    
+    return render_template('training.html', training_entries=training_entries, crypto=crypto, osint=osint, stego=stego, general=general, title='CyberQuest- Training')
+>>>>>>> Stashed changes
 
 @app.route("/profile")
 def profile():
@@ -101,7 +151,7 @@ def viper_chapter_4():
 def viper_chapter_5():
     return render_template('viper-chapter-5.html', title='CyberQuest- Chapter 5')
 
-@app.route("/training/<string:training_name>", methods=['GET'])
+@app.route("/training/<string:training_name>/", methods=['GET'])
 def training2(training_name):
     #training = Training.query.filter(Training.training_name == training_name)
     training = Training.query.get_or_404(training_name)
@@ -115,16 +165,61 @@ def scoreboard():
     #limit(5).from_self().\
     return render_template('scoreboard.html', topscorers=topscorers, title='CyberQuest- Scoreboard')
 
+@app.route("/education")
+def education():
+    return render_template('teacher-site.html', title='CyberQuest For Education')
 
-'''
-@app.route("/training/caesar-cipher")
-def caesar_cipher():
-    return render_template('training-caesar.html', title='CyberQuest- Caesar Cipher')
+
+
+def set_points(current_training):
+    #if user is logged in
+    if (current_user.is_authenticated):
+        #Check training completion 
+        u_progress = TrainingProgress.query.filter(TrainingProgress.u_name == current_user.username).filter(TrainingProgress.t_name == current_training)
+        #if set
+        if (u_progress.count() > 0):
+             #preview message says you have not earned points
+            message = "Already Completed"
+        else:
+           #change preview message on next page to say that you earned points
+            message = "Points"
+            #add training competion database entry
+            completed_training = TrainingProgress(u_name=current_user.username, t_name=current_training)
+            db.session.add(completed_training)
+            #add points
+            #find points for current training
+            training = Training.query.get(current_training)
+            current_user.points += training.points
+            db.session.commit()
+    else:
+        message = "No Login"
+    return message
+
+
+@app.route("/training/manual-cracking/challenge", methods=['GET','POST'])
+def manual_cracking_challenge():
+    form = PasswordCracking1()
+    message = "No Login"
+
+    if form.validate_on_submit():
+        if (form.username.data == 'admin' and form.password.data == '123456'):
+            #call set points and message function
+            message = set_points("manual-cracking")
+            return render_template('password-cracking/manual-cracking-success.html', message=message) #this keeps the url at the same place!! very useful
+        flash('Invalid username or password.')
+    return render_template('password-cracking/manual-cracking.html', form=form)
+
+@app.route("/training/manual-cracking/challenge/success")
+def manual_cracking_challenge_success():
+    #Must check if we have routed here from the challenge page correctly,
+    #if not it should tell the user they can't do that
+    return render_template('password-cracking/manual-cracking-success.html')
+
 '''
 #Flask lab 3: implementation of Cart.  Needs 'session' import!
 # https://github.com/kkschick/ubermelon-shopping-app/blob/master/melons.py MELONS
 
-
+'''
 
 
 

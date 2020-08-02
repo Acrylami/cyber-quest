@@ -44,7 +44,7 @@
 
 
         <!-- General -->
-        <!-- there's currently no generall.....
+
         <div class="card card-plain training-title">
             <div class="card-header card-header-primary">
                 <a name="General">
@@ -53,7 +53,7 @@
                 <p class="card-category opaque">Any general</p>
             </div>
         </div>
-        -->
+
 
         <!-- For every training entry in that category, display it in neat rows -->
         {% set counter = 0 %}
@@ -76,6 +76,14 @@
                             <div class="stats card-header-success points">
                                 {{ training.points }}<i class="material-icons">check</i>
                             </div>
+<<<<<<< Updated upstream
+=======
+                            {% else %}
+                            <div class="incomplete stats points">
+                                {{ training.points }}pts
+                            </div>
+                            {% endif %}
+>>>>>>> Stashed changes
                         </div>
                     </div>
                 </a>
