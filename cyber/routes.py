@@ -62,13 +62,6 @@ def stories():
 @app.route("/training")
 def training():
     #training_entries = Training.query.all()
-<<<<<<< Updated upstream
-    crypto = Training.query.filter(Training.category == 'cryptography')
-    osint = Training.query.filter(Training.category == 'osint')
-    stego = Training.query.filter(Training.category == 'steganography')
-    general = Training.query.filter(Training.category == 'general')
-    return render_template('training.html', crypto=crypto, osint=osint, stego=stego, general=general, title='CyberQuest- Training')
-=======
 
     #query training progress for this user
     #must check that a user is logged in first
@@ -116,7 +109,6 @@ def training():
     #general = Training.query.filter(Training.category == 'general')
     
     return render_template('training.html', training_entries=training_entries, crypto=crypto, osint=osint, stego=stego, general=general, title='CyberQuest- Training')
->>>>>>> Stashed changes
 
 @app.route("/profile")
 def profile():
@@ -153,6 +145,7 @@ def viper_chapter_5():
 
 @app.route("/training/<string:training_name>/", methods=['GET'])
 def training2(training_name):
+    #redirect training
     #training = Training.query.filter(Training.training_name == training_name)
     training = Training.query.get_or_404(training_name)
     file_name = training.training_name + ".html"
@@ -160,7 +153,8 @@ def training2(training_name):
 
 @app.route("/scoreboard")
 def scoreboard():
-    topscorers = User.query.all()
+    #topscorers = User.query.all()
+    topscorers = User.query.order_by(User.points.desc()).limit(10)
     #.order_by(User.points)
     #limit(5).from_self().\
     return render_template('scoreboard.html', topscorers=topscorers, title='CyberQuest- Scoreboard')
