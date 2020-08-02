@@ -38,9 +38,8 @@ class Training(db.Model):
 
 class TrainingProgress(db.Model):
     __tablename__ = 'training-progress'
-    u_id = db.Column(db.Integer, nullable=False, primary_key=True)
-    t_id = db.Column(db.String(50), nullable=False, primary_key=True)
-    complete = db.Column(db.Boolean, nullable=False)
+    u_name = db.Column(db.Integer, nullable=False, primary_key=True)
+    t_name = db.Column(db.String(50), nullable=False, primary_key=True)
     date_completed = db.Column(db.DateTime, nullable=False)
 
     

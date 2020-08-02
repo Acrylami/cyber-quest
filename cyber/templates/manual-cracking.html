@@ -1,0 +1,172 @@
+{% extends "training-layout.html" %}
+<!-- this layout just goes back ../ for all the links so it doesn't break since it's in the /training/ directory -->
+<!-- may be needed for other pages too -->
+
+{% block content %}
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="card training_card">
+                <!--<div class="card-header card-header-primary">
+                            <h4 class="card-title">How does it work?</h4>
+                        </div> -->
+                <div class="card-bod training_cardy">
+                    <div class="d-flex justify-content-center">
+                        <h1>Password Cracking</h1>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <h3>Manual Cracking</h3>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <h4>100 points</h4>
+                    </div>
+                    <p>When you think of hacking, one of the first things that might come into your mind is the act of <i>password cracking</i>. Put simply this is trying to login to an account by guessing the password. This is usually done with tools, but for this training we will be doing it <i>manually</i>.</p>
+
+                    <p>Did you know that the top 25 most used passwords make up 10% of all passwords? That means if you tried every one of those 25 passwords on any account, you would have a 1 in 10 chance of hacking into the account. Scary stuff right?</p>
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-dark">
+                            <thead>
+                                <tr class="text-primary">
+                                    <th>Rank</th>
+                                    <th>2013</th>
+                                    <th>2014</th>
+                                    <th>2015</th>
+                                    <th>2016</th>
+                                    <th>2017</th>
+                                    <th>2018</th>
+                                    <th>2019</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>123456</td>
+                                    <td>123456</td>
+                                    <td>123456</td>
+                                    <td>123456</td>
+                                    <td>123456</td>
+                                    <td>123456</td>
+                                    <td>123456</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>password</td>
+                                    <td>password</td>
+                                    <td>password</td>
+                                    <td>password</td>
+                                    <td>password</td>
+                                    <td>password</td>
+                                    <td>123456789</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>12345678</td>
+                                    <td>12345</td>
+                                    <td>12345678</td>
+                                    <td>12345</td>
+                                    <td>12345678</td>
+                                    <td>123456789</td>
+                                    <td>qwerty</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>qwerty</td>
+                                    <td>12345678</td>
+                                    <td>qwerty</td>
+                                    <td>12345678</td>
+                                    <td>qwerty</td>
+                                    <td>12345678</td>
+                                    <td>password</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>abc123</td>
+                                    <td>qwerty</td>
+                                    <td>12345</td>
+                                    <td>football</td>
+                                    <td>12345</td>
+                                    <td>12345</td>
+                                    <td>1234567</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="alert alert-info" role="alert">
+                        The list of the most common passwords varies between organisation and the year, but many stay the same- such as “password”. <a href="https://en.wikipedia.org/wiki/List_of_the_most_common_passwords" class="alert-link">Click here to have a look yourself!</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="card text-center challenge">
+                <div class="card-header card-header-success">
+                    Mini-Challenge
+                </div>
+                <div class="card-body text-center">
+                    <p>Here’s a challenge for you! Can you crack the password for this login? </p>
+                    <p>HINT: It is in SplashData’s 2019 top 10 passwords list. Try guessing each password on the list until you get it!</p>
+                    <button type="button" position="absolute" text-align="center !important" margin="0 auto !important" class="btn btn-success" onclick="mini_challenge()"><i class="material-icons">double_arrow</i>Accept Mini-Challenge</button>
+                </div>
+            </div>
+        </div>
+
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </nav>
+
+
+    </div>
+</div>
+
+
+
+
+
+<script>
+    function mini_challenge() {
+
+        swal({
+                text: 'Please enter the password...',
+                content: "input",
+                button: {
+                    text: "Submit",
+                    closeModal: true,
+                },
+            })
+            .then(name => {
+                if (DOMPurify.sanitize(name).toUpperCase() == "QWERTY") {
+                    swal("Nice!", "That's correct, well done", "success", {
+                        button: "Next",
+                    });
+                } else {
+                    swal("Not quite!", "Guess a different password from the list", "error", {
+                        button: "Return"
+                    });
+                }
+            })
+
+
+    }
+
+</script>
+
+
+
+
+
+{% endblock content %}

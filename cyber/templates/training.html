@@ -73,23 +73,22 @@
                             <img src="../static/img/training/{{ training.training_name }}.png">
                         </div>
                         <div>
+                            {% if training.completed %}
                             <div class="stats card-header-success points">
                                 {{ training.points }}<i class="material-icons">check</i>
                             </div>
-<<<<<<< Updated upstream
-=======
                             {% else %}
                             <div class="incomplete stats points">
                                 {{ training.points }}pts
                             </div>
                             {% endif %}
->>>>>>> Stashed changes
                         </div>
                     </div>
                 </a>
             </div>
 
             {% endfor %}
+            <!-- hi3 -->
         </div>
         <!-- End general -->
 
@@ -123,9 +122,15 @@
                             <img src="../static/img/training/{{ training.training_name }}.png">
                         </div>
                         <div>
+                            {% if training.completed %}
                             <div class="stats card-header-success points">
                                 {{ training.points }}<i class="material-icons">check</i>
                             </div>
+                            {% else %}
+                            <div class="incomplete stats points">
+                                {{ training.points }}pts
+                            </div>
+                            {% endif %}
                         </div>
                     </div>
                 </a>
@@ -163,9 +168,15 @@
                             <img src="../static/img/training/{{ training.training_name }}.png">
                         </div>
                         <div>
+                            {% if training.completed %}
                             <div class="stats card-header-success points">
                                 {{ training.points }}<i class="material-icons">check</i>
                             </div>
+                            {% else %}
+                            <div class="incomplete stats points">
+                                {{ training.points }}pts
+                            </div>
+                            {% endif %}
                         </div>
                     </div>
                 </a>
@@ -195,6 +206,7 @@
         </div>
         <div class="row">
             {% endif %}
+            <!-- hi -->
             <div class="col-xl-4 col-lg-12">
                 <a href="{{ url_for('training2', training_name=training.training_name)}}">
                     <div class="card card-chart">
@@ -204,9 +216,15 @@
                             <img src="../static/img/training/{{ training.training_name }}.png">
                         </div>
                         <div>
+                            {% if training.completed %}
                             <div class="stats card-header-success points">
                                 {{ training.points }}<i class="material-icons">check</i>
                             </div>
+                            {% else %}
+                            <div class="incomplete stats points">
+                                {{ training.points }}pts
+                            </div>
+                            {% endif %}
                         </div>
                     </div>
                 </a>
