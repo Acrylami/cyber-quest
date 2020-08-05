@@ -38,6 +38,7 @@
 
 
         <!-- CHALLENGE -->
+
         <div class="row">
             <div class="challenge-body text-center challenge card">
                 <div class="challenge-header card-header card-header-success">
@@ -48,9 +49,9 @@
                     <p onclick="test()">Can you find the default password for the Sky Hub? </p>
 
                     {% if current_user.is_authenticated %}
-                    <a href="password-cracking/manual-cracking-challenge.html" target="_blank"><button type="button" position="absolute" text-align="center !important" margin="0 auto !important" class="challenge-accept-button btn"><i class="material-icons">double_arrow</i>Accept Mini-Challenge</button></a>
+                    <a href="{{ url_for('manual_cracking_challenge') }}" target="_blank"><button type="button" position="absolute" text-align="center !important" margin="0 auto !important" class="challenge-accept-button btn"><i class="material-icons">double_arrow</i>Accept Mini-Challenge</button></a>
                     {% else %}
-                    <button type="button" onclick="test()" position="absolute" text-align="center !important" margin="0 auto !important" class="challenge-accept-button btn"><i class="material-icons">double_arrow</i>Accept Mini-Challenge</button>
+                    <button type="button" onclick="prompt_login()" position="absolute" text-align="center !important" margin="0 auto !important" class="challenge-accept-button btn"><i class="material-icons">double_arrow</i>Accept Mini-Challenge</button>
                     {% endif %}
 
                     <!-- HINT -->
@@ -73,54 +74,62 @@
         </div>
         <!-- END CHALLENGE -->
 
-
+        <!-- PAGE NAV -->
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
-                <li class="page-item">
-                    <a class="page-link" href="{{ url_for('training_redirect', training_name='manual-cracking-3')}}" tabindex="-1" aria-disabled="false">Previous</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="{{ url_for('training_redirect', training_name='manual-cracking-2')}}">1</a></li>
-                <li class="page-item"><a class="page-link" href="{{ url_for('training_redirect', training_name='manual-cracking-2')}}">2</a></li>
-                <li class="page-item"><a class="page-link" href="{{ url_for('training_redirect', training_name='manual-cracking-3')}}">3</a></li>
-                <li class="page-item active"><a class="page-link" href="{{ url_for('training_redirect', training_name='manual-cracking-4')}}">4</a></li>
+                {%if current_page == 1%}
                 <li class="page-item disabled">
-                    <a class="page-link" disabled="true" href="{{ url_for('training_redirect', training_name='manual-cracking-4')}}">Next</a>
+                    <a class="page-link" href="{{ url_for('training_page_redirect', training_name=t_name, page=current_page-1)}}" tabindex="-1" aria-disabled="true">Previous</a>
                 </li>
+                {% else %}
+                <li class="page-item">
+                    <a class="page-link" href="{{ url_for('training_page_redirect', training_name=t_name, page=current_page-1)}}" tabindex="-1" aria-disabled="false">Previous</a>
+                </li>
+                {% endif %}
+
+                {% if current_page == 1 %}
+                <li class="page-item active"><a class="page-link" href="{{ url_for('training_page_redirect', training_name=t_name, page=1)}}">1</a></li>
+                {% else %}
+                <li class="page-item"><a class="page-link" href="{{ url_for('training_page_redirect', training_name=t_name, page=1)}}">1</a></li>
+                {% endif %}
+
+                {% if current_page == 2 %}
+                <li class="page-item active"><a class="page-link" href="{{ url_for('training_page_redirect', training_name=t_name, page=2)}}">2</a></li>
+                {% else %}
+                <li class="page-item"><a class="page-link" href="{{ url_for('training_page_redirect', training_name=t_name, page=2)}}">2</a></li>
+                {% endif %}
+
+                {% if current_page == 3 %}
+                <li class="page-item active"><a class="page-link" href="{{ url_for('training_page_redirect', training_name=t_name, page=3)}}">3</a></li>
+                {% else %}
+                <li class="page-item"><a class="page-link" href="{{ url_for('training_page_redirect', training_name=t_name, page=3)}}">3</a></li>
+                {% endif %}
+
+                {% if current_page == 4 %}
+                <li class="page-item active"><a class="page-link" href="{{ url_for('training_page_redirect', training_name=t_name, page=4)}}">4</a></li>
+                {% else %}
+                <li class="page-item"><a class="page-link" href="{{ url_for('training_page_redirect', training_name=t_name, page=4)}}">4</a></li>
+                {% endif %}
+
+
+                {%if current_page == 4%}
+                <li class="page-item disabled">
+                    <a class="page-link" href="{{ url_for('training_page_redirect', training_name=t_name, page=current_page+1)}}" aria-disabled="true">Next</a>
+                </li>
+                {% else %}
+                <li class="page-item">
+                    <a class="page-link" href="{{ url_for('training_page_redirect', training_name=t_name, page=current_page+1)}}">Next</a>
+                </li>
+                {% endif %}
             </ul>
         </nav>
+        <!-- END PAGE NAV -->
 
-        <!-- test -->
-        <div class="table-responsive">
-            <table class="table">
-                <tr>
-                    <td class="text-center"><button type="button" class="btn btn-default quiz" onclick="wrong()">*f¬’3~</button></td>
-                    <td class="text-center"><button type="button" class="btn btn-default quiz" onclick="correct()">i#LoveCh33se</button></td>
-                </tr>
-                <tr>
-                    <td class="text-center"><button type="button" class="btn btn-default quiz" onclick="wrong()">ilovecheese</button></td>
-                    <td class="text-center"><button type="button" class="btn btn-default quiz" onclick="wrong()">iLOVEcheese!</button></td>
-                </tr>
-            </table>
-        </div>
-        <!-- end test -->
     </div>
 
 
+
     <script>
-        function wrong() {
-            swal("Oops", "Not quite! Remember a better password will usually be long, have numbers, and symbols", "error")
-        }
-
-        function correct() {
-            swal("Nice!", "This password is long, has numbers, symbols, and capital letters, and most importantly is easy to remember. You should try to create passwords like this!", "success")
-        }
-
-    </script>
-    <script>
-        function test() {
-            alert("hi");
-        }
-
         function prompt_login() {
 
 
@@ -129,7 +138,8 @@
                     buttons: {
                         continue: {
                             text: "Continue anyway",
-                            value: null,
+                            value: "continue",
+                            className: "grey-bg",
                         },
                         register: {
                             text: "Register",
@@ -145,18 +155,26 @@
                     switch (value) {
 
                         case "login":
-                            swal("login time");
+                            //swal("login time");
+                            //window.location.href = {{ url_for('manual_cracking_challenge') }};
+                            window.location.href = "../../login";
                             break;
 
                         case "register":
-                            swal("register your account");
+                            //swal("register your account");
+                            //window.location.href = {{ url_for('register') }};
+                            //$SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+                            window.location.href = "../../register";
                             break;
                         case "continue":
-                            swal("Continuing to training");
-                        default:
-                            swal("Um... something went wrong");
+                            //window.location.href = {{ url_for('login') }};
+                            window.location.href = "../manual-cracking/challenge";
+                            break;
+                            //default:
+                            //    swal("Um... something went wrong");
                     }
                 });
+        }
 
     </script>
 

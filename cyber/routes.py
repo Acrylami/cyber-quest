@@ -24,7 +24,10 @@ def register():
         user = User(username=form.username.data, email=form.email.data, password=form.password.data)
         db.session.add(user)
         db.session.commit()
+        login_user(user)
         flash('Your account has been created.  You can now log in.')
+        if 'url' in session:
+            return redirect(session['url'])
         return redirect(url_for('home'))
 
     return render_template('register.html', title='CyberQuest- Register', form=form)
@@ -38,6 +41,9 @@ def login():
         if user is not None and user.verify_password(form.password.data):
             login_user(user)
             flash('You are now logged in.')
+            #print(session['url'])
+            if 'url' in session:
+                return redirect(session['url'])
             return redirect(url_for('home'))
         flash('Invalid username or password.')
 
@@ -143,13 +149,23 @@ def viper_chapter_4():
 def viper_chapter_5():
     return render_template('viper-chapter-5.html', title='CyberQuest- Chapter 5')
 
+
 @app.route("/training/<string:training_name>/", methods=['GET'])
 def training_redirect(training_name):
     #redirect training
-    #training = Training.query.filter(Training.training_name == training_name)
-    #training = Training.query.get_or_404(training_name)
-    file_name = training_name + ".html"
-    return render_template(file_name)
+    ###
+    #session['url'] = url_for(training_name) BREAKS THINGS
+    ###
+    training = Training.query.filter(Training.training_name == training_name)
+    training = Training.query.get_or_404(training_name)
+    file_name = training_name + "-1.html"
+    return render_template(file_name, t_name=training.training_name, current_page=1)
+
+
+@app.route("/training/<string:training_name>/<int:page>", methods=['GET'])
+def training_page_redirect(training_name, page):
+    file_name = training_name + "-" + str(page) + ".html"
+    return render_template(file_name, t_name=training_name, current_page=page)
 
 @app.route("/scoreboard")
 def scoreboard():
@@ -201,7 +217,7 @@ def manual_cracking_challenge():
             message = set_points("manual-cracking")
             return render_template('password-cracking/manual-cracking-success.html', message=message) #this keeps the url at the same place!! very useful
         flash('Invalid username or password.')
-    return render_template('password-cracking/manual-cracking.html', form=form)
+    return render_template('password-cracking/manual-cracking-challenge.html', form=form)
 
 @app.route("/training/manual-cracking/challenge/success")
 def manual_cracking_challenge_success():
