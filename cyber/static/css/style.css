@@ -24,6 +24,17 @@
     min-height: 150px;
 }
 
+.new-colour {
+    /* GREEN YELLOW  background: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%) !important; 
+    SKY BLUEISH : 160deg, #0093E9 0%, #80D0C7 100%
+    */
+    background: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%) !important;
+}
+
+.quiz {
+    min-width: 185px;
+}
+
 .training img {
     opacity: 0.3;
     position: absolute;
@@ -34,6 +45,25 @@
     height: 100%;
     object-fit: cover;
     z-index: 1;
+}
+
+.training-header {
+    position: relative;
+    background: #111111;
+    border-radius: 5px 5px 0 0;
+    min-height: 150px;
+}
+
+.training-header img {
+    opacity: 0.3;
+    position: absolute;
+    overflow: hidden;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
 }
 
 /*
@@ -178,12 +208,42 @@ box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(0, 188, 212
     margin: auto;
 }
 
+.training_card img {
+    margin-bottom: 20px;
+    max-height: 200px;
+}
+
+.training_background {
+    background: #fff !important;
+}
+
 .challenge {
     margin-top: 50px;
 }
 
+.challenge-header {
+    background: rgba(50, 50, 50, 0.9) !important;
+    box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(76, 175, 80, 0.4) !important;
+    background-image: url("../../static/img/nodes.png") !important;
+    background-size: cover;
+}
 
+.challenge-body {
+    background: radial-gradient(circle farthest-corner at 10% 20%, rgba(0, 93, 133, 1) 0%, rgba(0, 181, 149, 1) 90%) !important;
+    color: white !important;
+}
 
+.challenge body p button {
+    color: white !important;
+}
+
+.challenge-accept-button {
+    background: url("../../static/img/sidebar-2.png")
+}
+
+.white {
+    color: white !important;
+}
 
 .login {
     padding: 10px 20px !important;

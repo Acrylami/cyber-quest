@@ -144,12 +144,12 @@ def viper_chapter_5():
     return render_template('viper-chapter-5.html', title='CyberQuest- Chapter 5')
 
 @app.route("/training/<string:training_name>/", methods=['GET'])
-def training2(training_name):
+def training_redirect(training_name):
     #redirect training
     #training = Training.query.filter(Training.training_name == training_name)
-    training = Training.query.get_or_404(training_name)
-    file_name = training.training_name + ".html"
-    return render_template(file_name, title=training.display_name)
+    #training = Training.query.get_or_404(training_name)
+    file_name = training_name + ".html"
+    return render_template(file_name)
 
 @app.route("/scoreboard")
 def scoreboard():
