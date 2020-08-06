@@ -9,32 +9,14 @@
         <div class="row">
             <div class="card training_background">
 
-                <div class="new-colour card-header card-header-primary training-header">
+                <!-- TRAINING HEADER (Args: Category, training name, points, image, background class=default "new-colour" so can be left empty) -->
+                {% call training_header("Password Cracking", training.display_name, training.points, "../../static/img/training/manual-cracking.png", "new-colour") %}
+                {% endcall %}
+                <!-- TRAINING HEADER -->
 
-                    <img src="../../static/img/training/manual-cracking.png">
-
-                    <div class="d-flex justify-content-center">
-                        <h1>Password Cracking</h1>
-                    </div>
-                    <div class="d-flex justify-content-center">
-                        <h3>Manual Cracking</h3>
-                    </div>
-                    <div class="d-flex justify-content-center">
-                        <h4>100 points</h4>
-                    </div>
-                </div>
                 <div class="">
-                    <div class="card-bodY training_card">
-                        <!--
-                        <div class="d-flex justify-content-center">
-                            <h1>Password Cracking</h1>
-                        </div>
-                        <div class="d-flex justify-content-center">
-                            <h3>Manual Cracking- Part Two</h3>
-                        </div>
-                        <div class="d-flex justify-content-center">
-                            <h4>100 points</h4>
-                        </div> -->
+                    <div class="card-body training_card">
+
                         <p>When you think of hacking, one of the first things that might come into your mind is the act of <i>password cracking</i>. Put simply this is trying to login to an account by guessing the password. This is usually done with tools, but for this training we will be doing it <i>manually</i>.</p>
 
                         <p>Did you know that the top 25 most used passwords make up 10% of all passwords? That means if you tried every one of those 25 passwords on any account, you would have a 1 in 10 chance of hacking into the account. Scary stuff right?</p>
@@ -122,7 +104,7 @@
         <!-- END MINI CHALLENGE -->
 
         <!-- PAGE NAV (Args: Current page passed from routes.py, training name passed from routes.py, total number of pages) -->
-        {% call pagination(current_page, t_name, 4) %}
+        {% call pagination(current_page, training.training_name, 4) %}
         {% endcall %}
         <!-- END PAGE NAV -->
 

@@ -9,20 +9,11 @@
         <div class="row">
             <div class="card training_background">
 
-                <div class="new-colour card-header card-header-primary training-header">
+                <!-- TRAINING HEADER (Args: Category, training name, points, image, background class=default "new-colour" so can be left empty) -->
+                {% call training_header("Password Cracking", training.display_name, training.points, "../../static/img/training/manual-cracking.png", "new-colour") %}
+                {% endcall %}
+                <!-- TRAINING HEADER -->
 
-                    <img src="../../static/img/training/manual-cracking.png">
-
-                    <div class="d-flex justify-content-center">
-                        <h1>Password Cracking</h1>
-                    </div>
-                    <div class="d-flex justify-content-center">
-                        <h3>Manual Cracking</h3>
-                    </div>
-                    <div class="d-flex justify-content-center">
-                        <h4>100 points</h4>
-                    </div>
-                </div>
                 <div class="">
                     <div class="card-body training_card">
 
@@ -37,99 +28,62 @@
         </div>
 
 
-        <!--
-
-        <div class="row">
-            <div class="challenge-body text-center challenge card">
-                <div class="challenge-header card-header card-header-success">
-                    <H4>CHALLENGE</H4>
-                    <P>100 Points</P>
-                </div>
-                <div class="white card-body text-center">
-                    <p onclick="test()">Can you find the default password for the Sky Hub? </p>
-
-                    {% if current_user.is_authenticated %}
-                    <a href="{{ url_for('manual_cracking_challenge') }}" target="_blank"><button type="button" position="absolute" text-align="center !important" margin="0 auto !important" class="challenge-accept-button btn"><i class="material-icons">double_arrow</i>Accept Mini-Challenge</button></a>
-                    {% else %}
-                    <button type="button" onclick="prompt_login()" position="absolute" text-align="center !important" margin="0 auto !important" class="challenge-accept-button btn"><i class="material-icons">double_arrow</i>Accept Mini-Challenge</button>
-                    {% endif %}
-
-                    
-                    <div class="card-header" id="headingOne">
-                        <h2 class="mb-0">
-
-                            <button class="btn btn-default btn-smbtn-danger " data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                Hint
-                            </button>
-                        </h2>
-                    </div>
-
-                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne">
-                        <div class="white card-body">You'll have to search the internet like the Voyager example from before</div>
-                    </div>
-                    
-
-                </div>
-            </div>
-        </div>
-        END CHALLENGE -->
-
         <!-- CHALLENGE (Args: Points, text, hint, link) -->
-        {% call challenge(100, "Try to guess the admin username and password using your knowledge so far", "The username has been used in a previous mini-challenge", 'manual_cracking_challenge') %}
+        {% call challenge(training.points, "Try to guess the admin username and password using your knowledge so far", "The username has been used in a previous mini-challenge", 'manual_cracking_challenge') %}
         {% endcall %}
         <!-- END CHALLENGE -->
 
 
         <!-- PAGE NAV (Args: Current page passed from routes.py, training name passed from routes.py, total number of pages) -->
-        {% call pagination(current_page, t_name, 4) %}
+        {% call pagination(current_page, training.training_name, 4) %}
         {% endcall %}
         <!-- END PAGE NAV -->
 
     </div>
+</div>
 
 
+<script>
+    function prompt_login() {
 
-    <script>
-        function prompt_login() {
 
-
-            swal("Oh no, you're not logged in! Making an account lets you save your progress, AND earn points and hacker ranks.", {
-                    icon: "warning",
-                    buttons: {
-                        continue: {
-                            text: "Continue anyway",
-                            value: "continue",
-                            className: "grey-bg",
-                        },
-                        register: {
-                            text: "Register",
-                            value: "register",
-                        },
-                        login: {
-                            text: "Login",
-                            value: "login",
-                        },
+        swal("Oh no, you're not logged in! Making an account lets you save your progress, AND earn points and hacker ranks.", {
+                icon: "warning",
+                buttons: {
+                    continue: {
+                        text: "Continue anyway",
+                        value: "continue",
+                        className: "grey-bg",
                     },
-                })
-                .then((value) => {
-                    switch (value) {
-                        case "login":
-                            window.location.href = "../../login";
-                            break;
+                    register: {
+                        text: "Register",
+                        value: "register",
+                    },
+                    login: {
+                        text: "Login",
+                        value: "login",
+                    },
+                },
+            })
+            .then((value) => {
+                switch (value) {
+                    case "login":
+                        window.location.href = "../../login";
+                        break;
 
-                        case "register":
-                            window.location.href = "../../register";
-                            break;
+                    case "register":
+                        window.location.href = "../../register";
+                        break;
 
-                        case "continue":
-                            window.location.href = "../manual-cracking/challenge";
-                            break;
+                    case "continue":
+                        //window.location.href = "../manual-cracking/challenge";
+                        window.open('../manual-cracking/challenge', '_blank');
+                        break;
+                }
+            });
+    }
 
-                    }
-                });
-        }
-
-    </script>
+</script>
 
 
-    {% endblock content %}
+{% endblock content %}

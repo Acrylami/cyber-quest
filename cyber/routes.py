@@ -150,7 +150,7 @@ def training_redirect(training_name):
     training = Training.query.filter(Training.training_name == training_name)
     training = Training.query.get_or_404(training_name)
     file_name = training_name + "-1.html"
-    return render_template(file_name, t_name=training.training_name, current_page=1) #get t_name to return training
+    return render_template(file_name, training=training, current_page=1) #get t_name to return training
 
 
 @app.route("/training/<string:training_name>/<int:page>", methods=['GET'])
@@ -158,7 +158,11 @@ def training_page_redirect(training_name, page):
     session['url'] = url_for('training_page_redirect', training_name=training_name, page=page)
     ###
     file_name = training_name + "-" + str(page) + ".html"
-    return render_template(file_name, t_name=training_name, current_page=page) #get tname to return training object instead so can derive points and category
+    training = Training.query.filter(Training.training_name == training_name).first()
+    print()
+    print(training)
+    print(training.points)
+    return render_template(file_name, training=training, current_page=page) #get tname to return training object instead so can derive points and category
 
 @app.route("/scoreboard")
 def scoreboard():

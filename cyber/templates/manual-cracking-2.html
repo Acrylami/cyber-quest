@@ -9,28 +9,16 @@
         <div class="row">
             <div class="card training_background">
 
-                <div class="new-colour card-header card-header-primary training-header">
+                <!-- TRAINING HEADER (Args: Category, training name, points, image, background class=default "new-colour" so can be left empty) -->
+                {% call training_header("Password Cracking", training.display_name, training.points, "../../static/img/training/manual-cracking.png", "new-colour") %}
+                {% endcall %}
+                <!-- TRAINING HEADER -->
 
-                    <img src="../../static/img/training/manual-cracking.png">
-
-                    <div class="d-flex justify-content-center">
-                        <h1>Password Cracking</h1>
-                    </div>
-                    <div class="d-flex justify-content-center">
-                        <h3>Manual Cracking</h3>
-                    </div>
-                    <div class="d-flex justify-content-center">
-                        <h4>100 points</h4>
-                    </div>
-                </div>
                 <div class="">
-                    <div class="card-bodY training_card">
-                        <p>Did you spot any of your own passwords on the list? If so, be sure to change it ASAP! In general, the longer your password the better. Your passwords should also include numbers and symbols.
+                    <div class="card-body training_card">
 
-                        </p>
-
+                        <p>Did you spot any of your own passwords on the list? If so, be sure to change it ASAP! In general, the longer your password the better. Your passwords should also include numbers and symbols.</p>
                         <p>Which of these passwords is the most secure? Click on your choice and find out if you're right.</p>
-
 
                         <div class="table-responsive">
                             <table class="table">
@@ -65,7 +53,7 @@
             </div>
         </div>
         <!-- PAGE NAV (Args: Current page passed from routes.py, training name passed from routes.py, total number of pages) -->
-        {% call pagination(current_page, t_name, 4) %}
+        {% call pagination(current_page, training.training_name, 4) %}
         {% endcall %}
         <!-- END PAGE NAV -->
 

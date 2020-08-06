@@ -74,8 +74,6 @@
 <!-- CHALLENGE -->
 {% macro challenge(points, text, hint, link) %}
 {{ caller() }}
-
-
 <div class="row">
     <div class="challenge-body text-center challenge card">
         <div class="challenge-header card-header card-header-success">
@@ -84,13 +82,11 @@
         </div>
         <div class="white card-body text-center">
             <p onclick="test()">{{ text }} </p>
-
             {% if current_user.is_authenticated %}
             <a href="{{ url_for(link) }}" target="_blank"><button type="button" position="absolute" text-align="center !important" margin="0 auto !important" class="challenge-accept-button btn"><i class="material-icons">double_arrow</i>Accept Mini-Challenge</button></a>
             {% else %}
             <button type="button" onclick="prompt_login()" position="absolute" text-align="center !important" margin="0 auto !important" class="challenge-accept-button btn"><i class="material-icons">double_arrow</i>Accept Mini-Challenge</button>
             {% endif %}
-
             <!-- HINT -->
             <div class="card-header" id="headingOne">
                 <h2 class="mb-0">
@@ -100,7 +96,6 @@
                     </button>
                 </h2>
             </div>
-
             <div id="collapseOne" class="collapse" aria-labelledby="headingOne">
                 <div class="white card-body">{{ hint }}</div>
             </div>
@@ -108,7 +103,30 @@
         </div>
     </div>
 </div>
+{%- endmacro %}
+<!-- END CHALLENGE -->
+
+
+<!-- TRAINING HEADER (Args: Category, training name, points, image, background class=default "new-colour" so can be left empty) -->
+{% macro training_header(category, training_name, points, image, background_class="new-colour") %}
+{{ caller() }}
+
+
+<div class="{{ background_class }} card-header card-header-primary training-header">
+
+    <img src={{ image }}>
+
+    <div class="d-flex justify-content-center">
+        <h1>{{ category }}</h1>
+    </div>
+    <div class="d-flex justify-content-center">
+        <h3>{{ training_name }}</h3>
+    </div>
+    <div class="d-flex justify-content-center">
+        <h4>{{ points }} points</h4>
+    </div>
+</div>
 
 
 {%- endmacro %}
-<!-- END CHALLENGE -->
+<!-- TRAINING HEADER -->
