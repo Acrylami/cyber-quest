@@ -195,6 +195,11 @@ box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(0, 188, 212
     color: #555;
 }
 
+.table-highlight {
+    background: linear-gradient(60deg, #029eb1, #25b1c3);
+    color: white !important;
+}
+
 .disabled {
     pointer-events: none;
     cursor: default;
@@ -248,6 +253,14 @@ box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(0, 188, 212
 
 .white {
     color: white !important;
+}
+
+.scoreboard img {
+    border-radius: 50%;
+    margin-right: 10px;
+    border-style: solid;
+    border-color: #eee;
+    background-color: #eee;
 }
 
 .login {

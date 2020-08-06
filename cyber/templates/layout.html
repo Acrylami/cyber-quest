@@ -189,16 +189,6 @@
                                         <div class="opaque">Logout</div>
                                     </button></a>
                             </li>
-                            {% else %}
-                            <li>
-                                <a href="{{ url_for('register') }}"><button type="button" class="login btn btn-primary">
-                                        <div class="opaque">Register</div>
-                                    </button></a>
-                            </li>
-                            <li>
-                                <a href="{{ url_for('login') }}"><button type="button" class="login btn btn-primary">Login</button></a>
-                            </li>
-                            {% endif %}
                             <li class="nav-item dropdown">
                                 <a class="nav-link" href="javscript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="material-icons">notifications</i>
@@ -223,6 +213,17 @@
                                     </p>
                                 </a>
                             </li>
+                            {% else %}
+                            <li>
+                                <a href="{{ url_for('register') }}"><button type="button" class="login btn btn-primary">
+                                        <div class="opaque">Register</div>
+                                    </button></a>
+                            </li>
+                            <li>
+                                <a href="{{ url_for('login') }}"><button type="button" class="login btn btn-primary">Login</button></a>
+                            </li>
+                            {% endif %}
+
                         </ul>
                     </div>
                 </div>

@@ -28,7 +28,7 @@
 
                         <h2>Final Challenge</h2>
                         <p>For our final password cracking challenge, you will be cracking the username as well as the password. Just as there is a list of the most common passwords, there is also a list of the most common usernames.</p>
-                        <p>Rodney has set up an admin account for his online forum The Big Cheese. Unfortunately, he’s not been very creative with his login details and both his username and password are in the top 5 most commonly used. </p>
+                        <p>Rodney has set up an admin account for his online forum The Big Cheese. Unfortunately, he’s not been very creative with his login details and both his username and password are in the <b>top 5 most commonly used</b>. </p>
                         <img class="img-fluid img-thumbnail mx-auto d-block" src="../../static/img/password-cracking/Rodney.png">
                         <p>Using your knowledge from the earlier challenges and your own research, can you guess Rodney’s admin account details? When you’ve managed to login, submit the FLAG to earn 100 points.</p>
                     </div>
@@ -37,7 +37,7 @@
         </div>
 
 
-        <!-- CHALLENGE -->
+        <!--
 
         <div class="row">
             <div class="challenge-body text-center challenge card">
@@ -54,7 +54,7 @@
                     <button type="button" onclick="prompt_login()" position="absolute" text-align="center !important" margin="0 auto !important" class="challenge-accept-button btn"><i class="material-icons">double_arrow</i>Accept Mini-Challenge</button>
                     {% endif %}
 
-                    <!-- HINT -->
+                    
                     <div class="card-header" id="headingOne">
                         <h2 class="mb-0">
 
@@ -67,62 +67,22 @@
                     <div id="collapseOne" class="collapse" aria-labelledby="headingOne">
                         <div class="white card-body">You'll have to search the internet like the Voyager example from before</div>
                     </div>
-                    <!-- END HINT -->
+                    
 
                 </div>
             </div>
         </div>
+        END CHALLENGE -->
+
+        <!-- CHALLENGE (Args: Points, text, hint, link) -->
+        {% call challenge(100, "Try to guess the admin username and password using your knowledge so far", "The username has been used in a previous mini-challenge", 'manual_cracking_challenge') %}
+        {% endcall %}
         <!-- END CHALLENGE -->
 
-        <!-- PAGE NAV -->
-        <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
-                {%if current_page == 1%}
-                <li class="page-item disabled">
-                    <a class="page-link" href="{{ url_for('training_page_redirect', training_name=t_name, page=current_page-1)}}" tabindex="-1" aria-disabled="true">Previous</a>
-                </li>
-                {% else %}
-                <li class="page-item">
-                    <a class="page-link" href="{{ url_for('training_page_redirect', training_name=t_name, page=current_page-1)}}" tabindex="-1" aria-disabled="false">Previous</a>
-                </li>
-                {% endif %}
 
-                {% if current_page == 1 %}
-                <li class="page-item active"><a class="page-link" href="{{ url_for('training_page_redirect', training_name=t_name, page=1)}}">1</a></li>
-                {% else %}
-                <li class="page-item"><a class="page-link" href="{{ url_for('training_page_redirect', training_name=t_name, page=1)}}">1</a></li>
-                {% endif %}
-
-                {% if current_page == 2 %}
-                <li class="page-item active"><a class="page-link" href="{{ url_for('training_page_redirect', training_name=t_name, page=2)}}">2</a></li>
-                {% else %}
-                <li class="page-item"><a class="page-link" href="{{ url_for('training_page_redirect', training_name=t_name, page=2)}}">2</a></li>
-                {% endif %}
-
-                {% if current_page == 3 %}
-                <li class="page-item active"><a class="page-link" href="{{ url_for('training_page_redirect', training_name=t_name, page=3)}}">3</a></li>
-                {% else %}
-                <li class="page-item"><a class="page-link" href="{{ url_for('training_page_redirect', training_name=t_name, page=3)}}">3</a></li>
-                {% endif %}
-
-                {% if current_page == 4 %}
-                <li class="page-item active"><a class="page-link" href="{{ url_for('training_page_redirect', training_name=t_name, page=4)}}">4</a></li>
-                {% else %}
-                <li class="page-item"><a class="page-link" href="{{ url_for('training_page_redirect', training_name=t_name, page=4)}}">4</a></li>
-                {% endif %}
-
-
-                {%if current_page == 4%}
-                <li class="page-item disabled">
-                    <a class="page-link" href="{{ url_for('training_page_redirect', training_name=t_name, page=current_page+1)}}" aria-disabled="true">Next</a>
-                </li>
-                {% else %}
-                <li class="page-item">
-                    <a class="page-link" href="{{ url_for('training_page_redirect', training_name=t_name, page=current_page+1)}}">Next</a>
-                </li>
-                {% endif %}
-            </ul>
-        </nav>
+        <!-- PAGE NAV (Args: Current page passed from routes.py, training name passed from routes.py, total number of pages) -->
+        {% call pagination(current_page, t_name, 4) %}
+        {% endcall %}
         <!-- END PAGE NAV -->
 
     </div>
@@ -153,25 +113,18 @@
                 })
                 .then((value) => {
                     switch (value) {
-
                         case "login":
-                            //swal("login time");
-                            //window.location.href = {{ url_for('manual_cracking_challenge') }};
                             window.location.href = "../../login";
                             break;
 
                         case "register":
-                            //swal("register your account");
-                            //window.location.href = {{ url_for('register') }};
-                            //$SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
                             window.location.href = "../../register";
                             break;
+
                         case "continue":
-                            //window.location.href = {{ url_for('login') }};
                             window.location.href = "../manual-cracking/challenge";
                             break;
-                            //default:
-                            //    swal("Um... something went wrong");
+
                     }
                 });
         }

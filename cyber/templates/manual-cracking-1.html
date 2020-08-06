@@ -115,92 +115,19 @@
                 </div>
             </div>
         </div>
-        <!-- MINI CHALLENGE -->
-        <div class="row">
-            <div class="card text-center challenge">
-                <div class="card-header card-header-success">
-                    Mini-Challenge
-                </div>
-                <div class="card-body text-center">
-                    <p>Here’s a challenge for you! Can you crack the password for this login? </p>
-                    <button type="button" position="absolute" text-align="center !important" margin="0 auto !important" class="btn btn-success" onclick="mini_challenge()"><i class="material-icons">double_arrow</i>Accept Mini-Challenge</button>
 
-                    <!-- HINT -->
-                    <div class="card-header" id="headingOne">
-                        <h2 class="mb-0">
-                            <button class="btn btn-default btn-smbtn-danger " data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                Hint
-                            </button>
-                        </h2>
-                    </div>
-
-                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne">
-                        <div class="card-body">It is in SplashData’s 2019 top 10 passwords list. Try guessing each password on the list until you get it!</div>
-                    </div>
-                    <!-- END HINT -->
-
-
-                </div>
-            </div>
-        </div>
+        <!-- MINI CHALLENGE (Args: Text, hint) -->
+        {% call mini_challenge("Here’s a challenge for you! Can you crack the password for this login?", "It is in SplashData’s 2019 top 10 passwords list. Try guessing each password on the list until you get it!") %}
+        {% endcall %}
         <!-- END MINI CHALLENGE -->
 
-        <!-- PAGE NAV -->
-        <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
-                {%if current_page == 1%}
-                <li class="page-item disabled">
-                    <a class="page-link" href="{{ url_for('training_page_redirect', training_name=t_name, page=current_page-1)}}" tabindex="-1" aria-disabled="true">Previous</a>
-                </li>
-                {% else %}
-                <li class="page-item">
-                    <a class="page-link" href="{{ url_for('training_page_redirect', training_name=t_name, page=current_page-1)}}" tabindex="-1" aria-disabled="false">Previous</a>
-                </li>
-                {% endif %}
-
-                {% if current_page == 1 %}
-                <li class="page-item active"><a class="page-link" href="{{ url_for('training_page_redirect', training_name=t_name, page=1)}}">1</a></li>
-                {% else %}
-                <li class="page-item"><a class="page-link" href="{{ url_for('training_page_redirect', training_name=t_name, page=1)}}">1</a></li>
-                {% endif %}
-
-                {% if current_page == 2 %}
-                <li class="page-item active"><a class="page-link" href="{{ url_for('training_page_redirect', training_name=t_name, page=2)}}">2</a></li>
-                {% else %}
-                <li class="page-item"><a class="page-link" href="{{ url_for('training_page_redirect', training_name=t_name, page=2)}}">2</a></li>
-                {% endif %}
-
-                {% if current_page == 3 %}
-                <li class="page-item active"><a class="page-link" href="{{ url_for('training_page_redirect', training_name=t_name, page=3)}}">3</a></li>
-                {% else %}
-                <li class="page-item"><a class="page-link" href="{{ url_for('training_page_redirect', training_name=t_name, page=3)}}">3</a></li>
-                {% endif %}
-
-                {% if current_page == 4 %}
-                <li class="page-item active"><a class="page-link" href="{{ url_for('training_page_redirect', training_name=t_name, page=4)}}">4</a></li>
-                {% else %}
-                <li class="page-item"><a class="page-link" href="{{ url_for('training_page_redirect', training_name=t_name, page=4)}}">4</a></li>
-                {% endif %}
-
-
-                {%if current_page == 4%}
-                <li class="page-item disabled">
-                    <a class="page-link" href="{{ url_for('training_page_redirect', training_name=t_name, page=current_page+1)}}" aria-disabled="true">Next</a>
-                </li>
-                {% else %}
-                <li class="page-item">
-                    <a class="page-link" href="{{ url_for('training_page_redirect', training_name=t_name, page=current_page+1)}}">Next</a>
-                </li>
-                {% endif %}
-            </ul>
-        </nav>
+        <!-- PAGE NAV (Args: Current page passed from routes.py, training name passed from routes.py, total number of pages) -->
+        {% call pagination(current_page, t_name, 4) %}
+        {% endcall %}
         <!-- END PAGE NAV -->
 
     </div>
 </div>
-
-
-
 
 
 <script>

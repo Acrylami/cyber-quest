@@ -16,10 +16,16 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table">
+                            <table class="scoreboard table">
                                 <thead class=" text-primary">
                                     <th>
+                                        #
+                                    </th>
+                                    <th>
                                         Username
+                                    </th>
+                                    <th>
+                                        Rank
                                     </th>
                                     <th>
                                         Points
@@ -27,17 +33,107 @@
                                 </thead>
                                 <tbody>
 
-
-
+                                    <!-- Highlights current user, and displays rank number -->
+                                    {% set counter = 0 %}
                                     {% for user in topscorers %}
+
+                                    {% if user == current_user %}
+
+                                    <tr class="table-highlight">
+                                        <td class="white">
+                                            {{ loop.index }}
+                                        </td>
+                                        <td class="white">
+                                            <img src="../static/img/default-avatar.png" width="50px" height="50px"> {{ user.username }}
+                                        </td>
+
+                                        <!-- Ranks -->
+                                        {% if user.points < 100 %}
+                                        <td class="white">
+                                            noob
+                                        </td>
+                                        {% elif user.points < 300 %}
+                                        <td class="white">
+                                            cyberist
+                                        </td>
+                                        {% elif user.points < 600 %}
+                                        <td class="white">
+                                            slick coder
+                                        </td>
+                                        {% elif user.points < 1000 %}
+                                        <td class="white">
+                                            another rank
+                                        </td>
+                                        {% elif user.points < 1300 %}
+                                        <td class="white">
+                                            Pro-Hacker
+                                        </td>
+                                        {% elif user.points >= 1600 %}
+                                        <td class="white">
+                                            1337 H4x0r
+                                        </td>
+                                        {% else %}
+                                        <td class="white">
+                                            Rank Here
+                                        </td>
+                                        {% endif %}
+                                        <!-- End Ranks -->
+
+                                        <td class="white">
+                                            {{ user.points }}
+                                        </td>
+                                    </tr>
+
+
+                                    {% else %}
+
                                     <tr>
                                         <td>
-                                            {{ user.username }}
+                                            {{ loop.index }}
                                         </td>
+                                        <td>
+                                            <img src="../static/img/default-avatar.png" width="50px" height="50px"> {{ user.username }}
+                                        </td>
+
+                                        <!-- Ranks -->
+                                        {% if user.points < 100 %}
+                                        <td class="">
+                                            noob
+                                        </td>
+                                        {% elif user.points < 300 %}
+                                        <td class="">
+                                            cyberist
+                                        </td>
+                                        {% elif user.points < 600 %}
+                                        <td class="">
+                                            slick coder
+                                        </td>
+                                        {% elif user.points < 1000 %}
+                                        <td class="">
+                                            another rank
+                                        </td>
+                                        {% elif user.points < 1300 %}
+                                        <td class="">
+                                            Pro-Hacker
+                                        </td>
+                                        {% elif user.points >= 1600 %}
+                                        <td class="">
+                                            1337 H4x0r
+                                        </td>
+                                        {% else %}
+                                        <td class="">
+                                            Rank Here
+                                        </td>
+                                        {% endif %}
+                                        <!-- End Ranks -->
+
+
                                         <td>
                                             {{ user.points }}
                                         </td>
                                     </tr>
+                                    {% endif %}
+
                                     {% endfor %}
 
 
