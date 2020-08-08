@@ -82,6 +82,8 @@ def training():
     osint = []
     stego = []
     general = []
+    web = []
+    forensics = []
     
     training_entries = Training.query.all()
     testvar = "hi"
@@ -104,11 +106,15 @@ def training():
             stego.append(entry)
         elif (entry.category == 'general'):
             general.append(entry)
+        elif (entry.category == 'web'):
+            web.append(entry)
+        elif (entry.category == 'forensics'):
+            forensics.append(entry)
         else:
             #nothing? error occured
             print('Error occurred, category unknown')
 
-    return render_template('training.html', training_entries=training_entries, crypto=crypto, osint=osint, stego=stego, general=general, title='Training')
+    return render_template('training.html', training_entries=training_entries, crypto=crypto, osint=osint, stego=stego, general=general, web=web, forensics=forensics, title='Training')
 
 @app.route("/profile")
 def profile():

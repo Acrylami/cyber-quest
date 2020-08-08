@@ -31,6 +31,14 @@
     background: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%) !important;
 }
 
+.sky-blue {
+    background: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%) !important;
+}
+
+.yellow-green {
+    background: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%) !important;
+}
+
 .quiz {
     min-width: 185px;
 }
@@ -64,6 +72,9 @@
     height: 100%;
     object-fit: cover;
     z-index: -1;
+    -webkit-filter: blur(1px);
+    /* Safari 6.0 - 9.0 */
+    filter: blur(1px);
 }
 
 /*

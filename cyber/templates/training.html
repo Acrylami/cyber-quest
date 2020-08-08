@@ -34,6 +34,12 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#Steganography">Steganography</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#Forensics">Digital Forensics</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#Web">Web Hacking</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -88,7 +94,6 @@
             </div>
 
             {% endfor %}
-            <!-- hi3 -->
         </div>
         <!-- End general -->
 
@@ -233,6 +238,109 @@
             {% endfor %}
         </div>
         <!-- End steganography -->
+
+
+
+        <!-- Forensics -->
+
+        <div class="card card-plain training-title">
+            <div class="card-header card-header-primary">
+                <a name="Forensics">
+                    <h4 class="card-title opaque">Digital Forensics</h4>
+                </a>
+                <p class="card-category opaque">Put on your digital detective hat and learn to trace the breadcrumbs left by cybercrime </p>
+            </div>
+        </div>
+
+
+        <!-- For every training entry in that category, display it in neat rows -->
+        {% set counter = 0 %}
+        <div class="row">
+            {% for training in forensics %}
+            {% set counter = counter + 1 %}
+            {% if counter % 3 == 0 %}
+        </div>
+        <div class="row">
+            {% endif %}
+            <div class="col-xl-4 col-lg-12">
+                <a href="{{ url_for('training_redirect', training_name=training.training_name)}}">
+                    <div class="card card-chart">
+                        <div class="card-body training">
+                            <h4 class="card-title">{{ training.display_name }}</h4>
+                            <p class="card-category">{{ training.description }}</p>
+                            <img src="../static/img/training/{{ training.training_name }}.png">
+                        </div>
+                        <div>
+                            {% if training.completed %}
+                            <div class="stats card-header-success points">
+                                {{ training.points }}<i class="material-icons">check</i>
+                            </div>
+                            {% else %}
+                            <div class="incomplete stats points">
+                                {{ training.points }}pts
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            {% endfor %}
+        </div>
+        <!-- End forensics -->
+
+
+
+
+        <!-- Web -->
+
+        <div class="card card-plain training-title">
+            <div class="card-header card-header-primary">
+                <a name="Web">
+                    <h4 class="card-title opaque">Web Hacking</h4>
+                </a>
+                <p class="card-category opaque">Learn how to hack websites</p>
+            </div>
+        </div>
+
+
+        <!-- For every training entry in that category, display it in neat rows -->
+        {% set counter = 0 %}
+        <div class="row">
+            {% for training in web %}
+            {% set counter = counter + 1 %}
+            {% if counter % 3 == 0 %}
+        </div>
+        <div class="row">
+            {% endif %}
+            <div class="col-xl-4 col-lg-12">
+                <a href="{{ url_for('training_redirect', training_name=training.training_name)}}">
+                    <div class="card card-chart">
+                        <div class="card-body training">
+                            <h4 class="card-title">{{ training.display_name }}</h4>
+                            <p class="card-category">{{ training.description }}</p>
+                            <img src="../static/img/training/{{ training.training_name }}.png">
+                        </div>
+                        <div>
+                            {% if training.completed %}
+                            <div class="stats card-header-success points">
+                                {{ training.points }}<i class="material-icons">check</i>
+                            </div>
+                            {% else %}
+                            <div class="incomplete stats points">
+                                {{ training.points }}pts
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            {% endfor %}
+        </div>
+        <!-- End web -->
+
+
 
     </div>
 </div>

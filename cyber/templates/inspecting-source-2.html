@@ -1,0 +1,86 @@
+{% extends "training-layout.html" %}
+<!-- this layout just goes back ../ for all the links so it doesn't break since it's in the /training/ directory -->
+<!-- may be needed for other pages too -->
+
+{% block content %}
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="card training_background">
+
+                <!-- TRAINING HEADER (Args: Category, training name, points, image, background class=default "new-colour" so can be left empty) -->
+                {% call training_header("Web Hacking", training.display_name, training.points, "../../static/img/training/inspecting-source.png", "sky-blue") %}
+                {% endcall %}
+                <!-- TRAINING HEADER -->
+
+                <div class="">
+                    <div class="card-body training_card">
+
+                        <p>When coding, it is common practice to leave comments throughout the code to explain the code and leave notes to help with future development. In HTML, a comment looks like this:</p>
+
+                        <img class="img-fluid img-thumbnail mx-auto d-block" src="../../static/img/web-hacking/comment.png">
+
+                        <p>Any comments in the code <b>won’t</b> show up on the website. Bad coders might use this to hide information they aren’t supposed to…</p>
+
+                        <img class="img-fluid img-thumbnail mx-auto d-block" src="../../static/img/web-hacking/cody.png">
+
+                        <p>This is Cody. Cody has set up a website for his secret club! Cool stuff, right? Well entry is members only, so without a password you’re not getting in. However Cody is a pretty forgetful person, so might have left some comments in the website’s code with the password.</p>
+
+                        <p>Remember, to view the HTML code you can either press F12 or right click the page to “Inspect Element”.</p>
+
+                        <p>Once you’ve got the password, come back here to enter it.</p>
+                        <a href="#"><button class="btn btn-primary"> Ready? Off you go, to Cody’s website!</button></a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MINI CHALLENGE (Args: Text, hint) -->
+        {% call mini_challenge("Find the password to log in to Cody's website hidden in the source code, then come back and enter it here", "On Cody's website, right click the page and select inspect element or view page source.") %}
+        {% endcall %}
+        <!-- END MINI CHALLENGE -->
+
+        <!-- PAGE NAV (Args: Current page passed from routes.py, training name passed from routes.py, total number of pages) -->
+        {% call pagination(current_page, training.training_name, 4) %}
+        {% endcall %}
+        <!-- END PAGE NAV -->
+
+    </div>
+</div>
+
+
+<script>
+    function mini_challenge() {
+
+        swal({
+                text: 'What was the password to enter Cody’s secret club?',
+                content: "input",
+                button: {
+                    text: "Submit",
+                    closeModal: true,
+                },
+            })
+            .then(name => {
+                if (DOMPurify.sanitize(name).toUpperCase() == "QWERTY") {
+                    swal("Nice!", "That's correct, well done", "success", {
+                        button: "Next",
+                    });
+                } else {
+                    swal("Not quite!", "Make sure you're editing the right text, it should be the paragraph inside the challenge box", "error", {
+                        button: "Return"
+                    });
+                }
+            })
+
+
+    }
+
+</script>
+
+
+
+
+
+{% endblock content %}
