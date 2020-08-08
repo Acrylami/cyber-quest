@@ -120,55 +120,61 @@ def training():
 def profile():
     return render_template('profile.html', title='Your Profile')
 
-@app.route("/viper")
-def viper():
-    session['url'] = url_for('viper')   
-    return render_template('viper.html', title='Viper in the Dusk')
+@app.route("/stories/<string:story>")
+def story_chapters(story):
+    session['url'] = url_for('story_chapters', story=story)
+    file_name = "/stories/" + story + "/" + story + ".html"
+    title = story
+    return render_template(file_name, title=title)
 
 
-@app.route("/viper-chapter-1")
-def viper_chapter_1():
-    return render_template('viper-chapter-1.html', title='Chapter 1')
+@app.route("/stories/<string:story>/chapter/<int:chapter>")
+def story_redirect(story, chapter):
+    file_name = "/stories/" + story + "/" + story + "-chapter-" + str(chapter) + ".html"
+    title = "Chapter " + str(chapter)
+    return render_template(file_name, title=title)
 
-@app.route("/viper-chapter-2")
-def viper_chapter_2():
-    return render_template('viper-chapter-2.html', title='Chapter 2')
-
-@app.route("/viper-chapter-3")
-def viper_chapter_3():
-    return render_template('viper-chapter-3.html', title='Chapter 3')
-
-@app.route("/viper-chapter-4")
-def viper_chapter_4():
-    return render_template('viper-chapter-4.html', title='Chapter 4')
-
-@app.route("/viper-chapter-5")
-def viper_chapter_5():
-    return render_template('viper-chapter-5.html', title='Chapter 5')
 
 
 @app.route("/training/<string:training_name>/", methods=['GET'])
 def training_redirect(training_name):
-    #redirect training
-    ###
     session['url'] = url_for('training_redirect', training_name=training_name)
-    ###
+
     training = Training.query.filter(Training.training_name == training_name)
     training = Training.query.get_or_404(training_name)
-    file_name = training_name + "-1.html"
+    file_name = "/training/"+training_name+ "/" + training_name + "-1.html"
     return render_template(file_name, training=training, current_page=1) #get t_name to return training
 
 
 @app.route("/training/<string:training_name>/<int:page>", methods=['GET'])
 def training_page_redirect(training_name, page):
     session['url'] = url_for('training_page_redirect', training_name=training_name, page=page)
-    ###
-    file_name = training_name + "-" + str(page) + ".html"
+
+    file_name = "/training/"+training_name+ "/" + training_name + "-" + str(page) + ".html"
     training = Training.query.filter(Training.training_name == training_name).first()
-    print()
-    print(training)
-    print(training.points)
-    return render_template(file_name, training=training, current_page=page) #get tname to return training object instead so can derive points and category
+    return render_template(file_name, training=training, current_page=page) 
+
+
+'''
+@app.route("/training/<string:training_name>/challenge", methods=['GET'])
+def challenge(training_name):
+    print("Checking training name...")
+    print(training_name)
+    #session['url'] = url_for('training_redirect', training_name=training_name)
+    file_name = "/training/"+training_name+ "/" + training_name + "-challenge.html"
+    print("Checking file name....")
+    print(file_name)
+    training = Training.query.filter(Training.training_name == training_name).first()
+    return render_template(file_name, training=training)
+
+
+@app.route("/training/<string:training_name>/challenge/success", methods=['GET'])
+def challenge_success(training_name):
+    #session['url'] = url_for('training_redirect', training_name=training_name)
+    file_name = "/training/"+training_name+ "/" + training_name + "-success.html"
+    training = Training.query.filter(Training.training_name == training_name).first()
+    return render_template(file_name, training=training)
+'''
 
 @app.route("/scoreboard")
 def scoreboard():
@@ -193,7 +199,7 @@ def scoreboard():
 
 @app.route("/education")
 def education():
-    return render_template('teacher-site.html', title='CyberQuest For Education')
+    return render_template('/education/teacher-site.html', title='CyberQuest For Education')
 
 
 
@@ -231,21 +237,20 @@ def manual_cracking_challenge():
         if (form.username.data == 'admin' and form.password.data == '123456'):
             #call set points and message function
             message = set_points("manual-cracking")
-            return render_template('password-cracking/manual-cracking-success.html', message=message) #this keeps the url at the same place!! very useful
+            return render_template('training/manual-cracking/manual-cracking-success.html', message=message) #this keeps the url at the same place!! very useful
         flash('Invalid username or password.')
-    return render_template('password-cracking/manual-cracking-challenge.html', form=form)
+    return render_template('training/manual-cracking/manual-cracking-challenge.html', form=form)
 
 @app.route("/training/manual-cracking/challenge/success")
 def manual_cracking_challenge_success():
     #Must check if we have routed here from the challenge page correctly,
     #if not it should tell the user they can't do that
-    return render_template('password-cracking/manual-cracking-success.html')
+    return render_template('training/manual-cracking/manual-cracking-success.html')
 
-'''
+
 #Flask lab 3: implementation of Cart.  Needs 'session' import!
 # https://github.com/kkschick/ubermelon-shopping-app/blob/master/melons.py MELONS
 
-'''
 
 
 

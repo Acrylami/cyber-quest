@@ -1,0 +1,161 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="content">
+    <div class="container-fluid">
+        <div id="viper-background" class="card card-plain">
+            <div class="card-header card-header-success">
+
+                <h4 class=" card-title">Viper in the Dusk</h4>
+                <p class="card-category">Terrorist organisation VIPER are planning a large scale attack 30 days from now. Must identify them, their location, their plans to prevent the attack and take them down
+                </p>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+                {% if current_user.is_authenticated %}
+                <a href="{{ url_for('story_redirect', story='viper', chapter=1)}}">
+                    {% else %}
+                    <a onclick="prompt_login()" href="javascript:void(0);">
+                        {% endif %}
+                        <div class="card card-stats">
+                            <div class="card-header card-header-success card-header-icon">
+                                <div class="card-icon circular-icon">
+                                    <i class="material-icons">check_circle</i>
+                                </div>
+                                <p class="card-category">Chapter 1</p>
+
+                            </div>
+                        </div>
+                    </a>
+                </a>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+                {% if current_user.is_authenticated %}
+                <a href="{{ url_for('story_redirect', story='viper', chapter=2)}}">
+                    {% else %}
+                    <a onclick="prompt_login()" href="javascript:void(0);">
+                        {% endif %}
+                        <div class="card card-stats">
+                            <div class="card-header card-header-icon">
+                                <div class="card-icon circular-icon">
+                                    <i class="material-icons">lock_open</i>
+                                </div>
+                                <p class="card-category">Chapter 2</p>
+
+                            </div>
+                        </div>
+                    </a>
+                </a>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+                <div class="disabled">
+                    {% if current_user.is_authenticated %}
+                    <a href="{{ url_for('story_redirect', story='viper', chapter=3)}}">
+                        {% else %}
+                        <a onclick="prompt_login()" href="javascript:void(0);">
+                            {% endif %}
+                            <div class="card card-stats">
+                                <div class="card-header card-header-success card-header-icon">
+                                    <div class="card-icon circular-icon locked">
+                                        <i class="material-icons">lock</i>
+                                    </div>
+                                    <p class="card-category">Chapter 3</p>
+
+                                </div>
+                            </div>
+                        </a>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+                <div class="disabled">
+                    {% if current_user.is_authenticated %}
+                    <a href="{{ url_for('story_redirect', story='viper', chapter=4)}}">
+                        {% else %}
+                        <a onclick="prompt_login()" href="javascript:void(0);">
+                            {% endif %}
+                            <div class="card card-stats">
+                                <div class="card-header card-header-success card-header-icon">
+                                    <div class="card-icon circular-icon locked">
+                                        <i class="material-icons">lock</i>
+                                    </div>
+                                    <p class="card-category">Chapter 4</p>
+
+                                </div>
+                            </div>
+                        </a>
+                    </a>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+                <div class="disabled">
+                    {% if current_user.is_authenticated %}
+                    <a href="{{ url_for('story_redirect', story='viper', chapter=5)}}">
+                        {% else %}
+                        <a onclick="prompt_login()" href="javascript:void(0);">
+                            {% endif %}
+                            <div class="card card-stats">
+                                <div class="card-header card-header-success card-header-icon">
+                                    <div class="card-icon circular-icon locked">
+                                        <i class="material-icons">lock</i>
+                                    </div>
+                                    <p class="card-category">Chapter 5</p>
+                                </div>
+                            </div>
+                        </a>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    //This function will only redirect to the first chapter, which should be ok for now since unregistered users can't save progress
+
+    function prompt_login() {
+
+        swal("Oh no, you're not logged in! Making an account lets you save your progress, AND earn points and hacker ranks.", {
+                icon: "warning",
+                buttons: {
+                    continue: {
+                        text: "Continue anyway",
+                        value: "continue",
+                        className: "grey-bg",
+                    },
+                    register: {
+                        text: "Register",
+                        value: "register",
+                    },
+                    login: {
+                        text: "Login",
+                        value: "login",
+                    },
+                },
+            })
+            .then((value) => {
+                switch (value) {
+                    case "login":
+                        window.location.href = "{{ url_for('login')}}";
+                        break;
+
+                    case "register":
+                        window.location.href = "{{ url_for('register')}}";
+                        break;
+
+                    case "continue":
+
+                        window.location.href = "{{ url_for('story_redirect', story='viper', chapter=1)}}";
+                        break;
+
+                }
+            });
+    }
+
+</script>
+
+{% endblock content %}

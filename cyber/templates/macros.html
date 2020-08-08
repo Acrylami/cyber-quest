@@ -73,6 +73,7 @@
 
 <!-- CHALLENGE -->
 {% macro challenge(points, text, hint, link) %}
+
 {{ caller() }}
 <div class="row">
     <div class="challenge-body text-center challenge card">
@@ -83,7 +84,7 @@
         <div class="white card-body text-center">
             <p onclick="test()">{{ text }} </p>
             {% if current_user.is_authenticated %}
-            <a href="{{ url_for(link) }}" target="_blank"><button type="button" position="absolute" text-align="center !important" margin="0 auto !important" class="challenge-accept-button btn"><i class="material-icons">double_arrow</i>Accept Mini-Challenge</button></a>
+            <a href="challenge" target="_blank"><button type="button" position="absolute" text-align="center !important" margin="0 auto !important" class="challenge-accept-button btn"><i class="material-icons">double_arrow</i>Accept Mini-Challenge</button></a>
             {% else %}
             <button type="button" onclick="prompt_login()" position="absolute" text-align="center !important" margin="0 auto !important" class="challenge-accept-button btn"><i class="material-icons">double_arrow</i>Accept Mini-Challenge</button>
             {% endif %}
