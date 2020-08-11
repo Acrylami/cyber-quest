@@ -98,31 +98,31 @@
                                         <!-- Ranks -->
                                         {% if user.points < 100 %}
                                         <td class="">
-                                            noob
+                                            <span class="noob">Noob</span>
                                         </td>
                                         {% elif user.points < 300 %}
                                         <td class="">
-                                            cyberist
+                                            <span class="cyberist"> Cyberist</span>
                                         </td>
                                         {% elif user.points < 600 %}
                                         <td class="">
-                                            slick coder
+                                            <span class="rank">slick coder</span>
                                         </td>
                                         {% elif user.points < 1000 %}
                                         <td class="">
-                                            another rank
+                                            <span class="rank">another rank</span>
                                         </td>
                                         {% elif user.points < 1300 %}
                                         <td class="">
-                                            Pro-Hacker
+                                            <span class="rank"> Pro-Hacker</span>
                                         </td>
                                         {% elif user.points >= 1600 %}
                                         <td class="">
-                                            1337 H4x0r
+                                            <span class="rank">1337 H4x0r</span>
                                         </td>
                                         {% else %}
                                         <td class="">
-                                            Rank Here
+                                            <span class="rank">Rank Here</span>
                                         </td>
                                         {% endif %}
                                         <!-- End Ranks -->

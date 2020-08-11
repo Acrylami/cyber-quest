@@ -77,6 +77,26 @@
     filter: blur(1px);
 }
 
+.rank {
+    background: white !important;
+    border-radius: 10px;
+    padding: 0 5px;
+}
+
+.noob {
+    background: white !important;
+    border-radius: 10px;
+    padding: 0 5px;
+}
+
+.cyberist {
+    background: green !important;
+    color: white;
+    border-radius: 10px;
+    padding: 0 5px;
+}
+
+
 /*
 .story-images img {
     opacity: 0.3;

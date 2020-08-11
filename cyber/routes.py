@@ -125,7 +125,7 @@ def story_chapters(story):
     session['url'] = url_for('story_chapters', story=story)
     file_name = "/stories/" + story + "/" + story + ".html"
     title = story
-    return render_template(file_name, title=title)
+    return render_template(file_name, title="")
 
 
 @app.route("/stories/<string:story>/chapter/<int:chapter>")
@@ -248,9 +248,23 @@ def manual_cracking_challenge_success():
     return render_template('training/manual-cracking/manual-cracking-success.html')
 
 
-#Flask lab 3: implementation of Cart.  Needs 'session' import!
-# https://github.com/kkschick/ubermelon-shopping-app/blob/master/melons.py MELONS
 
+
+@login_manager.unauthorized_handler
+def unauthorized_callback():
+    flash("You need to login first")
+    return redirect('/login')
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+
+@app.errorhandler(500)
+def internal_server_error(e):
+    print("")
+    print(app.instance_path)
+    print(app.root_path)
+    return render_template('500.html'), 500
 
 
 
