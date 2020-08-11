@@ -2,21 +2,16 @@
 {% block content %}
 
 <div class="content">
-    <div class="container-fluid">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header card-header-primary">
-                    <h4 class="card-title">Oops!</h4>
-                    <p class="card-category"></p>
-                </div>
-                <div class="card-body">
-                    404 Not Found
-
-                </div>
-            </div>
-        </div>
+    <div class="container-fluid text-center">
+        <img class="img-fluid mx-auto d-block" src="{{ url_for('static', filename='img/404.png') }}">
+        <button type="button" class="btn btn-primary" onclick="goBack()">Go Back</button>
     </div>
 </div>
 
+<script>
+    function goBack() {
+        window.history.back()
+    }
 
+</script>
 {% endblock content %}
