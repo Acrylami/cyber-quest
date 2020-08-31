@@ -13,10 +13,13 @@
 </head>
 
 <body>
+    {% if message == "Complete" %}
     <h1>Hey totally real member!</h1>
     <h2>Welcome to the secret club, now gaze upon our finest secrets</h2>
     <p>We have managed to add to our collection of tiny bugs. Please take a look and enjoy!</p>
-    <img src="../../static/img/web-hacking/morebugs.png">
+    <img src="{{ url_for('static', filename='img/web-hacking/morebugs.png') }}">
     <p>P.S. Don't tell anyone the password!</p>
-
+    {% else %}
+    <p>You sneaky thing! You can't get points by coming to this link without completing the challenge, but nice try.</p>
+    {% endif %}
 </body>

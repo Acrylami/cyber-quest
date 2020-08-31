@@ -36,3 +36,28 @@ class PasswordCracking1(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Login')
 
+class InspectForm1(FlaskForm):
+    password = PasswordField('Password', validators=[DataRequired()])
+    submit = SubmitField('Submit')
+
+class InspectForm2(FlaskForm):
+    password = PasswordField('Password', validators=[DataRequired()])
+    submit = SubmitField('Submit')    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+

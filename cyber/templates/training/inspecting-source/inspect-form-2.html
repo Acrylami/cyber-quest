@@ -17,35 +17,24 @@
 <body>
     <h1>My new and improved secret club</h1>
     <h2>Now super secure!</h2>
-    <img src="../../static/img/web-hacking/froggo.png">
+    <img src="{{ url_for('static', filename='img/web-hacking/cody.png') }}">
     <p>I've made it harder for the hackers to get into this site now, so give up if you're not one of the squad!</p>
-    <!-- Don't forget, the password is "hoppingcool" -->
     <form method="POST" action="" autocomplete="off">
-        <!-- Password part 3: "yummy" -->
-        <label for="lname">Password:</label><br>
-        <input type="text" id="lname" name="lname" value=""><br><br>
+        {{ form.hidden_tag() }}
+        <!-- Password part 3: "bugs" -->
+        <label for="password">{{ form.password.label }}</label>
+        {{ form.password(class="form-control") }}
 
-        <input type="submit" value="Submit">
+        <button type="submit" value="Login">Login</button>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+
+        <p>{{ messages[-1] }}</p>
+
+        {% endif %}
+        {% endwith %}
     </form>
 </body>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

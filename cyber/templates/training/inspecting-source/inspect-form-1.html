@@ -15,13 +15,21 @@
 <body>
     <h1>My secret club</h1>
     <h2>Members only! Keep out if you're not one of the squad</h2>
-    <img src="../../static/img/web-hacking/froggo.png">
+    <img src="{{ url_for('static', filename='img/web-hacking/cody.png') }}">
     <!-- Don't forget, the password is "hoppingcool" -->
     <form method="POST" action="" autocomplete="off">
+        {{ form.hidden_tag() }}
 
-        <label for="lname">Password:</label><br>
-        <input type="text" id="lname" name="lname" value=""><br><br>
+            <label for="password">{{ form.password.label }}</label>
+            {{ form.password(class="form-control") }}
 
-        <input type="submit" value="Submit">
+            <button type="submit" value="Login">Login</button>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+
+            <p>{{ messages[-1] }}</p>
+
+            {% endif %}
+            {% endwith %}
     </form>
 </body>

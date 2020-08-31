@@ -248,7 +248,48 @@ def manual_cracking_challenge_success():
     return render_template('training/manual-cracking/manual-cracking-success.html')
 
 
+#Inspect Element Training
+@app.route("/training/inspecting-source/frog-blog", methods=['GET','POST'])
+def inspect_form_1():
+    form = InspectForm1()
+    message = "No Login"
 
+    if form.validate_on_submit():
+        if (form.password.data == 'hoppingcool'):
+            #call set points and message function
+            message = "Complete"
+            return render_template('training/inspecting-source/inspect-form-1-solved.html', message=message) #this keeps the url at the same place!! very useful
+        flash('Invalid password.')
+    
+    return render_template('training/inspecting-source/inspect-form-1.html', form=form)
+
+@app.route("/training/inspecting-source/new-frog-blog", methods=['GET','POST'])
+def inspect_form_2():
+    form = InspectForm2()
+    message = "No Login"
+
+    if form.validate_on_submit():
+        if (form.password.data == 'bugsareyummy'):
+            #call set points and message function
+            message = "Complete"
+            return render_template('training/inspecting-source/inspect-form-2-solved.html', message=message) #this keeps the url at the same place!! very useful
+        flash('Invalid password.')
+
+    return render_template('training/inspecting-source/inspect-form-2.html', form=form)
+
+@app.route("/training/inspecting-source/frog-blog/success")
+def inspect_form_1_success():
+    #Must check if we have routed here from the challenge page correctly,
+    #if not it should tell the user they can't do that
+    return render_template('training/inspecting-source/inspect-form-1-solved.html')
+
+@app.route("/training/inspecting-source/new-frog-blog/success")
+def inspect_form_2_success():
+    #Must check if we have routed here from the challenge page correctly,
+    #if not it should tell the user they can't do that
+    return render_template('training/inspecting-source/inspect-form-2-solved.html')
+
+inspect_form_1
 
 @login_manager.unauthorized_handler
 def unauthorized_callback():
