@@ -2,41 +2,33 @@
 {% block training_activation %} active {% endblock %}
 {% block content %}
 
-<style>
-    $(document).ready(function() {
-            $('ul li a').click(function() {
-                    $('li a').removeClass("active");
-                    $(this).addClass("active");
-                }
-
-            );
-        }
-
-    );
-
-</style>
-
 <div class="content">
     <div class="container-fluid">
-        <nav class="navbar navbar-expand-lg navbar-light bg-success">
+        <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-success">
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="true" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown" ;>
                 <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#Cryptography">Cryptography <span class="sr-only">(current)</span></a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#General">General<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#OSINT">OSINT</a>
+                        <a class="nav-link" href="#Cryptography">Crypto<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#Steganography">Steganography</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="#OSINT">OSINT</a>
+                    </li>
+
+                    <!-- No forensics yet
+                    <li class="nav-item">
                         <a class="nav-link" href="#Forensics">Digital Forensics</a>
                     </li>
+                    -->
                     <li class="nav-item">
                         <a class="nav-link" href="#Web">Web Hacking</a>
                     </li>
@@ -240,8 +232,8 @@
         <!-- End steganography -->
 
 
-
-        <!-- Forensics -->
+        <!-- No forensics training yet...
+        <!-- Forensics ->
 
         <div class="card card-plain training-title">
             <div class="card-header card-header-primary">
@@ -253,7 +245,7 @@
         </div>
 
 
-        <!-- For every training entry in that category, display it in neat rows -->
+        <!-- For every training entry in that category, display it in neat rows ->
         {% set counter = 0 %}
         <div class="row">
             {% for training in forensics %}
@@ -344,7 +336,6 @@
 
     </div>
 </div>
-
 
 
 {% endblock content %}

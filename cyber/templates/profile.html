@@ -12,12 +12,14 @@
                 <div class="card">
                     <div class="card-header card-header-primary">
                         <h4 class="card-title">Badges</h4>
-                        <p class="card-category">View your achievements! </p>
+                        <p class="card-category">View your achievements! <u>COMING SOON</u></U></p>
                     </div>
                     <div class="card-body badges">
+                        <!-- Was testing tooltips 
                         <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
                             Tooltip on top
                         </button>
+                        -->
                         <h4>USER</h4>
 
                         <img src="{{ url_for('static', filename='img/placeholder_badge.png') }}">
@@ -78,12 +80,13 @@
                         </a>
                     </div>
                     <div class="card-body">
-                        <h6 class="card-category">Score: {{ current_user.points}}</h6>
                         <h4 class="card-title">{{ current_user.username }}</h4>
-                        <p class="card-description">
-                            Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
-                        </p>
-                        <a href="#pablo" class="btn btn-primary btn-round">Follow</a>
+                        <h6 class="card-category">Score: {{ current_user.points}}</h6>
+                        <!-- Ranks -->
+                        {% call display_rank(current_user) %}
+                        {% endcall %}
+                        <!-- End Ranks -->
+
                     </div>
                 </div>
             </div>

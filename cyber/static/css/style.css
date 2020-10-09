@@ -90,7 +90,58 @@
 }
 
 .cyberist {
-    background: green !important;
+    background-image: linear-gradient(135deg, #E2B0FF 10%, #9F44D3 100%);
+    color: white;
+    border-radius: 10px;
+    padding: 0 5px;
+}
+
+.slick-coder {
+    background: #642B73;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #C6426E, #642B73);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #C6426E, #642B73);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: white;
+    border-radius: 10px;
+    padding: 0 5px;
+}
+
+.apprentice-hacker {
+    background-image: linear-gradient(135deg, #5EFCE8 10%, #736EFE 100%) !important;
+    color: white;
+    border-radius: 10px;
+    padding: 0 5px;
+}
+
+.keen-bean {
+    background: #00F260;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #0575E6, #00F260);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #0575E6, #00F260);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    color: white;
+    border-radius: 10px;
+    padding: 0 5px;
+}
+
+.pro-hacker {
+    background-image: linear-gradient(135deg, #FCCF31 10%, #F55555 100%) !important;
+    color: white;
+    border-radius: 10px;
+    padding: 0 5px;
+}
+
+.l337 {
+    background: #0f0c29;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     color: white;
     border-radius: 10px;
     padding: 0 5px;

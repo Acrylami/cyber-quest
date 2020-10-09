@@ -48,35 +48,8 @@
                                         </td>
 
                                         <!-- Ranks -->
-                                        {% if user.points < 100 %}
-                                        <td class="white">
-                                            noob
-                                        </td>
-                                        {% elif user.points < 300 %}
-                                        <td class="white">
-                                            cyberist
-                                        </td>
-                                        {% elif user.points < 600 %}
-                                        <td class="white">
-                                            slick coder
-                                        </td>
-                                        {% elif user.points < 1000 %}
-                                        <td class="white">
-                                            another rank
-                                        </td>
-                                        {% elif user.points < 1300 %}
-                                        <td class="white">
-                                            Pro-Hacker
-                                        </td>
-                                        {% elif user.points >= 1600 %}
-                                        <td class="white">
-                                            1337 H4x0r
-                                        </td>
-                                        {% else %}
-                                        <td class="white">
-                                            Rank Here
-                                        </td>
-                                        {% endif %}
+                                        {% call display_rank(user) %}
+                                        {% endcall %}
                                         <!-- End Ranks -->
 
                                         <td class="white">
@@ -96,35 +69,8 @@
                                         </td>
 
                                         <!-- Ranks -->
-                                        {% if user.points < 100 %}
-                                        <td class="">
-                                            <span class="noob">Noob</span>
-                                        </td>
-                                        {% elif user.points < 300 %}
-                                        <td class="">
-                                            <span class="cyberist"> Cyberist</span>
-                                        </td>
-                                        {% elif user.points < 600 %}
-                                        <td class="">
-                                            <span class="rank">slick coder</span>
-                                        </td>
-                                        {% elif user.points < 1000 %}
-                                        <td class="">
-                                            <span class="rank">another rank</span>
-                                        </td>
-                                        {% elif user.points < 1300 %}
-                                        <td class="">
-                                            <span class="rank"> Pro-Hacker</span>
-                                        </td>
-                                        {% elif user.points >= 1600 %}
-                                        <td class="">
-                                            <span class="rank">1337 H4x0r</span>
-                                        </td>
-                                        {% else %}
-                                        <td class="">
-                                            <span class="rank">Rank Here</span>
-                                        </td>
-                                        {% endif %}
+                                        {% call display_rank(user) %}
+                                        {% endcall %}
                                         <!-- End Ranks -->
 
 
@@ -137,9 +83,38 @@
                                     {% endfor %}
 
 
-
+                                    {% if users_score != "None" %}
                                 </tbody>
                             </table>
+                            <br>
+                            <p>You're not on the leaderboard... Yet!</p>
+                            <table class="scoreboard table">
+                                <tbody>
+                                    <tr class="table-highlight">
+                                        <td class="white">
+                                            ???
+                                        </td>
+                                        <td class="white">
+                                            <img src="../static/img/default-avatar.png" width="50px" height="50px"> {{ users_score.username }}
+                                        </td>
+
+                                        <!-- Ranks -->
+                                        {% call display_rank(users_score) %}
+                                        {% endcall %}
+                                        <!-- End Ranks -->
+
+                                        <td class="white">
+                                            {{ users_score.points }}
+                                        </td>
+                                </tbody>
+                            </table>
+                            </tr>
+                            {% else %}
+
+                            </table>
+                            {% endif %}
+
+
                         </div>
                     </div>
                 </div>
