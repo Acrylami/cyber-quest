@@ -1,5 +1,5 @@
 {% extends "/education/layout-teacher.html" %}
-{% block scoreboard_activation %} active {% endblock %}
+{% block teacher_site_activation %} active {% endblock %}
 {% block content %}
 
 <div class="content">
@@ -9,13 +9,18 @@
 
         <div class="row">
             <div class="col-md-12">
-                <div class="card">
+                <div class="card text-center">
                     <div class="card-header card-header-primary">
-                        <h4 class="card-title ">CyberQuest For Education- Coming soon!</h4>
-                        <p class="card-category"> CyberQuest can be used by teachers and educators in the classroom. Lesson plans to go alongside the training are available to download for free.</p>
+                        <img class="img-fluid mx-auto d-block" src="{{ url_for('static', filename='img/technocamps.png') }}">
                     </div>
                     <div class="card-body">
 
+                        <h3>Welcome to CyberQuest for Education!</h3>
+                        <p>CyberQuest has been designed as a gamified Cyber Security learning platform for children. As well as being a place to develop the foundations of cyber skills from home, you can now also use CyberQuest in the classroom.</p>
+                        <p>Browse the lesson plans we have available free for any educators, and check out the <a href="{{ url_for('instructions') }}">Instructions</a> page for more help</p>
+                        <img class="img-fluid mx-auto d-block" src="{{ url_for('static', filename='img/brain.png') }}">
+                        <br>
+                        <p>Want to try out CyberQuest yourself? <a href="{{ url_for('home') }}">Go back to the main site</a> and have a go</p>
                     </div>
                 </div>
             </div>
