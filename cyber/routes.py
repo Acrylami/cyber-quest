@@ -11,11 +11,11 @@ from flask.helpers import flash
 @app.route("/home")
 def home():
     return render_template('stories.html',  title='CyberQuest')
-
+'''
 @app.route("/about")
 def about():
     return render_template('about.html', title='About')
-
+'''
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
@@ -199,11 +199,18 @@ def scoreboard():
 
     return render_template('scoreboard.html', topscorers=topscorers, users_score=users_score, title='Scoreboard')
 
+#Education Site
 @app.route("/education")
 def education():
     return render_template('/education/teacher-site.html', title='CyberQuest For Education')
 
+@app.route("/education/lesson-plans")
+def lessons():
+    return render_template('/education/lesson-plans.html', title='Lesson Plans')
 
+@app.route("/education/instructions")
+def instructions():
+    return render_template('/education/instructions.html', title='Instructions')
 
 def set_points(current_training):
     #if user is logged in

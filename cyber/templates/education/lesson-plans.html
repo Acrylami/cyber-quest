@@ -1,0 +1,89 @@
+{% extends "/education/layout-teacher.html" %}
+
+{% block lessons_activation %} active {% endblock %}
+{% block content %}
+<div class="content">
+    <div class="container-fluid">
+        <div class="card card-plain">
+            <div class="card-header card-header-success">
+                <h4 class="card-title">Lesson Plans</h4>
+                <p class="card-category">CyberQuest for education</p>
+            </div>
+        </div>
+        <script src="../static/js/plugins/bootstrap-notify.js"></script>
+
+        <div class="row">
+            <div class="col-xl-4 col-lg-12">
+                <a href="{{ url_for('story_chapters', story='viper') }}">
+                    <div class="card card-chart">
+                        <div class="story-images card-header card-header-info">
+                            <div class="img-container">
+                                <!--<div class="ct-chart" id="dailySalesChart"></div>-->
+                                <img src="../static/img/viper.png">
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">Lesson 1</h4>
+                            <p class="card-category">A countdown to a large-scale terrorist act... Can you stop it?</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="stats">
+                                32 % Complete
+                            </div>
+                            <div class="difficulty easy">
+                                Easy
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-xl-4 col-lg-12">
+                <a href="{{ url_for('story_chapters', story='viper') }}">
+                    <div class="card card-chart">
+                        <div class="story-images card-header card-header-info">
+                            <div class="img-container">
+                                <!--<div class="ct-chart" id="dailySalesChart"></div>-->
+                                <img src="../static/img/question.png">
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">Lesson 2</h4>
+                            <p class="card-category">A serial killer with a flair for streaming their gruesome acts- who's next?</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="stats">
+                                32 % Complete
+                            </div>
+                            <div class="difficulty medium">
+                                Medium
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+<!--
+            <div class="col-xl-4 col-lg-12">
+                <div class="card card-chart">
+                    <div class="card-header card-header-warning">
+                        <div class="ct-chart" id="websiteViewsChart"></div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Story 2</h4>
+                        <p class="card-category">A serial killer with a flair for streaming their gruesome acts- who's next?</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            0 % Complete
+                        </div>
+                    </div>
+                </div>
+            </div>
+-->
