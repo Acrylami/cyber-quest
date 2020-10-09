@@ -198,34 +198,49 @@
                             </li>
                             -->
                             <li>
+                                You are logged in as: &nbsp;&nbsp;&nbsp;
+                            </li>
+                            <li>
+                                {% if current_user.points < 100 %}
+                                <td class="">
+                                    <span class="noob">{{current_user.username}}</span>
+                                </td>
+                                {% elif current_user.points < 300 %}
+                                <td class="">
+                                    <span class="cyberist">{{current_user.username}}</span>
+                                </td>
+                                {% elif current_user.points < 600 %}
+                                <td class="">
+                                    <span class="apprentice-hacker">{{current_user.username}}</span>
+                                </td>
+                                {% elif current_user.points < 1000 %}
+                                <td class="">
+                                    <span class="slick-coder">{{current_user.username}}</span>
+                                </td>
+                                {% elif current_user.points < 1300 %}
+                                <td class="">
+                                    <span class="keen-bean">{{current_user.username}}</span>
+                                </td>
+                                {% elif current_user.points < 1600 %}
+                                <td class="">
+                                    <span class="pro-hacker">{{current_user.username}}</span>
+                                </td>
+                                {% elif current_user.points >= 1600 %}
+                                <td class="">
+                                    <span class="l337">{{current_user.username}}</span>
+                                </td>
+                                {% else %}
+                                <td class="">
+                                    <span class="rank">Error Rank</span>
+                                </td>
+                                {% endif %}
+                            </li>
+                            <li>
                                 <a href="{{ url_for('logout') }}"><button type="button" class="login btn btn-primary">
                                         <div class="opaque">Logout</div>
                                     </button></a>
                             </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link" href="javscript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="material-icons">notifications</i>
-                                    <span class="notification">5</span>
-                                    <p class="d-lg-none d-md-block">
-                                        Some Actions
-                                    </p>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" href="javascript:void(0)">Mike John responded to your email</a>
-                                    <a class="dropdown-item" href="javascript:void(0)">You have 5 new tasks</a>
-                                    <a class="dropdown-item" href="javascript:void(0)">You're now friend with Andrew</a>
-                                    <a class="dropdown-item" href="javascript:void(0)">Another Notification</a>
-                                    <a class="dropdown-item" href="javascript:void(0)">Another One</a>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="javascript:void(0)">
-                                    <i class="material-icons">person</i>
-                                    <p class="d-lg-none d-md-block">
-                                        Account
-                                    </p>
-                                </a>
-                            </li>
+
                             {% else %}
                             <li>
                                 <a href="{{ url_for('register') }}"><button type="button" class="login btn btn-primary">
