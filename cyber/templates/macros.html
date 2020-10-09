@@ -84,7 +84,7 @@
         <div class="white card-body text-center">
             <p onclick="test()">{{ text }} </p>
             {% if current_user.is_authenticated %}
-            <a href="challenge" target="_blank"><button type="button" position="absolute" text-align="center !important" margin="0 auto !important" class="challenge-accept-button btn"><i class="material-icons">double_arrow</i>Accept Mini-Challenge</button></a>
+            <a href="challenge" target="_blank"><button type="button" position="absolute" text-align="center !important" margin="0 auto !important" class="challenge-accept-button btn"><i class="material-icons">double_arrow</i>Accept Challenge</button></a>
             {% else %}
             <button type="button" onclick="prompt_login()" position="absolute" text-align="center !important" margin="0 auto !important" class="challenge-accept-button btn"><i class="material-icons">double_arrow</i>Accept Mini-Challenge</button>
             {% endif %}
@@ -130,4 +130,45 @@
 
 
 {%- endmacro %}
-<!-- TRAINING HEADER -->
+<!-- END TRAINING HEADER -->
+
+
+
+<!-- Ranks -->
+{% macro display_rank(user) %}
+{{ caller() }}
+{% if user.points < 100 %}
+<td class="">
+    <span class="noob">Noob</span>
+</td>
+{% elif user.points < 300 %}
+<td class="">
+    <span class="cyberist"> CYBERIST</span>
+</td>
+{% elif user.points < 600 %}
+<td class="">
+    <span class="apprentice-hacker">APPRENTICE HACKER</span>
+</td>
+{% elif user.points < 1000 %}
+<td class="">
+    <span class="slick-coder">SLICK CODER</span>
+</td>
+{% elif user.points < 1300 %}
+<td class="">
+    <span class="keen-bean">KEEN BEAN</span>
+</td>
+{% elif user.points < 1600 %}
+<td class="">
+    <span class="pro-hacker">PRO-HACKER</span>
+</td>
+{% elif user.points >= 1600 %}
+<td class="">
+    <span class="l337">1337 H4X0R</span>
+</td>
+{% else %}
+<td class="">
+    <span class="rank">Error Rank</span>
+</td>
+{% endif %}
+{%- endmacro %}
+<!-- End Ranks -->

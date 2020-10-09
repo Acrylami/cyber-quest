@@ -178,6 +178,7 @@ def challenge_success(training_name):
 
 @app.route("/scoreboard")
 def scoreboard():
+    users_score = "None"
     session['url'] = url_for('scoreboard')   
 
     topscorers = User.query.order_by(User.points.desc()).limit(10).all()
@@ -192,10 +193,11 @@ def scoreboard():
             if (each_user == current_user):
                 top10 = True
         if not top10: 
-            topscorers.append(current_user)
+            #Passes current user to display at the bottom of the scoreboard
+            users_score = current_user
 
 
-    return render_template('scoreboard.html', topscorers=topscorers, title='Scoreboard')
+    return render_template('scoreboard.html', topscorers=topscorers, users_score=users_score, title='Scoreboard')
 
 @app.route("/education")
 def education():
