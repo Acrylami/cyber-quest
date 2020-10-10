@@ -313,9 +313,18 @@ box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(0, 188, 212
     margin: auto;
 }
 
+.training_card a {
+    color: #9c27b0 !important;
+}
+
 .training_card img {
     margin-bottom: 20px;
     max-height: 200px;
+}
+
+.demo-gif {
+    max-height: none !important;
+    width: auto;
 }
 
 .training_background {

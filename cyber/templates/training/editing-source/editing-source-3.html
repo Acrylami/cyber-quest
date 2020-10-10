@@ -1,0 +1,106 @@
+{% extends "layout.html" %}
+<!-- this layout just goes back ../ for all the links so it doesn't break since it's in the /training/ directory -->
+<!-- may be needed for other pages too -->
+
+{% block content %}
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="card training_background">
+
+                <!-- TRAINING HEADER (Args: Category, training name, points, image, background class=default "new-colour" so can be left empty) -->
+                {% call training_header("Web Hacking", training.display_name, training.points, "../../static/img/training/inspecting-source.png", "sky-blue") %}
+                {% endcall %}
+                <!-- TRAINING HEADER -->
+
+                <div class="">
+                    <div class="card-body training_card">
+
+                        <p>Oops, we broke the mini-challenge button! Go ahead, try and click it- it won't work</p>
+                        <p>The good news is you can fix it.</p>
+                        <img class="img-fluid mx-auto d-block" src="{{ url_for('static', filename='img/web-hacking/button-san.png') }}">
+
+                        <h2>Let's learn how</h2>
+                        <p>In the previous training we learnt what a tag was, and how everything you see on a website is made up of lots of different tags. Paragraphs are made using the <code>&lt;p&gt;</code> tag, images use the <code>&lt;img&gt;</code> tag, buttons use <code>&lt;button&gt;</code>, forms use <code>&lt;form&gt;</code>, etc... If you want to learn more about HTML, <a href="https://www.w3schools.com/html/default.asp" target="_blank">w3schools is a great resource.</a></p>
+
+                        <h3>Attributes of a tag</h3>
+                        <p>To make a button in HTML you need an opening <code>&lt;button&gt;</code> tag, the text you want inside your button, and finally a closing &lt;/button&gt; tag. Here's an example:</p>
+
+                        <code>&lt;button &gt;I am a button that does nothing&lt;/button&gt;</code>
+                        <button>I am a button that does nothing</button>
+
+
+                        <p>There are different <i><u>attributes</u></i> that a tag can have. These are written after the element name (in this case, 'button') in the opening tag. Here's another example:</p>
+
+                        <code>&lt;button class="btn" name="mybutton" disabled&gt;I am a button with attributes&lt;/button&gt;</code>
+                        <button class="btn" name="mybutton" disabled>I am a button with attributes</button>
+
+                        <p>In this button, the attributes we have set its class, name, and disabled it. Most HTML tags have attributes, and these are very important for setting the properties of an element. For example, the width of an image is an attribute of the <code>&lt;img&gt;</code> tag</p>
+
+                        <h3>Give it a try</h3>
+
+                        <p>Try editing the source code of the buttons to change the class to <code>class="btn-warning"</code>. You'll have to inspect the source code, double click on the <code>&lt;button&gt;</code> tag and type the new attributes you want. Watch the demo below to see how. You can also experiment with removing and adding the <code>disabled</code> attribute.</p>
+
+                        <img class="img-fluid demo-gif img-thumbnail mx-auto d-block" src="{{ url_for('static', filename='img/web-hacking/edit-button.gif') }}">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- MINI CHALLENGE -->
+
+        <div class="row">
+            <div class="card text-center challenge">
+                <div class="card-header card-header-success">
+                    Mini-Challenge
+                </div>
+                <div class="card-body text-center">
+                    <p id="mini-challenge-prompt">Ruh roh! We broke the button! Can you edit the button's source code to enable it again?</p>
+                    <button disabled type="button" position="absolute" text-align="center !important" margin="0 auto !important" class="btn btn-success" onclick="mini_challenge()"><i class="material-icons">double_arrow</i>Accept Mini-Challenge</button>
+
+                    <!-- HINT -->
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0">
+                            <button class="btn btn-default btn-smbtn-danger " data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                Hint
+                            </button>
+                        </h2>
+                    </div>
+
+                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne">
+                        <div class="card-body">The first step is to find the part of the source code that makes the "Accept Mini-Challenge" button. Try right clicking directly above the button and clicking "Inspect". You'll have to open up some div tags using the drop-down arrows to find the button. Then double click the button's tag to edit it; you will want to highlight the 'disabled' word and delete it</div>
+                    </div>
+                    <!-- END HINT -->
+                </div>
+            </div>
+        </div>
+
+        <!-- END MINI CHALLENGE -->
+
+        <!-- PAGE NAV (Args: Current page passed from routes.py, training name passed from routes.py, total number of pages) -->
+        {% call pagination(current_page, training.training_name, 4) %}
+        {% endcall %}
+        <!-- END PAGE NAV -->
+
+    </div>
+</div>
+
+
+<script>
+    function mini_challenge() {
+
+        swal("Nice!", "You did it, well done", "success", {
+            button: "Next",
+        });
+    }
+
+</script>
+
+
+
+
+
+{% endblock content %}

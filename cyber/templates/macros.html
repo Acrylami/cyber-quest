@@ -48,7 +48,7 @@
             Mini-Challenge
         </div>
         <div class="card-body text-center">
-            <p>{{ text }}</p>
+            <p id="mini-challenge-prompt">{{ text }}</p>
             <button type="button" position="absolute" text-align="center !important" margin="0 auto !important" class="btn btn-success" onclick="mini_challenge()"><i class="material-icons">double_arrow</i>Accept Mini-Challenge</button>
 
             <!-- HINT -->
@@ -86,7 +86,7 @@
             {% if current_user.is_authenticated %}
             <a href="challenge" target="_blank"><button type="button" position="absolute" text-align="center !important" margin="0 auto !important" class="challenge-accept-button btn"><i class="material-icons">double_arrow</i>Accept Challenge</button></a>
             {% else %}
-            <button type="button" onclick="prompt_login()" position="absolute" text-align="center !important" margin="0 auto !important" class="challenge-accept-button btn"><i class="material-icons">double_arrow</i>Accept Mini-Challenge</button>
+            <button type="button" onclick="prompt_login()" position="absolute" text-align="center !important" margin="0 auto !important" class="challenge-accept-button btn"><i class="material-icons">double_arrow</i>Accept Challenge</button>
             {% endif %}
             <!-- HINT -->
             <div class="card-header" id="headingOne">

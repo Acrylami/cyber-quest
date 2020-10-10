@@ -153,29 +153,76 @@ def training_page_redirect(training_name, page):
     file_name = "/training/"+training_name+ "/" + training_name + "-" + str(page) + ".html"
     training = Training.query.filter(Training.training_name == training_name).first()
     return render_template(file_name, training=training, current_page=page) 
+######
 
+def return_success(training_name): #Seems to not work while in function strangely...
+    message = set_points(training_name)
+    success_file_name = "/training/"+training_name+ "/" + training_name + "-success.html"
+    return render_template(success_file_name, message=message) #this keeps the url at the same place!! very useful
 
-'''
-@app.route("/training/<string:training_name>/challenge", methods=['GET'])
-def challenge(training_name):
-    print("Checking training name...")
-    print(training_name)
-    #session['url'] = url_for('training_redirect', training_name=training_name)
+@app.route("/training/<string:training_name>/challenge", methods=['GET', 'POST'])
+def challenge_redirect(training_name):
+    session['url'] = url_for('challenge_redirect', training_name=training_name)
+    training = Training.query.filter(Training.training_name == training_name)
+    training = Training.query.get_or_404(training_name)
     file_name = "/training/"+training_name+ "/" + training_name + "-challenge.html"
-    print("Checking file name....")
-    print(file_name)
-    training = Training.query.filter(Training.training_name == training_name).first()
-    return render_template(file_name, training=training)
+    message = "No Login"
+    
+    #challenge specific
+    if (training_name == "inspecting-source"):
+        form = InspectForm2()
+        if form.validate_on_submit():
+            if (form.password.data == 'bugsareyummy'):
+                #Set points in database and return success
+                message = set_points(training_name)
+                success_file_name = "/training/"+training_name+ "/" + training_name + "-success.html"
+                return render_template(success_file_name, message=message) #this keeps the url at the same place!! very useful
+            else:
+                flash('Invalid password.')
+        
+        
+    elif (training_name == "manual-cracking"):
+        form = PasswordCracking1()
+        if form.validate_on_submit():
+            if (form.username.data == 'admin' and form.password.data == '123456'):
+                #Set points in database and return success
+                message = set_points(training_name)
+                success_file_name = "/training/"+training_name+ "/" + training_name + "-success.html"
+                return render_template(success_file_name, message=message) #this keeps the url at the same place!! very useful
+            else:
+                flash('Invalid username or password.')     
+    else:
+        #should not run...
+        return render_template('500.html'), 500
+    
+    return render_template(file_name, form=form)
+####
 
 
-@app.route("/training/<string:training_name>/challenge/success", methods=['GET'])
-def challenge_success(training_name):
-    #session['url'] = url_for('training_redirect', training_name=training_name)
-    file_name = "/training/"+training_name+ "/" + training_name + "-success.html"
-    training = Training.query.filter(Training.training_name == training_name).first()
-    return render_template(file_name, training=training)
+@app.route("/training/<string:training_name>/challenge/success")
+def success_redirect(training_name):
+    #Must check if we have routed here from the challenge page correctly,
+    #if not it should tell the user they can't do that
+    success_file_name = "/training/"+training_name+ "/" + training_name + "-success.html"
+    return render_template(success_file_name)
+
+'''
+@app.route("/training/manual-cracking/challenge/success")
+def manual_cracking_challenge_success():
+    #Must check if we have routed here from the challenge page correctly,
+    #if not it should tell the user they can't do that
+    return render_template('training/manual-cracking/manual-cracking-success.html')
+
+
+@app.route("/training/inspecting-source/challenge/success")
+def inspect_form_challenge_success():
+    #Must check if we have routed here from the challenge page correctly,
+    #if not it should tell the user they can't do that
+    return render_template('training/inspecting-source/inspecting-source-success.html')
 '''
 
+
+###
 @app.route("/scoreboard")
 def scoreboard():
     users_score = "None"
@@ -237,26 +284,6 @@ def set_points(current_training):
     return message
 
 
-@app.route("/training/manual-cracking/challenge", methods=['GET','POST'])
-def manual_cracking_challenge():
-    form = PasswordCracking1()
-    message = "No Login"
-
-    if form.validate_on_submit():
-        if (form.username.data == 'admin' and form.password.data == '123456'):
-            #call set points and message function
-            message = set_points("manual-cracking")
-            return render_template('training/manual-cracking/manual-cracking-success.html', message=message) #this keeps the url at the same place!! very useful
-        flash('Invalid username or password.')
-    return render_template('training/manual-cracking/manual-cracking-challenge.html', form=form)
-
-@app.route("/training/manual-cracking/challenge/success")
-def manual_cracking_challenge_success():
-    #Must check if we have routed here from the challenge page correctly,
-    #if not it should tell the user they can't do that
-    return render_template('training/manual-cracking/manual-cracking-success.html')
-
-
 #Inspect Element Training
 @app.route("/training/inspecting-source/frog-blog", methods=['GET','POST'])
 def inspect_form_1():
@@ -272,19 +299,6 @@ def inspect_form_1():
     
     return render_template('training/inspecting-source/inspect-form-1.html', form=form)
 
-@app.route("/training/inspecting-source/new-frog-blog", methods=['GET','POST'])
-def inspect_form_2():
-    form = InspectForm2()
-    message = "No Login"
-
-    if form.validate_on_submit():
-        if (form.password.data == 'bugsareyummy'):
-            #call set points and message function
-            message = "Complete"
-            return render_template('training/inspecting-source/inspect-form-2-solved.html', message=message) #this keeps the url at the same place!! very useful
-        flash('Invalid password.')
-
-    return render_template('training/inspecting-source/inspect-form-2.html', form=form)
 
 @app.route("/training/inspecting-source/frog-blog/success")
 def inspect_form_1_success():
@@ -292,13 +306,8 @@ def inspect_form_1_success():
     #if not it should tell the user they can't do that
     return render_template('training/inspecting-source/inspect-form-1-solved.html')
 
-@app.route("/training/inspecting-source/new-frog-blog/success")
-def inspect_form_2_success():
-    #Must check if we have routed here from the challenge page correctly,
-    #if not it should tell the user they can't do that
-    return render_template('training/inspecting-source/inspect-form-2-solved.html')
 
-inspect_form_1
+
 
 @login_manager.unauthorized_handler
 def unauthorized_callback():

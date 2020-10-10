@@ -1,0 +1,90 @@
+{% extends "layout.html" %}
+<!-- this layout just goes back ../ for all the links so it doesn't break since it's in the /training/ directory -->
+<!-- may be needed for other pages too -->
+
+{% block content %}
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="card training_background">
+
+                <!-- TRAINING HEADER (Args: Category, training name, points, image, background class=default "new-colour" so can be left empty) -->
+                {% call training_header("Web Hacking", training.display_name, training.points, "../../static/img/training/inspecting-source.png", "sky-blue") %}
+                {% endcall %}
+                <!-- TRAINING HEADER -->
+
+                <div class="">
+                    <div class="card-body training_card">
+                        <div>
+                            <div>
+                                <div>
+                                    <div>
+                                        <!-- The password is: bitofadiv -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p>Did you manage to find Cody's secret members page? Let's hope he doesn't find out!</p>
+                        <p>There's another way to look at the source code of the website, which might be easier when you want to view all the source code at once and what you're looking for is hidden inside lots of nested tags (this means tags inside tags inside tags...)</p>
+
+                        <h2>How?</h2>
+                        <p>Right click the page, and select "View Page Source"</p>
+
+                        <img class="img-fluid img-thumbnail demo-gif mx-auto d-block" src="{{ url_for('static', filename='img/web-hacking/view-page-source.gif') }}">
+
+                        <p>This will give you the full page of the websites HTML code. For more complex websites, this could be hundreds of lines of code. It can be a bit difficult to search for what you're looking for like this, so to find a particular word you can use the find feature in your broser</p>
+
+                        <p>To find the word password, you could hold CTRL+F (Windows) or Command+F (Mac) on your keyboard, then type "password" to find every time the word password was mentioned in the source code.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MINI CHALLENGE (Args: Text, hint) -->
+        {% call mini_challenge("Find the password hidden somewhere on this webpage by viewing the page source, then push the button to enter the password when you've found it", "Right click this page and select 'View page source', you can then use CTRL+F or Command+F to search for the word password") %}
+        {% endcall %}
+        <!-- END MINI CHALLENGE -->
+
+        <!-- PAGE NAV (Args: Current page passed from routes.py, training name passed from routes.py, total number of pages) -->
+        {% call pagination(current_page, training.training_name, 4) %}
+        {% endcall %}
+        <!-- END PAGE NAV -->
+
+    </div>
+</div>
+
+
+<script>
+    function mini_challenge() {
+
+        swal({
+                text: 'What was the password you found by inspecting the element of the challenge text?',
+                content: "input",
+                button: {
+                    text: "Submit",
+                    closeModal: true,
+                },
+            })
+            .then(name => {
+                if (DOMPurify.sanitize(name).toUpperCase() == "BITOFADIV") {
+                    swal("Nice!", "That's correct, well done", "success", {
+                        button: "Next",
+                    });
+                } else {
+                    swal("Not quite!", "Don't 'Inspect Element', choose 'View Page Source' and make sure to search for the word password to make your life easier.", "error", {
+                        button: "Return"
+                    });
+                }
+            })
+
+
+    }
+
+</script>
+
+
+
+
+
+{% endblock content %}
