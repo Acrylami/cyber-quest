@@ -19,7 +19,6 @@
 
                         <p>The basic building blocks behind all your favourite websites is <i>HTML code</i>. Every website is made up of code in at least this language, but usually more! You might be thinking that the HTML code for a website would be hidden and secret- but it’s actually possible to inspect that code yourself without any tools!</p>
 
-                        <p>Did you know that the top 25 most used passwords make up 10% of all passwords? That means if you tried every one of those 25 passwords on any account, you would have a 1 in 10 chance of hacking into the account. Scary stuff right?</p>
 
                         <h2>How?</h2>
                         <p>Press the F12 button on your keyboard to open developer tools. Make sure you have the <i>Elements/Inspector</i> tab selected. It should look a little something like this.</p>
@@ -40,33 +39,8 @@
         </div>
 
         <!-- MINI CHALLENGE (Args: Text, hint) -->
-
-        <div class="row">
-            <div class="card text-center challenge">
-                <div class="card-header card-header-success">
-                    Mini-Challenge
-                </div>
-                <div class="card-body text-center">
-                    <p>
-                        <!-- Super secret password: friedegg -->Inspect this sentence to find a hidden comment containing the password- once you've found the password, press the button.</p>
-                    <button type="button" position="absolute" text-align="center !important" margin="0 auto !important" class="btn btn-success" onclick="mini_challenge()"><i class="material-icons">double_arrow</i>Accept Mini-Challenge</button>
-
-                    <!-- HINT -->
-                    <div class="card-header" id="headingOne">
-                        <h2 class="mb-0">
-                            <button class="btn btn-default btn-smbtn-danger " data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                Hint
-                            </button>
-                        </h2>
-                    </div>
-
-                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne">
-                        <div class="card-body">Right click the above text, select inspect element. You should find a comment containing the password.</div>
-                    </div>
-                    <!-- END HINT -->
-                </div>
-            </div>
-        </div>
+        {% call mini_challenge("Edit this line to say only 'cat' and you'll get a password to enter below", "Right click the above text, select inspect element, then double click the &lt;p&gt; element and type the word 'cat'. Watch the demonstration clip above to show you how.") %}
+        {% endcall %}
         <!-- END MINI CHALLENGE -->
 
         <!-- PAGE NAV (Args: Current page passed from routes.py, training name passed from routes.py, total number of pages) -->
@@ -82,7 +56,7 @@
     function mini_challenge() {
 
         swal({
-                text: 'What was the password you found by inspecting the element of the challenge text?',
+                text: 'What was the password you got after changing the paragraph to "cat"?',
                 content: "input",
                 button: {
                     text: "Submit",
@@ -90,12 +64,12 @@
                 },
             })
             .then(name => {
-                if (DOMPurify.sanitize(name).toUpperCase() == "FRIEDEGG") {
+                if (DOMPurify.sanitize(name).toUpperCase() == "QWERTY") {
                     swal("Nice!", "That's correct, well done", "success", {
                         button: "Next",
                     });
                 } else {
-                    swal("Not quite!", "Make sure you're inspecting the right text, it should be the paragraph inside the challenge box", "error", {
+                    swal("Not quite!", "Make sure you're editing the right text, it should be the paragraph inside the challenge box", "error", {
                         button: "Return"
                     });
                 }

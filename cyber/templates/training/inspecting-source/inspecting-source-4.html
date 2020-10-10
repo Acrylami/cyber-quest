@@ -10,29 +10,33 @@
             <div class="card training_background">
 
                 <!-- TRAINING HEADER (Args: Category, training name, points, image, background class=default "new-colour" so can be left empty) -->
-                {% call training_header("Password Cracking", training.display_name, training.points, "../../static/img/training/manual-cracking.png", "new-colour") %}
+                {% call training_header("Web Hacking", training.display_name, training.points, "../../static/img/training/inspecting-source.png", "sky-blue") %}
                 {% endcall %}
                 <!-- TRAINING HEADER -->
 
                 <div class="">
                     <div class="card-body training_card">
 
-                        <h2>Final Challenge</h2>
-                        <p>For our final password cracking challenge, you will be cracking the username as well as the password. Just as there is a list of the most common passwords, there is also a list of the most common usernames.</p>
-                        <p>Rodney has set up an admin account for his online forum The Big Cheese. Unfortunately, he’s not been very creative with his login details and both his username and password are in the <b>top 5 most commonly used</b>. </p>
-                        <img class="img-fluid img-thumbnail mx-auto d-block" src="../../static/img/password-cracking/Rodney.png">
-                        <p>Using your knowledge from the earlier challenges and your own research, can you guess Rodney’s admin account details? When you’ve managed to login, submit the FLAG to earn 100 points.</p>
+                        <p>Oh dear, it appears you have angered Cody. He found out that some unauthorised users were gaining access to his blog and he sure isn't happy about it. Silly Cody, hiding his password in the source code of the website.</p>
+                        <img class="img-fluid img-thumbnail mx-auto d-block" src="../../static/img/web-hacking/cody-angry.png">
+                        <p>He's cottoned on to the fact that this was a bad idea, but instead of removing his password hint he has decided to <i>split it</i> into different parts hidden in different comments throughout the website</p>
+
+
+                        <p>There are three parts to the password hidden somewhere in the source code of Cody's website. If you can put all the parts together you should be able to hack into the site once more.</p>
+
+                        <p>Remember, hacking a real person's website is <b>very illegal</b> and you should only attempt this with websites you have permission to do so. Although you don't have Cody's permission, he is but a frog, so it's okay.</p>
+
+                        <p>This is the final challenge, if you are able to hack into Cody's website again you will earn a sweet 100 points. </p>
+
                     </div>
                 </div>
             </div>
         </div>
 
-
         <!-- CHALLENGE (Args: Points, text, hint, training name) -->
-        {% call challenge(training.points, "Try to guess the admin username and password using your knowledge so far", "The username has been used in a previous mini-challenge", training.training_name) %}
+        {% call challenge(training.points, "Find the password to log in to Cody's website hidden in the source code, then enter it", "On Cody's website, right click the page and select inspect element or view page source. The password is split into three parts, so you will need to piece them together in the right order", training.training_name) %}
         {% endcall %}
         <!-- END CHALLENGE -->
-
 
         <!-- PAGE NAV (Args: Current page passed from routes.py, training name passed from routes.py, total number of pages) -->
         {% call pagination(current_page, training.training_name, 4) %}
@@ -76,14 +80,16 @@
                         break;
 
                     case "continue":
-                        //window.location.href = "../manual-cracking/challenge";
-                        window.open('../manual-cracking/challenge', '_blank');
+                        window.open('../inspecting-source/challenge', '_blank');
                         break;
                 }
             });
     }
 
 </script>
+
+
+
 
 
 {% endblock content %}

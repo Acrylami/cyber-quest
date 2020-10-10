@@ -1,4 +1,4 @@
-{% extends "/training/training-layout.html" %}
+{% extends "layout.html" %}
 <!-- this layout just goes back ../ for all the links so it doesn't break since it's in the /training/ directory -->
 <!-- may be needed for other pages too -->
 
@@ -24,15 +24,16 @@
                         <h2>How?</h2>
                         <p>Press the F12 button on your keyboard to open developer tools. Make sure you have the <i>Elements/Inspector</i> tab selected. It should look a little something like this.</p>
 
-                        <img class="img-fluid img-thumbnail mx-auto d-block" src="../../static/img/web-hacking/inspect-demo.png">
+                        <img class="img-fluid img-thumbnail mx-auto d-block" src="{{ url_for('static', filename='img/web-hacking/inspect-demo.png') }}">
 
                         <p>If you are using Chrome/Firefox, it is also possible to right click the part of the website you want to see the code of. Click “Inspect” and the same window as before will appear, but this time with the part of the website you clicked highlighted.</p>
 
                         <p>Try editing this paragraph to say anything you want! Right click, inspect element, click the dropdown arrows, then double click the text inside the &lt;p&gt; &lt;/p&gt; tags and type your message.</p>
 
-                        <img class="img-fluid img-thumbnail mx-auto d-block" src="../../static/img/web-hacking/edit-paragraph.gif">
+                        <img class="img-fluid img-thumbnail mx-auto d-block" src="{{ url_for('static', filename='img/web-hacking/edit-paragraph.gif') }}">
+
                         <p>The changes you make this way are only temporary so will not save if you refresh the page. But it can be fun to edit your favourite sites this way and it’s a cool way to prank your friends. Here’s an example editing the headline and image code…</p>
-                        <img class="img-fluid img-thumbnail mx-auto d-block" src="../../static/img/web-hacking/killer-pandas.png">
+                        <img class="img-fluid img-thumbnail mx-auto d-block" src="{{ url_for('static', filename='img/web-hacking/killer-pandas.png') }}">
                     </div>
                 </div>
             </div>

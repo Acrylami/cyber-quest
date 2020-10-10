@@ -29,7 +29,7 @@
 
                         <p>Remember, to view the HTML code you can either press F12 or right click the page to “Inspect Element”.</p>
 
-                        <p>Once you’ve got the password, come back here to enter it.</p>
+                        <p>Once you’ve found the password, come back here to enter it.</p>
                         <a href="{{ url_for('inspect_form_1') }}" target="_blank" class="text-center"><button class="btn btn-primary"> Ready? Off you go, to Cody’s website!</button></a>
 
                     </div>
@@ -53,7 +53,25 @@
 
 <script>
     function mini_challenge() {
-
+        swal({
+                text: 'What was the password to get into Codys website?',
+                content: "input",
+                button: {
+                    text: "Submit",
+                    closeModal: true,
+                },
+            })
+            .then(name => {
+                if (DOMPurify.sanitize(name).toUpperCase() == "HOPPINGCOOL") {
+                    swal("Nice!", "That's correct, well done", "success", {
+                        button: "Next",
+                    });
+                } else {
+                    swal("Not quite!", "Go to Cody's website, right click the page, and either 'View Page Source' or 'Inspect Element'. Once you've found the password come back here and enter it", "error", {
+                        button: "Return"
+                    });
+                }
+            })
 
     }
 
