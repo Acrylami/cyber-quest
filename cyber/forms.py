@@ -42,6 +42,10 @@ class InspectForm1(FlaskForm):
 
 class InspectForm2(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
+    submit = SubmitField('Submit')
+
+class BasicPassword(FlaskForm):
+    password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Submit')    
 
 

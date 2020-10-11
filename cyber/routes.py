@@ -204,6 +204,18 @@ def challenge_redirect(training_name):
                 return render_template(success_file_name, message=message) #this keeps the url at the same place!! very useful
             else:
                 flash('Invalid password. Note to self: I hid the password in an image')
+
+    if (training_name == "robots"):
+        form = BasicPassword()
+        if form.validate_on_submit():
+            if (form.password.data == 'notverywellhidden'):
+                #Set points in database and return success
+                message = set_points(training_name)
+                success_file_name = "/training/"+training_name+ "/" + training_name + "-success.html"
+                return render_template(success_file_name, message=message) #this keeps the url at the same place!! very useful
+            else:
+                flash('That is not the flag... You can find the secret page by looking on robots.txt')
+
         
     elif (training_name == "manual-cracking"):
         form = PasswordCracking1()
@@ -215,9 +227,9 @@ def challenge_redirect(training_name):
                 return render_template(success_file_name, message=message) #this keeps the url at the same place!! very useful
             else:
                 flash('Invalid username or password.')     
-    else:
+    #else:
         #should not run...
-        return render_template('500.html'), 500
+        #return render_template('500.html'), 500
     
     return render_template(file_name, form=form)
 ####
