@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title">Enter the 'flag' you find on the secret page</h4>
+                    <p class="card-category"></p>
+                </div>
+                <div class="card-body">
+                    {% if message == "No Login" %}
+                    <p>Congrats on completing the training! You could have earned points for this by <a href='{{ url_for("login") }}'>logging in</a> or <a href='{{ url_for("register") }}'>registering an account</a>.</p>
+                    {% elif message == "Already Completed" %}
+                    <p>You did it!</p>
+                    <p>You have already completed this challenge before, so you didn't earn any points this time!</p>
+                    {% elif message == "Points" %}
+                    <p>Congrats on completing the training! 100 points have been added to your account</p>
+
+                    {% else %}
+                    <p>You sneaky thing! You can't get points by coming to this link without completing the challenge, but nice try.</p>
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

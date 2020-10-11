@@ -9,41 +9,41 @@
         <div class="row">
             <div class="card training_background">
 
-                <!-- TRAINING HEADER (Args: Category, training name, points, image, background class=default "new-colour" so can be left empty) -->
-                {% call training_header("Web Hacking", training.display_name, training.points, "../../static/img/training/inspecting-source.png", "sky-blue") %}
+                <!-- TRAINING HEADER (Args: Category, training name, points, t_name for image, background class=default "new-colour" so can be left empty) -->
+                {% call training_header("Web Hacking", training.display_name, training.points, training.training_name, "sky-blue") %}
                 {% endcall %}
                 <!-- TRAINING HEADER -->
 
                 <div class="">
                     <div class="card-body training_card">
 
-                        <p>Oops, we broke the mini-challenge button! Go ahead, try and click it- it won't work</p>
-                        <p>The good news is you can fix it.</p>
-                        <img class="img-fluid mx-auto d-block" src="{{ url_for('static', filename='img/web-hacking/button-san.png') }}">
+                        <p>Good job on the last task. This time we're going to look at another attribute: <i>hidden</i>.</p>
+                        <p>On this page we've hidden the challenge button this time, sorry!</p>
+                        <img class="img-fluid mx-auto d-block" src="{{ url_for('static', filename='img/web-hacking/hidden-button.gif') }}">
 
-                        <h2>Let's learn how</h2>
-                        <p>In the previous training we learnt what a tag was, and how everything you see on a website is made up of lots of different tags. Paragraphs are made using the <code>&lt;p&gt;</code> tag, images use the <code>&lt;img&gt;</code> tag, buttons use <code>&lt;button&gt;</code>, forms use <code>&lt;form&gt;</code>, etc... If you want to learn more about HTML, <a href="https://www.w3schools.com/html/default.asp" target="_blank">w3schools is a great resource.</a></p>
+                        <h2>Ugh, fix it!</h2>
+                        <p>The <code>hidden</code> attribute is responsible for hiding whatever tag its placed in. It could be used to hide an image, form field, or in this case a button. To make a hidden tag display again, you simply need to remove the <code>hidden</code> attribute.</p>
 
-                        <h3>Attributes of a tag</h3>
-                        <p>To make a button in HTML you need an opening <code>&lt;button&gt;</code> tag, the text you want inside your button, and finally a closing &lt;/button&gt; tag. Here's an example:</p>
-
-                        <code>&lt;button &gt;I am a button that does nothing&lt;/button&gt;</code>
-                        <button>I am a button that does nothing</button>
-
-
-                        <p>There are different <i><u>attributes</u></i> that a tag can have. These are written after the element name (in this case, 'button') in the opening tag. Here's another example:</p>
-
-                        <code>&lt;button class="btn" name="mybutton" disabled&gt;I am a button with attributes&lt;/button&gt;</code>
-                        <button class="btn" name="mybutton" disabled>I am a button with attributes</button>
-
-                        <p>In this button, the attributes we have set its class, name, and disabled it. Most HTML tags have attributes, and these are very important for setting the properties of an element. For example, the width of an image is an attribute of the <code>&lt;img&gt;</code> tag</p>
+                        <p>On the last page we managed to remove the <code>disabled</code> attribute from our button by inspecting the source code, selecting the <code>disabled</code> word, and deleting it. The <code>hidden</code> attribute is no different</p>
 
                         <h3>Give it a try</h3>
+                        <p>Try adding the <code>hidden</code> attribute to this paragraph tag! It should make this text disappear. You can then find the code for this paragraph and delete the attribute again to make it visible. If you delete the wrong thing, you can always refresh this page to return it back to normal.</p>
+                        <img width=10px height=10px class="img-fluid mx-auto d-block" src="{{ url_for('static', filename='img/web-hacking/cody.png') }}">
 
-                        <p>Try editing the source code of the buttons to change the class to <code>class="btn-warning"</code>. You'll have to inspect the source code, double click on the <code>&lt;button&gt;</code> tag and type the new attributes you want. Watch the demo below to see how. You can also experiment with removing and adding the <code>disabled</code> attribute.</p>
+                        <p>There's a secret image above this paragraph, but it's been hidden using different attributes. See if you can edit it to see the image. HINT: try changing the numbers</p>
+                        <!-- HINT -->
+                        <div class="card-header" id="headingTwo">
+                            <h2 class="mb-0">
+                                <button class="btn btn-default btn-smbtn-danger " data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Stuck? Here's the solution
+                                </button>
+                            </h2>
+                        </div>
 
-                        <img class="img-fluid demo-gif img-thumbnail mx-auto d-block" src="{{ url_for('static', filename='img/web-hacking/edit-button.gif') }}">
-
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo">
+                            <div class="card-body"><img class="img-fluid demo-gif img-thumbnail mx-auto d-block" src="{{ url_for('static', filename='img/web-hacking/edit-attributes.gif') }}"></div>
+                        </div>
+                        <!-- END HINT -->
                     </div>
                 </div>
             </div>
@@ -59,7 +59,7 @@
                 </div>
                 <div class="card-body text-center">
                     <p id="mini-challenge-prompt">Ruh roh! We broke the button! Can you edit the button's source code to enable it again?</p>
-                    <button disabled type="button" position="absolute" text-align="center !important" margin="0 auto !important" class="btn btn-success" onclick="mini_challenge()"><i class="material-icons">double_arrow</i>Accept Mini-Challenge</button>
+                    <button hidden type="button" position="absolute" text-align="center !important" margin="0 auto !important" class="btn btn-success" onclick="mini_challenge()"><i class="material-icons">double_arrow</i>Accept Mini-Challenge</button>
 
                     <!-- HINT -->
                     <div class="card-header" id="headingOne">

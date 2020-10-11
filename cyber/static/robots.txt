@@ -1,0 +1,8 @@
+# Hey! What are you doing snooping around here! 
+# I sure hope you don't visit that secret site...
+
+User-agent: Googlebot-Image
+Disallow: /
+
+User-agent: *
+Disallow: /secret.html

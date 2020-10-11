@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+<!-- this layout just goes back ../ for all the links so it doesn't break since it's in the /training/ directory -->
+<!-- may be needed for other pages too -->
+
+{% block content %}
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="card training_background">
+
+                <!-- TRAINING HEADER (Args: Category, training name, points, t_name for image, background class=default "new-colour" so can be left empty) -->
+                {% call training_header("Web Hacking", training.display_name, training.points, training.training_name, "sky-blue") %}
+                {% endcall %}
+                <!-- TRAINING HEADER -->
+
+                <div class="">
+                    <div class="card-body training_card">
+
+                        <h2>Search Engines</h2>
+                        <p>Before we can get into the details of robots.txt, what it does, and how it works it's going to be necessary to understand how search engines like Google work</p>
+                        <p>Google doesn't get its results by magic, it has to search through the internet for every website it can access, and when it finds a website, it analyses every page of it to decide how it should index it</p>
+                        <p>Say you publish a website about cooking pumpkin pies- Google might see that some of your keywords you've included in the metadata is "food", "cooking", and "pumpkins. Google will analyse this and other information and make your result more likely to be found if someone searches those terms</p>
+
+                        <h3>How does it do that?</h3>
+                        <img class="img-fluid img-thumbnail mx-auto d-block" src="{{ url_for('static', filename='img/web-hacking/spider.png') }}">
+                        <p>Search engines use something called <u>web crawlers</u>, also commonly called <u>spiders</u>.</p>
+                        <p>These creepy crawlies are a type of <b>bot</b> that go from website to website downloading each one and 'indexing' them, which means organising them to make it easy to access each website by its unique properties.</p>
+
+                        <h3>So back to Robots.txt</h3>
+                        <p>The first thing a web crawler does is look for a robots.txt file on each website it visits. This file tells the web crawlers which parts of the website it is allowed to access and index, and also which web crawlers are allowed to.</p>
+                        <img class="img-fluid img-thumbnail mx-auto d-block" src="{{ url_for('static', filename='img/web-hacking/robots-example-1.png') }}">
+                        <caption>This example tells <i>every</i> web crawler to ignore the 'junk' directory. This means the junk directory will not be indexed and crawlers are not allowed to visit it</caption>
+
+                        <img class="img-fluid img-thumbnail mx-auto d-block" src="{{ url_for('static', filename='img/web-hacking/robots-example-2.png') }}">
+                        <caption>This example tells <i>just the Googlebot-Image</i> crawler to ignore a particular image, <code>dogs.jpg</code>. This means that Google Images will not be allowed to look at this image and index it on Google Images for anyone to find</caption>
+                        <p>In a robots.txt file, * means all crawlers, and / means all files on a website</p>
+
+                        <h2>Quick Quiz!</h2>
+                        <p>Which of these will disallow <u>Google's News</u> web crawler from indexing the <u>private_file.html</u> web page?</p>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tr>
+                                    <td class="text-center"><button type="button" class="btn btn-default quiz" onclick="wrong()">User-agent: Googlebot-news<br>
+                                            Disallow: /</button></td>
+                                    <td class="text-center"><button type="button" class="btn btn-default quiz" onclick="wrong()">User-agent: *<br>
+                                            Disallow: /private_file.html</button></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center"><button type="button" class="btn btn-default quiz" onclick="wrong()">User-agent: Googlebot-Image<br>
+                                            Allow: /private/</button></td>
+                                    <td class="text-center"><button type="button" class="btn btn-default quiz" onclick="correct()">User-agent: Googlebot-news<br>
+                                            Disallow: /private_file.html</button></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE NAV (Args: Current page passed from routes.py, training name passed from routes.py, total number of pages) -->
+        {% call pagination(current_page, training.training_name, 3) %}
+        {% endcall %}
+        <!-- END PAGE NAV -->
+
+    </div>
+</div>
+
+
+<script>
+    function wrong() {
+        swal("Oops", "Not quite! Have another look at the examples and read the details of the question again", "error")
+    }
+
+    function correct() {
+        swal("Nice!", "You've got it!", "success")
+    }
+
+</script>
+
+
+
+
+
+{% endblock content %}

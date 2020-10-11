@@ -1,0 +1,35 @@
+<head>
+    <style>
+        body {
+            background-color: aquamarine;
+            text-align: center;
+        }
+
+        h1 {
+            color: white;
+        }
+
+    </style>
+</head>
+
+<body>
+    {% if message == "No Login" %}
+        <p>Congrats on completing the training! You could have earned points for this by <a href='{{ url_for("login") }}'>logging in</a> or <a href='{{ url_for("register") }}'>registering an account</a>.</p>
+    {% elif message == "Already Completed" %}
+        <p>You have already completed this challenge before, so you didn't earn any points this time!</p>
+        <h1>Hey totally real member!</h1>
+        <h2>Welcome to the secret club, now gaze upon our finest secrets</h2>
+        <p>We have managed to add to our collection of tiny bugs. Please take a look and enjoy!</p>
+        <img src="{{ url_for('static', filename='img/web-hacking/morebugs.png') }}">
+        <p>P.S. Don't tell anyone the password!</p>
+    {% elif message == "Points" %}
+        <p>Congrats on completing the training! 150 points have been added to your account</p>
+        <h1>Hey totally real member!</h1>
+        <h2>Welcome to the secret club, now gaze upon our finest secrets</h2>
+        <p>We have managed to add to our collection of tiny bugs. Please take a look and enjoy!</p>
+        <img src="{{ url_for('static', filename='img/web-hacking/morebugs.png') }}">
+        <p>P.S. Don't tell anyone the password!</p>
+    {% else %}
+        <p>You sneaky thing! You can't get points by coming to this link without completing the challenge, but nice try.</p>
+    {% endif %}
+</body>

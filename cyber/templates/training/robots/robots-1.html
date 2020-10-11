@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+<!-- this layout just goes back ../ for all the links so it doesn't break since it's in the /training/ directory -->
+<!-- may be needed for other pages too -->
+
+{% block content %}
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="card training_background">
+
+                <!-- TRAINING HEADER (Args: Category, training name, points, t_name for image, background class=default "new-colour" so can be left empty) -->
+                {% call training_header("Web Hacking", training.display_name, training.points, training.training_name, "sky-blue") %}
+                {% endcall %}
+                <!-- TRAINING HEADER -->
+
+                <div class="">
+                    <div class="card-body training_card">
+
+                        <h2>Robots.txt</h2>
+                        <p>Have you ever heard of robots.txt? This is a file that can be found on almost all website. To get there, you just add <code>/robots.txt</code> the the URL of a website.</p>
+                        <p><a href="https://www.youtube.com/robots.txt" target="_blank">Have a look at YouTube's robot.txt file</a>, or visit your own favourite website and see if it has a robots.txt file.</p>
+
+                        <p>Which of these URLs would be the right way to get to the robots.txt of the BBC website?</p>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tr>
+                                    <td class="text-center"><button type="button" class="btn btn-default quiz" onclick="wrong()">https://www.bbc.co.uk/robots/txt</button></td>
+                                    <td class="text-center"><button type="button" class="btn btn-default quiz" onclick="correct()">https://www.bbc.co.uk/robots.txt</button></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center"><button type="button" class="btn btn-default quiz" onclick="wrong()">https://www.bbc.co.uk/robots.text</button></td>
+                                    <td class="text-center"><button type="button" class="btn btn-default quiz" onclick="wrong()">https://www.bbc.co.uk/robot.txt</button></td>
+                                </tr>
+                            </table>
+                        </div>
+
+
+                        <p>Next we're going to talk about what robots.txt is used for, and delve into how search engines do their job.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- PAGE NAV (Args: Current page passed from routes.py, training name passed from routes.py, total number of pages) -->
+        {% call pagination(current_page, training.training_name, 3) %}
+        {% endcall %}
+        <!-- END PAGE NAV -->
+
+    </div>
+</div>
+
+
+<script>
+    function wrong() {
+        swal("Oops", "Not quite! Have another look at the example", "error")
+    }
+
+    function correct() {
+        swal("Nice!", "You've got it!", "success")
+    }
+
+</script>
+
+
+
+
+
+{% endblock content %}

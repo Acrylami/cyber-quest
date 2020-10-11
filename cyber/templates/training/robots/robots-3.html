@@ -10,32 +10,32 @@
             <div class="card training_background">
 
                 <!-- TRAINING HEADER (Args: Category, training name, points, t_name for image, background class=default "new-colour" so can be left empty) -->
-                {% call training_header("Password Cracking", training.display_name, training.points, training.training_name, "new-colour") %}
+                {% call training_header("Web Hacking", training.display_name, training.points, training.training_name, "sky-blue") %}
                 {% endcall %}
                 <!-- TRAINING HEADER -->
 
                 <div class="">
                     <div class="card-body training_card">
 
-                        <h2>Final Challenge</h2>
-                        <p>For our final password cracking challenge, you will be cracking the username as well as the password. Just as there is a list of the most common passwords, there is also a list of the most common usernames.</p>
-                        <p>Rodney has set up an admin account for his online forum The Big Cheese. Unfortunately, he’s not been very creative with his login details and both his username and password are in the <b>top 5 most commonly used</b>. </p>
-                        <img class="img-fluid img-thumbnail mx-auto d-block" src="../../static/img/password-cracking/Rodney.png">
-                        <p>Using your knowledge from the earlier challenges and your own research, can you guess Rodney’s admin account details? When you’ve managed to login, submit the FLAG to earn 100 points.</p>
+                        <h2>Benefits of robots.txt</h2>
+                        <p>So now we know what robots.txt does, let's find out why it's used.</p>
+                        <p>The first reason would be to hide all or parts of your website from certain search engines. Say you have a particular part of your website you don't want people to find using a search engine- you can hide that away using robots.txt. Or perhaps you really don't want your images to show up in Google Images specifically, you can do that too.</p>
+                        <p>The other use could be to reduce the traffic your website gets. All the web crawlers visiting your site is traffic that your server has to handle. You can disallow crawlers on some or all of your website to reduce the traffic coming in via different bots.</p>
+
+                        <h3>How it shouldn't be used</h3>
+                        <img class="img-fluid img-thumbnail mx-auto d-block" src="{{ url_for('static', filename='img/web-hacking/evil-spiders.png') }}">
+                        <p>A bad web developer might use robots.txt as an attempt to hide a secret part of their website from unathorised people. But although this might make it less likely that someone will stumble upon their secret page, it doesn't prevent someone from accessing it if they do find it</p>
+                        <p>The challenge for this training is to navigate to the robots.txt page of this website, and find the URL of the secret page we're hiding.</p>
                     </div>
                 </div>
             </div>
         </div>
-
-
         <!-- CHALLENGE (Args: Points, text, hint, training name) -->
-        {% call challenge(training.points, "Try to guess the admin username and password using your knowledge so far", "The username has been used in a previous mini-challenge", training.training_name) %}
+        {% call challenge(training.points, "Find a secret page on the CyberQuest website by looking at our robots.txt file", "Look for a suspicious page that's disallowed on robots.txt, then try to visit it by typing: 'this websites URL'/'secret_file' into  your browser", training.training_name) %}
         {% endcall %}
         <!-- END CHALLENGE -->
-
-
         <!-- PAGE NAV (Args: Current page passed from routes.py, training name passed from routes.py, total number of pages) -->
-        {% call pagination(current_page, training.training_name, 4) %}
+        {% call pagination(current_page, training.training_name, 3) %}
         {% endcall %}
         <!-- END PAGE NAV -->
 
@@ -76,14 +76,16 @@
                         break;
 
                     case "continue":
-                        //window.location.href = "../manual-cracking/challenge";
-                        window.open('../manual-cracking/challenge', '_blank');
+                        window.open('../robots/challenge', '_blank');
                         break;
                 }
             });
     }
 
 </script>
+
+
+
 
 
 {% endblock content %}

@@ -9,11 +9,10 @@
         <div class="row">
             <div class="card training_background">
 
-                <!-- TRAINING HEADER (Args: Category, training name, points, image, background class=default "new-colour" so can be left empty) -->
-                {% call training_header("Password Cracking", training.display_name, training.points, "../../static/img/training/manual-cracking.png", "new-colour") %}
+                <!-- TRAINING HEADER (Args: Category, training name, points, t_name for image, background class=default "new-colour" so can be left empty) -->
+                {% call training_header("Password Cracking", training.display_name, training.points, training.training_name, "new-colour") %}
                 {% endcall %}
                 <!-- TRAINING HEADER -->
-
                 <div class="">
                     <div class="card-body training_card">
 
