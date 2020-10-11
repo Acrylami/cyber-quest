@@ -133,9 +133,17 @@ def story_redirect(story, chapter):
     file_name = "/stories/" + story + "/" + story + "-chapter-" + str(chapter) + ".html"
     title = "Chapter " + str(chapter)
     return render_template(file_name, title=title)
-
-
-
+#
+@app.route("/profile/<string:pic>")
+def set_profile(pic):
+    #file_name = pic + ".png"
+    #if user is logged in
+    if (current_user.is_authenticated):
+        #could add validation for filename
+        current_user.profile_pic = pic
+        db.session.commit()
+    return render_template('profile.html', title='Your Profile')
+#
 @app.route("/training/<string:training_name>/", methods=['GET'])
 def training_redirect(training_name):
     session['url'] = url_for('training_redirect', training_name=training_name)

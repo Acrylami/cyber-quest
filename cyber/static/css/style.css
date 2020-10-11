@@ -313,6 +313,22 @@ box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(0, 188, 212
     margin: auto;
 }
 
+.fixed-plugin img {
+    width: 50px !important;
+    height: 50px !important;
+}
+
+.fixed-plugin .dropdown-menu > li > a.img-holder {
+    background-color: #313131 !important;
+}
+
+
+#profile-icon {
+    width: 25px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
 .training_card a {
     color: #9c27b0 !important;
 }
