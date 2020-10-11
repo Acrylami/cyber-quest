@@ -169,49 +169,51 @@
                         <ul class="navbar-nav">
                             {% if current_user.is_authenticated %}
 
-                            <!--
-                            <li>
-                                <h4 class-title mt-0> Current user: {{ current_user.username}} </h4>
-                            </li>
-                            -->
                             <li>
                                 You are logged in as: &nbsp;&nbsp;&nbsp;
                             </li>
-                            <li>
-                                {% if current_user.points < 100 %}
-                                <td class="">
-                                    <span class="noob">{{current_user.username}}</span>
-                                </td>
-                                {% elif current_user.points < 300 %}
-                                <td class="">
-                                    <span class="cyberist">{{current_user.username}}</span>
-                                </td>
-                                {% elif current_user.points < 600 %}
-                                <td class="">
-                                    <span class="apprentice-hacker">{{current_user.username}}</span>
-                                </td>
-                                {% elif current_user.points < 1000 %}
-                                <td class="">
-                                    <span class="slick-coder">{{current_user.username}}</span>
-                                </td>
-                                {% elif current_user.points < 1300 %}
-                                <td class="">
-                                    <span class="keen-bean">{{current_user.username}}</span>
-                                </td>
-                                {% elif current_user.points < 1600 %}
-                                <td class="">
-                                    <span class="pro-hacker">{{current_user.username}}</span>
-                                </td>
-                                {% elif current_user.points >= 1600 %}
-                                <td class="">
-                                    <span class="l337">{{current_user.username}}</span>
-                                </td>
-                                {% else %}
-                                <td class="">
-                                    <span class="rank">Error Rank</span>
-                                </td>
-                                {% endif %}
-                            </li>
+                            <a href="{{ url_for('profile') }}">
+                                <li>
+                                    <img id="profile-icon" class="img" src="../static/img/profile-pics/{{current_user.profile_pic}}.png" />
+                                </li>
+                            </a>
+                            <a href="{{ url_for('profile') }}">
+                                <li>
+                                    {% if current_user.points < 100 %}
+                                    <td class="">
+                                        <span class="noob">{{current_user.username}}</span>
+                                    </td>
+                                    {% elif current_user.points < 300 %}
+                                    <td class="">
+                                        <span class="cyberist">{{current_user.username}}</span>
+                                    </td>
+                                    {% elif current_user.points < 600 %}
+                                    <td class="">
+                                        <span class="apprentice-hacker">{{current_user.username}}</span>
+                                    </td>
+                                    {% elif current_user.points < 1000 %}
+                                    <td class="">
+                                        <span class="slick-coder">{{current_user.username}}</span>
+                                    </td>
+                                    {% elif current_user.points < 1300 %}
+                                    <td class="">
+                                        <span class="keen-bean">{{current_user.username}}</span>
+                                    </td>
+                                    {% elif current_user.points < 1600 %}
+                                    <td class="">
+                                        <span class="pro-hacker">{{current_user.username}}</span>
+                                    </td>
+                                    {% elif current_user.points >= 1600 %}
+                                    <td class="">
+                                        <span class="l337">{{current_user.username}}</span>
+                                    </td>
+                                    {% else %}
+                                    <td class="">
+                                        <span class="rank">Error Rank</span>
+                                    </td>
+                                    {% endif %}
+                                </li>
+                            </a>
                             <li>
                                 <a href="{{ url_for('logout') }}"><button type="button" class="login btn btn-primary">
                                         <div class="opaque">Logout</div>
@@ -343,14 +345,14 @@
 
                     $(this).parent('li').siblings().removeClass('active');
                     $(this).parent('li').addClass('active');
-
+                    /*
 
                     var new_image = $(this).find("img").attr('src');
 
                     if ($sidebar_img_container.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
                         $sidebar_img_container.fadeOut('fast', function() {
-                            $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
-                            $sidebar_img_container.fadeIn('fast');
+                            //$sidebar_img_container.css('background-image', 'url("' + new_image + '")');
+                            //$sidebar_img_container.fadeIn('fast');
                         });
                     }
 
@@ -358,8 +360,8 @@
                         var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
 
                         $full_page_background.fadeOut('fast', function() {
-                            $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
-                            $full_page_background.fadeIn('fast');
+                            //$full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
+                            //$full_page_background.fadeIn('fast');
                         });
                     }
 
@@ -367,13 +369,14 @@
                         var new_image = $('.fixed-plugin li.active .img-holder').find("img").attr('src');
                         var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
 
-                        $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
-                        $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
+                        //don't change
+                        //$sidebar_img_container.css('background-image', 'url("' + new_image + '")');
+                        //$full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
                     }
 
                     if ($sidebar_responsive.length != 0) {
-                        $sidebar_responsive.css('background-image', 'url("' + new_image + '")');
-                    }
+                        //$sidebar_responsive.css('background-image', 'url("' + new_image + '")');
+                    } */
                 });
 
                 $('.switch-sidebar-image input').change(function() {

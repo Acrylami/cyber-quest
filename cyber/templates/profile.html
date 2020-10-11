@@ -75,9 +75,7 @@
             <div class="col-md-4">
                 <div class="card card-profile">
                     <div class="card-avatar">
-                        <a href="#pablo">
-                            <img class="img" src="../static/img/default-avatar.png" />
-                        </a>
+                        <img class="img" src="../static/img/profile-pics/{{current_user.profile_pic}}.png" />
                     </div>
                     <div class="card-body">
                         <h4 class="card-title">{{ current_user.username }}</h4>
@@ -93,7 +91,70 @@
         </div>
 
 
+        <div class="fixed-plugin">
+            <div class="dropdown show-dropdown">
+                <a href="#" data-toggle="dropdown">
+                    <i class="fa fa-cog fa-2x"> </i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="header-title">Choose profile picture</li>
+                    <li class="active">
+                        <a class="img-holder switch-trigger" href="{{ url_for('set_profile', pic='alien') }}">
+                            <img src="{{ url_for('static', filename='img/profile-pics/alien.png') }}" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a class="img-holder switch-trigger" href="{{ url_for('set_profile', pic='techno-boy') }}">
+                            <img src="{{ url_for('static', filename='img/profile-pics/techno-boy.png') }}" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a class="img-holder switch-trigger" href="{{ url_for('set_profile', pic='techno-girl') }}">
+                            <img src="{{ url_for('static', filename='img/profile-pics/techno-girl.png') }}" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a class="img-holder switch-trigger" href="{{ url_for('set_profile', pic='robbie') }}">
+                            <img src="{{ url_for('static', filename='img/profile-pics/robbie.png') }}" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a class="img-holder switch-trigger" href="{{ url_for('set_profile', pic='mindmap') }}">
+                            <img src="{{ url_for('static', filename='img/profile-pics/mindmap.png') }}" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a class="img-holder switch-trigger" href="{{ url_for('set_profile', pic='handy') }}">
+                            <img src="{{ url_for('static', filename='img/profile-pics/handy.png') }}" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a class="img-holder switch-trigger" href="{{ url_for('set_profile', pic='googly') }}">
+                            <img src="{{ url_for('static', filename='img/profile-pics/googly.png') }}" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a class="img-holder switch-trigger" href="{{ url_for('set_profile', pic='claudia') }}">
+                            <img src="{{ url_for('static', filename='img/profile-pics/claudia.png') }}" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a class="img-holder switch-trigger" href="{{ url_for('set_profile', pic='caterpillar') }}">
+                            <img src="{{ url_for('static', filename='img/profile-pics/caterpillar.png') }}" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a class="img-holder switch-trigger" href="{{ url_for('set_profile', pic='brain') }}">
+                            <img src="{{ url_for('static', filename='img/profile-pics/brain.png') }}" alt="">
+                        </a>
+                    </li>
+                    <li class="button-container">
+                        <button type="submit" class="btn btn-primary btn-block">Back</button>
+                    </li>
 
+                </ul>
+            </div>
+        </div>
 
 
 
