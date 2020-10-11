@@ -174,7 +174,10 @@
                             </li>
                             <a href="{{ url_for('profile') }}">
                                 <li>
-                                    <img id="profile-icon" class="img" src="../static/img/profile-pics/{{current_user.profile_pic}}.png" />
+                                    <!--
+                                    <img id="profile-icon" class="img" src="../static/img/profile-pics/{{current_user.profile_pic}}.png" /> -->
+                                    <img id="profile-icon" class="img" src="{{ url_for('static', filename='img/profile-pics/') }}{{current_user.profile_pic}}.png" />
+
                                 </li>
                             </a>
                             <a href="{{ url_for('profile') }}">

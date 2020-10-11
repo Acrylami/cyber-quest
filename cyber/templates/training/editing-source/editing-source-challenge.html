@@ -1,0 +1,35 @@
+<head>
+    <style>
+        body {
+            background-color: aquamarine;
+            text-align: center;
+        }
+
+        h1 {
+            color: white;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>My secret club</h1>
+    <h2>If I forget my password, here is my secret login form. Don't even try it if you're not Cody- you won't know how to find the password</h2>
+    <img src="{{ url_for('static', filename='img/web-hacking/cody.png') }}">
+    <!-- There's no password hidden in the comments this time! Have a look at the attributes of the image and button" -->
+    <form method="POST" action="" autocomplete="off">
+        {{ form.hidden_tag() }}
+        <img src="{{ url_for('static', filename='img/web-hacking/password.png') }}" width=1px height=1px>
+        <label for="password">{{ form.password.label }}</label>
+        {{ form.password(class="form-control") }}
+
+        <button disabled type="submit" value="Login">Login</button>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+
+        <p>{{ messages[-1] }}</p>
+
+        {% endif %}
+        {% endwith %}
+    </form>
+</body>

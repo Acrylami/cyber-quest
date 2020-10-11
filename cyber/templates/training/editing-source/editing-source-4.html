@@ -8,31 +8,37 @@
     <div class="container-fluid">
         <div class="row">
             <div class="card training_background">
-
                 <!-- TRAINING HEADER (Args: Category, training name, points, t_name for image, background class=default "new-colour" so can be left empty) -->
-                {% call training_header("Password Cracking", training.display_name, training.points, training.training_name, "new-colour") %}
+                {% call training_header("Web Hacking", training.display_name, training.points, training.training_name, "sky-blue") %}
                 {% endcall %}
                 <!-- TRAINING HEADER -->
 
                 <div class="">
                     <div class="card-body training_card">
 
-                        <h2>Final Challenge</h2>
-                        <p>For our final password cracking challenge, you will be cracking the username as well as the password. Just as there is a list of the most common passwords, there is also a list of the most common usernames.</p>
-                        <p>Rodney has set up an admin account for his online forum The Big Cheese. Unfortunately, he’s not been very creative with his login details and both his username and password are in the <b>top 5 most commonly used</b>. </p>
-                        <img class="img-fluid img-thumbnail mx-auto d-block" src="../../static/img/password-cracking/Rodney.png">
-                        <p>Using your knowledge from the earlier challenges and your own research, can you guess Rodney’s admin account details? When you’ve managed to login, submit the FLAG to earn 100 points.</p>
+                        <p>Here's a little bit of a summary of what we know so far:</p>
+                        <ul>
+                            <li>You can edit the source code by right clicking the part you want to edit, clicking "Inspect", then double clicking the tag you want to edit</li>
+                            <li>You can edit the text of a website</li>
+                            <li>You can disable/enable part of a website by adding/removing the <code>disabled</code> attribute</li>
+                            <li>You can hide/show part of a website by adding/removing the <code>hidden</code>attribute</li>
+                        </ul>
+                        <p>You're going to need all these skills for the final challenge, so go back and practice if you're not feeling confident.</p>
+
+
+                        <h2>Episode II: Revenge of the Frog</h2>
+                        <img class="img-fluid mx-auto d-block" src="{{ url_for('static', filename='img/web-hacking/cody-book.png') }}">
+                        <p>So Cody's done some reading about web security, and he's finally removed those password reminder comments from his code. He's still pretty forgetful though, so he wanted to come up with <i>some way</i> to get into his website even if he had forgotten the usual password</p>
+                        <p>In addition to the usual login form, there is a secret login page that accepts a different password. You'll want to find out the password, then press the login button.</p>
+
                     </div>
                 </div>
             </div>
         </div>
-
-
         <!-- CHALLENGE (Args: Points, text, hint, training name) -->
-        {% call challenge(training.points, "Try to guess the admin username and password using your knowledge so far", "The username has been used in a previous mini-challenge", training.training_name) %}
+        {% call challenge(training.points, "Log in to Cody's secret website by editing the source code. You'll need to change the attributes we've learnt before", "There is more than one element you'll need to edit on Cody's website. Have a look for a hidden image to find out the password, then enable the button that let's you submit the password. Have another go at page 2 and 3 of this training if you're still stuck", training.training_name) %}
         {% endcall %}
         <!-- END CHALLENGE -->
-
 
         <!-- PAGE NAV (Args: Current page passed from routes.py, training name passed from routes.py, total number of pages) -->
         {% call pagination(current_page, training.training_name, 4) %}
@@ -76,14 +82,16 @@
                         break;
 
                     case "continue":
-                        //window.location.href = "../manual-cracking/challenge";
-                        window.open('../manual-cracking/challenge', '_blank');
+                        window.open('../editing-source/challenge', '_blank');
                         break;
                 }
             });
     }
 
 </script>
+
+
+
 
 
 {% endblock content %}

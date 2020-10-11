@@ -108,14 +108,14 @@
 <!-- END CHALLENGE -->
 
 
-<!-- TRAINING HEADER (Args: Category, training name, points, image, background class=default "new-colour" so can be left empty) -->
-{% macro training_header(category, training_name, points, image, background_class="new-colour") %}
+<!-- TRAINING HEADER (Args: Category, display name, points, t_name for image, background class=default "new-colour" so can be left empty) -->
+{% macro training_header(category, training_name, points, t_name, background_class="new-colour") %}
 {{ caller() }}
 
 
 <div class="{{ background_class }} card-header card-header-primary training-header">
 
-    <img src={{ image }}>
+    <img src="../../static/img/training/{{ t_name }}.png">
 
     <div class="d-flex justify-content-center">
         <h1>{{ category }}</h1>
