@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title">Find where this image was taken</h4>
+                    <p class="card-category"></p>
+                </div>
+                <div class="card-body">
+                    <h2>Our suspicious image</h2>
+                    <img class="img-fluid img-thumbnail mx-auto d-block" src="{{ url_for('static', filename='img/image-metadata/baguette.jpg') }}">
+
+                    <p>What is the name of the landmark where this photo was taken?</p>
+
+                    <a href="https://www.exifdata.com/" target="_blank" class="text-center"><button class="btn btn-primary">Go to EXIF Metadata Viewer Website</button></a>
+                    <form method="POST" action="" autocomplete="off">
+                        {{ form.hidden_tag() }}
+                        <div class="row">
+                            <div class="col-md-11">
+                                <div class="form-group">
+                                    <label class="bmd-label-floating"> {{ form.password.label }} </label>
+                                    {{ form.password(class="form-control") }}
+
+                                    {% for error in form.password.errors %}
+                                    <span class="error"> {{ error }} </span>
+                                    {% endfor %}
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-info pull-right btn-lg" value=Login>Enter password</button>
+                                <div class="clearfix">
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

@@ -1,0 +1,7 @@
+# VIPER
+
+User-agent: Googlebot-Image
+Disallow: /
+
+User-agent: *
+Disallow: /secret.html

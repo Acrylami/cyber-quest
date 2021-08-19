@@ -1,0 +1,21 @@
+{% extends "/stories/viper/viper-layout.html" %}
+{% block content %}
+<h1 style="color: darkorange">LIGHTSOUT</h1><!-- LIGHTSOUT is the code for progressing the story, not the password for this page -->
+<h2>Members Only Login</h2>
+<p>VIPER COLLECTIVE, ACCESS ONLY FOR THE CHOSEN</p>
+<form method="POST" action="" autocomplete="off">
+    {{ form.hidden_tag() }}
+
+    <label for="password">{{ form.password.label }}</label>
+    {{ form.password(class="form-control") }}
+
+    <button type="submit" value="Login">Login</button>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+
+    <p>{{ messages[-1] }}</p>
+
+    {% endif %}
+    {% endwith %}
+</form>
+{% endblock content %}

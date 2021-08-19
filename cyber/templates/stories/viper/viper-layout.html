@@ -1,0 +1,24 @@
+<html>
+
+<head>
+    <link href="{{ url_for('static', filename='css/viper-style.css') }}" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/viper/favicon.png') }}">
+    <title>VIPER</title>
+</head>
+
+<body>
+    <header>
+        <h1>VIPER</h1>
+        <img src="{{ url_for('static', filename='img/viper/viper-logo.png') }}">
+        <nav>
+            <ul><a href="{{ url_for('viper_site') }}">Home</a></ul>
+            <ul><a href="{{ url_for('viper_about') }}">About</a></ul>
+            <!-- <ul><a href="{{ url_for('viper_login') }}">Members Only</a></ul> -->
+            <ul><a href="{{ url_for('viper_code') }}">Secret Code</a></ul>
+        </nav>
+    </header>
+    {% block content %}
+    {% endblock %}
+</body>
+
+</html>

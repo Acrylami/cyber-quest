@@ -1,0 +1,100 @@
+{% extends "layout.html" %}
+<!-- this layout just goes back ../ for all the links so it doesn't break since it's in the /training/ directory -->
+<!-- may be needed for other pages too -->
+
+{% block content %}
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="card training_background">
+
+                <!-- TRAINING HEADER (Args: Category, training name, points, t_name for image, background class=default "new-colour" so can be left empty) -->
+                {% call training_header("Cryptography", training.display_name, training.points, training.training_name, "yellow-green") %}
+                {% endcall %}
+                <!-- TRAINING HEADER -->
+
+                <div class="">
+                    <div class="card-body training_card">
+                        <p>Congrats on making it through the training so far. We've got one more trick up our sleeve to show you.</p>
+
+                        <p>What if you receive an encrypted caesar cipher message, but you don't know the shift? Even if you try out every possible shift using an online website, this will still take a long time.</p>
+
+                        <p>Luckily, it's possible to 'brute force' the encrypted code. This means a website/tool will guess every possible shift for us. We're then able to see all of the results and see if any of the shifts we've tried resulted in a decrypted message that makes sense.</p>
+
+                        <p>We can use the same website to do this: <a href="https://www.dcode.fr/caesar-cipher" target="_blank">https://www.dcode.fr/caesar-cipher</a></p>
+
+                        <img class="img-fluid img-thumbnail mx-auto d-block" src="{{ url_for('static', filename='img/caesar-cipher/brute-force-example.png') }}">
+
+                        <p>Here's an example where we didn't know the caesar shift. You enter the encrypted message, then select the 'Brute Force' option, and click the Decrypt button.</p>
+                        <p>Every possible caesar shift will be attempted, and it will detect the result with the most real words and display that version at the top. Here you can see the correct shift was 24 in this example</p>
+                        <p>Try it out yourself now to decrypt the following with an unknown caesar shift:</p>
+                        <code>Csy'zi ksx xlmw! Iewc tiewc</code>
+                        <a href="https://www.dcode.fr/caesar-cipher" target="_blank" class="text-center"><button class="btn btn-primary">Go to Caesar Cipher Encode/Decode Website</button></a>
+                        <br><br>
+                        <p>You'll want to use all your knowledge from this topic to decrypt a secret message for this challenge. Good luck!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CHALLENGE (Args: Points, text, hint, training name) -->
+        {% call challenge(training.points, "Decrypt our secret message using your new skills", "Use the dCode website or another decryption tool to brute force the caesar cipher", training.training_name) %}
+        {% endcall %}
+        <!-- END CHALLENGE -->
+
+        <!-- PAGE NAV (Args: Current page passed from routes.py, training name passed from routes.py, total number of pages) -->
+        {% call pagination(current_page, training.training_name, 5) %}
+        {% endcall %}
+        <!-- END PAGE NAV -->
+
+    </div>
+</div>
+
+
+<script>
+    function prompt_login() {
+
+
+        swal("Oh no, you're not logged in! Making an account lets you save your progress, AND earn points and hacker ranks.", {
+                icon: "warning",
+                buttons: {
+                    continue: {
+                        text: "Continue anyway",
+                        value: "continue",
+                        className: "grey-bg",
+                    },
+                    register: {
+                        text: "Register",
+                        value: "register",
+                    },
+                    login: {
+                        text: "Login",
+                        value: "login",
+                    },
+                },
+            })
+            .then((value) => {
+                switch (value) {
+                    case "login":
+                        window.location.href = "../../login";
+                        break;
+
+                    case "register":
+                        window.location.href = "../../register";
+                        break;
+
+                    case "continue":
+                        window.open('../caesar-cipher/challenge', '_blank');
+                        break;
+                }
+            });
+    }
+
+</script>
+
+
+
+
+
+{% endblock content %}

@@ -48,8 +48,24 @@ class BasicPassword(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Submit')    
 
+class ViperPassword(FlaskForm):
+    password = PasswordField('Password', validators=[DataRequired()])
+    submit = SubmitField('Submit')   
+class ViperCode(FlaskForm):
+    password = PasswordField('Password', validators=[DataRequired()])
+    submit = SubmitField('Submit')  
 
+class CaesarPassword(FlaskForm):
+    password = PasswordField('Password', validators=[DataRequired()])
+    submit = SubmitField('Submit')
 
+class SteganographyPassword(FlaskForm):
+    password = PasswordField('Password', validators=[DataRequired()])
+    submit = SubmitField('Submit')
+
+class MetadataPassword(FlaskForm):
+    password = PasswordField('Landmark name', validators=[DataRequired()])
+    submit = SubmitField('Submit')
 
 
 

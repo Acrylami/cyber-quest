@@ -1,0 +1,103 @@
+{% extends "layout.html" %}
+<!-- this layout just goes back ../ for all the links so it doesn't break since it's in the /training/ directory -->
+<!-- may be needed for other pages too -->
+
+{% block content %}
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="card training_background">
+
+                <!-- TRAINING HEADER (Args: Category, training name, points, t_name for image, background class=default "new-colour" so can be left empty) -->
+                {% call training_header("OSINT", training.display_name, training.points, training.training_name, "sunset") %}
+                {% endcall %}
+                <!-- TRAINING HEADER -->
+
+                <div class="">
+                    <div class="card-body training_card">
+
+                        <p>You should be getting good at this now! Hopefully you're seeing the potential security problems from having this metadata exposed online</p>
+
+                        <p>In image metadata, the location is given in the form of longitude and latitude coordinates. This will appear in one of the following formats: </p>
+                        <code>51.482159, -3.181145</code>
+                        <code>51.482159 N, 3.181145 W</code>
+                        <code>51°28'55.8"N 3°10'52.1"W</code>
+
+                        <p>This system can describe any point on the planet with two numbers: The first being longitude (up and down), the second being latitude (left and right)</p>
+                        <p>If you plug this into Google Maps, you'll be able to see that the coordinates above all pinpoint Cardiff Castle</p>
+                        <a href="https://goo.gl/maps/RoRFn5rq5dbwksd46" target="_blank"><img class="img-fluid img-thumbnail mx-auto d-block" src="{{ url_for('static', filename='img/image-metadata/cardiff-castle.png') }}"></a>
+
+                        <p>For our final challenge, you'll be pinpointing the exact building this photo was taken at.</p>
+
+                        <h2>Our suspicious image</h2>
+                        <img class="img-fluid img-thumbnail mx-auto d-block" src="{{ url_for('static', filename='img/image-metadata/baguette.jpg') }}">
+
+                        <p>Don't get cold feet! The process is exactly the same- Just load up the image in an EXIF Metadata viewer, but this time look for the 'GPS location' field</p>
+
+                        <a href="https://www.exifdata.com/" target="_blank" class="text-center"><button class="btn btn-primary">Go to EXIF Metadata Viewer Website</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CHALLENGE (Args: Points, text, hint, training name) -->
+        {% call challenge(training.points, "What is the name of the landmark where this photo was taken?", "Examine the metadata for the baguette image, and plug in the longitude and latitude coordinates into Google Maps. Ensure when you enter the coordinates, it's in the format '[number] N, [number] E'. Don't include the word 'degrees'", training.training_name) %}
+        {% endcall %}
+        <!-- END CHALLENGE -->
+
+        <!-- PAGE NAV (Args: Current page passed from routes.py, training name passed from routes.py, total number of pages) -->
+        {% call pagination(current_page, training.training_name, 4) %}
+        {% endcall %}
+        <!-- END PAGE NAV -->
+
+    </div>
+</div>
+
+
+<script>
+    function prompt_login() {
+
+
+        swal("Oh no, you're not logged in! Making an account lets you save your progress, AND earn points and hacker ranks.", {
+                icon: "warning",
+                buttons: {
+                    continue: {
+                        text: "Continue anyway",
+                        value: "continue",
+                        className: "grey-bg",
+                    },
+                    register: {
+                        text: "Register",
+                        value: "register",
+                    },
+                    login: {
+                        text: "Login",
+                        value: "login",
+                    },
+                },
+            })
+            .then((value) => {
+                switch (value) {
+                    case "login":
+                        window.location.href = "../../login";
+                        break;
+
+                    case "register":
+                        window.location.href = "../../register";
+                        break;
+
+                    case "continue":
+                        window.open('../image-metadata/challenge', '_blank');
+                        break;
+                }
+            });
+    }
+
+</script>
+
+
+
+
+
+{% endblock content %}

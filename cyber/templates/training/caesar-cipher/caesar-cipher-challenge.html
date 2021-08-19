@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title">Decrypt the following message</h4>
+                    <p class="card-category"></p>
+                </div>
+                <div class="card-body">
+                    <p>Rkz'y ykk ol euax tkc yqorry gxk av zu yixgzin
+                        Ftqdq'e m rqi purrqdqzf eturfe geqp uz ftue yqeemsq
+                        Lwv'b tmb qb bpzwe gwc wnn
+                        sgd qdzk ozrrvnqc enq sghr rdbshnm hr:
+                        rwtrngrcpecmgu
+                    </p>
+                    <p>Decrypt the above message using a tool, then find the 'password' in the decrypted message and submit it to get 100 points</p>
+                    <form method="POST" action="" autocomplete="off">
+                        {{ form.hidden_tag() }}
+                        <div class="row">
+                            <div class="col-md-11">
+                                <div class="form-group">
+                                    <label class="bmd-label-floating"> {{ form.password.label }} </label>
+                                    {{ form.password(class="form-control") }}
+
+                                    {% for error in form.password.errors %}
+                                    <span class="error"> {{ error }} </span>
+                                    {% endfor %}
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-info pull-right btn-lg" value=Login>Enter password</button>
+                                <div class="clearfix">
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

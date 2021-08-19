@@ -1,3 +1,6 @@
+#IGNORE THIS FILE BUT DO NOT DELETE
+
+
 #Specify secret key
 #app.config['SECRET_KEY'] = ''
 

@@ -16,21 +16,26 @@
 
                 <div class="">
                     <div class="card-body training_card">
-                        <p><i>Encryption</i> is the word for taking a normal message and changing it so it is hard or impossible to read. The caesar cipher was used by the Roman emperor Julius Caesar to <i>encrypt</i> his letters</p>
+                        <p>We now know how to make secret messages, great!</p>
 
-                        <p>Every letter in your secret message is shifted by a number you choose. For a caesar shift of 2, "A" would become "C". But with a caesar shift of 3, "A" would become "D".</p>
+                        <p>But that's no good to us if we can't decrypt them again. Luckily decrypting the caesar cipher is the same process as encrypting, but backwards</p>
 
-                        <p>First decide how many letters you want to 'shift' your secret message. Let's choose a caesary shift of 1.</p>
+                        <p>If we have the message "B" that has been encrypted with a caesar shift of 1, we move backwards one place in the alphabet to get "A"</p>
+
+                        <p>Likewise if we receive the message "FDW" that has been encrypted with a caesar cipher of 3, we can decrypt it by taking each letter and moving it backwards 3 places in the alphabet</p>
+                        <p>"F" becomes "C", "D" becomes "A", and "W" becomes "T". So our decrypted message is "CAT"!</p>
+
                         <img class="img-fluid img-thumbnail mx-auto d-block" src="{{ url_for('static', filename='img/caesar-cipher/shift1.png') }}">
                         <br><br>
-                        <p>Say the secret message you want to encrypt is... "BAD", with a caesar shift of 1. To get the secret message, we will shift each letter by one place. "B" will become "C", "A will become "B", and "D" will become "E". </p>
+                        <p>We've received a mysterious secret message... Can you decrypt it? The caesar shift used to encrypt it is 5, so we must move each letter <i>backwards</i> 5 places.</p>
+                        <code>ymnx nx ytu xjhwjy</code>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- MINI CHALLENGE (Args: Text, hint) -->
-        {% call mini_challenge("Can you encrypt the word 'CAB' with a caesar shift of 1?", "The first letter 'C' would be shifted one letter forward, becoming 'D'. Now try to do the rest!") %}
+        {% call mini_challenge("Can you decrypt the message 'ymnx nx ytu xjhwjy' with a caesar shift of 5?", "Each letter must move backwards 8 places- the first letter should be 't'") %}
         {% endcall %}
         <!-- END MINI CHALLENGE -->
 
@@ -47,7 +52,7 @@
     function mini_challenge() {
 
         swal({
-                text: 'Encrypt the message "CAB" with a caesar shift of 1',
+                text: 'Decrypt the message "ymnx nx ytu xjhwjy" with a caesar shift of 5',
                 content: "input",
                 button: {
                     text: "Submit",
@@ -55,7 +60,7 @@
                 },
             })
             .then(name => {
-                if (DOMPurify.sanitize(name).toUpperCase() == "DBC") {
+                if (DOMPurify.sanitize(name).toUpperCase() == "THIS IS TOP SECRET") {
                     swal("Nice!", "That's correct, well done", "success", {
                         button: "Next",
                     });

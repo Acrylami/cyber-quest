@@ -1,0 +1,8 @@
+# VIPER ROBOTS.TXT
+# IF YOU FOUND THIS, YOU'RE ON THE RIGHT TRACK
+
+User-agent: Googlebot-Image
+Disallow: /
+
+User-agent: *
+Disallow: /viper/login

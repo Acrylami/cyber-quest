@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+<!-- this layout just goes back ../ for all the links so it doesn't break since it's in the /training/ directory -->
+<!-- may be needed for other pages too -->
+
+{% block content %}
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="card training_background">
+
+                <!-- TRAINING HEADER (Args: Category, training name, points, t_name for image, background class=default "new-colour" so can be left empty) -->
+                {% call training_header("Steganography", training.display_name, training.points, training.training_name, "baby-plue") %}
+                {% endcall %}
+                <!-- TRAINING HEADER -->
+
+                <div class="">
+                    <div class="card-body training_card">
+
+                        <p>Great job making it to the end of the training! We've only covered a few basic methods of hiding data in files, however the possibilities are endless. Try coming up with your own unique ways and send them for your friends to decode.</p>
+
+                        <p>If you want to learn more about harder steganography techniques, I recommend checking out steganography exercises on Try Hack Me, <a href="https://tryhackme.com/room/ccstego" target="_blank" class="text-center">here's an example.</a> But beware, it's tricky stuff and you'll need to research how to use Linux commands!</p>
+
+
+                        <p>For this training's final challenge, you'll be tasked with finding the secret word in our lovely stego image once more. You've been taught everything you need to know, so review the past few pages if you get stuck.</p>
+
+                        <a href="https://stylesuxx.github.io/steganography/" target="_blank" class="text-center"><button class="btn btn-primary">You'll need this</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CHALLENGE (Args: Points, text, hint, training name) -->
+        {% call challenge(training.points, "Chain together your new skills to decode the image", "You'll need to combine two of the methods we've covered in this training to find the hidden word", training.training_name) %}
+        {% endcall %}
+        <!-- END CHALLENGE -->
+
+        <!-- PAGE NAV (Args: Current page passed from routes.py, training name passed from routes.py, total number of pages) -->
+        {% call pagination(current_page, training.training_name, 4) %}
+        {% endcall %}
+        <!-- END PAGE NAV -->
+
+    </div>
+</div>
+
+
+<script>
+    function prompt_login() {
+
+
+        swal("Oh no, you're not logged in! Making an account lets you save your progress, AND earn points and hacker ranks.", {
+                icon: "warning",
+                buttons: {
+                    continue: {
+                        text: "Continue anyway",
+                        value: "continue",
+                        className: "grey-bg",
+                    },
+                    register: {
+                        text: "Register",
+                        value: "register",
+                    },
+                    login: {
+                        text: "Login",
+                        value: "login",
+                    },
+                },
+            })
+            .then((value) => {
+                switch (value) {
+                    case "login":
+                        window.location.href = "../../login";
+                        break;
+
+                    case "register":
+                        window.location.href = "../../register";
+                        break;
+
+                    case "continue":
+                        window.open('../basic-steganography/challenge', '_blank');
+                        break;
+                }
+            });
+    }
+
+</script>
+
+
+
+
+
+{% endblock content %}

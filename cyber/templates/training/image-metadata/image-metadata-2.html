@@ -1,0 +1,97 @@
+{% extends "layout.html" %}
+<!-- this layout just goes back ../ for all the links so it doesn't break since it's in the /training/ directory -->
+<!-- may be needed for other pages too -->
+
+{% block content %}
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="card training_background">
+
+                <!-- TRAINING HEADER (Args: Category, training name, points, t_name for image, background class=default "new-colour" so can be left empty) -->
+                {% call training_header("OSINT", training.display_name, training.points, training.training_name, "sunset") %}
+                {% endcall %}
+                <!-- TRAINING HEADER -->
+
+                <div class="">
+                    <div class="card-body training_card">
+
+                        <p>So, you know about this mysterious hidden data we call <i>EXIF metadata</i>. Now how do we see it for ourselves</p>
+
+                        <p>To have a look at image metadata we need to use tools/programs to examine the image for us. The easiest way for us to do this, is to use an online metadata viewer. There are many available, but we'll use this one: <a href="https://www.exifdata.com/" target="_blank">https://www.exifdata.com/</a></p>
+
+                        <h2>How to use it</h2>
+                        <img class="img-fluid img-thumbnail mx-auto d-block" src="{{ url_for('static', filename='img/image-metadata/selfie.jpg') }}">
+
+
+                        <p>Let's look at the metadata for this woman taking a selfie</p>
+
+                        <p>Some common types of metadata:</p>
+                        <ol>
+                            <li>Right click the above image, and save it on your computer "Save as..."</li>
+                            <li>Navigate to <a href="https://www.exifdata.com/" target="_blank">https://www.exifdata.com/</a></li>
+                            <li>"Choose file" and find the photo you just saved</li>
+                            <li>Click Upload</li>
+                        </ol>
+
+                        <p>If you've done this right, you should be able to see your first image metadata. We can see that the photo was created on 17th Jan 2019, as well as other technical information.</p>
+
+                        <img class="img-fluid img-thumbnail mx-auto d-block" src="{{ url_for('static', filename='img/image-metadata/exif-demo.gif') }}">
+
+                        <p>Try it yourself and see if you can find the 'author' of the photo. </p>
+                        <br>
+
+                        <a href="https://www.exifdata.com/" target="_blank" class="text-center"><button class="btn btn-primary">Go to EXIF Metadata Viewer Website</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MINI CHALLENGE (Args: Text, hint) -->
+        {% call mini_challenge("What is the name of the person in the selfie?", "Examine the metadata for the selfie as shown above, then look at the field called 'Author'") %}
+        {% endcall %}
+        <!-- END MINI CHALLENGE -->
+
+        <!-- PAGE NAV (Args: Current page passed from routes.py, training name passed from routes.py, total number of pages) -->
+        {% call pagination(current_page, training.training_name, 4) %}
+        {% endcall %}
+        <!-- END PAGE NAV -->
+
+    </div>
+</div>
+
+
+<script>
+    function mini_challenge() {
+
+        swal({
+                text: 'Please enter the password...',
+                content: "input",
+                button: {
+                    text: "Submit",
+                    closeModal: true,
+                },
+            })
+            .then(name => {
+                if (DOMPurify.sanitize(name).toUpperCase() == "KAREN") {
+                    swal("Nice!", "That's correct, well done", "success", {
+                        button: "Next",
+                    });
+                } else {
+                    swal("Not quite!", "Have another look", "error", {
+                        button: "Return"
+                    });
+                }
+            })
+
+
+    }
+
+</script>
+
+
+
+
+
+{% endblock content %}

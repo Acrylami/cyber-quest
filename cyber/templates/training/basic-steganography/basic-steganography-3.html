@@ -1,0 +1,93 @@
+{% extends "layout.html" %}
+<!-- this layout just goes back ../ for all the links so it doesn't break since it's in the /training/ directory -->
+<!-- may be needed for other pages too -->
+
+{% block content %}
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="card training_background">
+
+                <!-- TRAINING HEADER (Args: Category, training name, points, t_name for image, background class=default "new-colour" so can be left empty) -->
+                {% call training_header("Steganography", training.display_name, training.points, training.training_name, "baby-plue") %}
+                {% endcall %}
+                <!-- TRAINING HEADER -->
+
+                <div class="">
+                    <div class="card-body training_card">
+                        <h3>File Extensions</h3>
+                        <p>Another way we might try to hide information inside a file, is to change the file extension. </p>
+                        <p>File extensions let us know what type of file it is, for example:</p>
+                        <ul>
+                            <li>.png is a PNG image file</li>
+                            <li>.txt is a text file</li>
+                            <li>.docx is a Microsoft Word document file</li>
+                            <li>.mp3 is a an audio file</li>
+                        </ul>
+                        <p>By changing the file extension, we can trick people into believing the file is one type of file (for example, an audio file) when it is really another type of file (like a text file).</p>
+                        <p>It's only when you change the file extension back to it's original file extension that you can open it and see the original file.</p>
+
+                        <h3>How do we do it?</h3>
+                        <p>Before you can change the file extension, you need to make sure you have enabled viewing file extensions</p>
+                        <capt>Here's an example how to enable it on Windows 10:</capt>
+                        <img class="img-fluid img-thumbnail mx-auto d-block" src="{{ url_for('static', filename='img/basic-steganography/example-2.gif') }}">
+
+
+                        <p>Then, you right click to the file to rename it and change the letters after the dot to a different file extension.</p>
+                        <img class="img-fluid img-thumbnail mx-auto d-block" src="{{ url_for('static', filename='img/basic-steganography/example-3.gif') }}">
+
+                        <a href="{{ url_for('static', filename='img/basic-steganography/stego-3.txt') }}" download class="text-center"><button class="btn btn-primary">Download mystery file</button></a>
+                        <p>Here we have a broken PNG image file of a couple of Stegos. See if you can download it, then change the file extension to the right one. There should be a hidden word in the image if you can do it right.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MINI CHALLENGE (Args: Text, hint) -->
+        {% call mini_challenge("What is the secret word hidden in the file above?", "First download the text file, then change the file extension to the one for a PNG image. Look at the example animations if you get stuck. Then look at the image to find the secret word in green text") %}
+        {% endcall %}
+        <!-- END MINI CHALLENGE -->
+
+        <!-- PAGE NAV (Args: Current page passed from routes.py, training name passed from routes.py, total number of pages) -->
+        {% call pagination(current_page, training.training_name, 4) %}
+        {% endcall %}
+        <!-- END PAGE NAV -->
+
+    </div>
+</div>
+
+
+<script>
+    function mini_challenge() {
+
+        swal({
+                text: 'Please enter the password...',
+                content: "input",
+                button: {
+                    text: "Submit",
+                    closeModal: true,
+                },
+            })
+            .then(name => {
+                if (DOMPurify.sanitize(name).toUpperCase() == "DINODANCE") {
+                    swal("Nice!", "That's correct, well done", "success", {
+                        button: "Next",
+                    });
+                } else {
+                    swal("Not quite!", "Guess a different password from the list", "error", {
+                        button: "Return"
+                    });
+                }
+            })
+
+
+    }
+
+</script>
+
+
+
+
+
+{% endblock content %}

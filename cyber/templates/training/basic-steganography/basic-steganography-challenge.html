@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title">Find the hidden word</h4>
+                    <p class="card-category"></p>
+                </div>
+                <div class="card-body">
+                    <h2>Stego'd image</h2>
+                    <img class="img-fluid img-thumbnail mx-auto d-block" src="{{ url_for('static', filename='img/basic-steganography/stego-4.png') }}">
+
+                    <p>Find the secret word hidden in this image. Having trouble? Check the hint on the last page</p>
+
+                    <form method="POST" action="" autocomplete="off">
+                        {{ form.hidden_tag() }}
+                        <div class="row">
+                            <div class="col-md-11">
+                                <div class="form-group">
+                                    <label class="bmd-label-floating"> {{ form.password.label }} </label>
+                                    {{ form.password(class="form-control") }}
+
+                                    {% for error in form.password.errors %}
+                                    <span class="error"> {{ error }} </span>
+                                    {% endfor %}
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-info pull-right btn-lg" value=Login>Enter word</button>
+                                <div class="clearfix">
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

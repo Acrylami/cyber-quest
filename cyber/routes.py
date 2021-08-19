@@ -20,8 +20,8 @@ def about():
 @app.route("/register", methods=['GET', 'POST'])
 def register():
     form = RegistrationForm()
-    if form.validate_on_submit():
-        user = User(username=form.username.data, email=form.email.data, password_hash=form.password.data, points=0)
+    if form.validate_on_submit():  
+        user = User(username=form.username.data, email=form.email.data, password_hash=generate_password_hash(form.password.data), points=0, profile_pic='alien')
         db.session.add(user)
         db.session.commit()
         login_user(user)
@@ -216,7 +216,39 @@ def challenge_redirect(training_name):
             else:
                 flash('That is not the flag... You can find the secret page by looking on robots.txt')
 
-        
+    if (training_name == "caesar-cipher"):
+        form = CaesarPassword()
+        if form.validate_on_submit():
+            if (form.password.data == 'purplepancakes'):
+                #Set points in database and return success
+                message = set_points(training_name)
+                success_file_name = "/training/"+training_name+ "/" + training_name + "-success.html"
+                return render_template(success_file_name, message=message) #this keeps the url at the same place!! very useful
+            else:
+                flash('That is not the password... Brute force the message. It might be using different caesar shifts for each line')
+
+    if (training_name == "image-metadata"):
+        form = MetadataPassword()
+        if form.validate_on_submit():
+            if (str(form.password.data).upper() == 'EIFFEL TOWER'):
+                #Set points in database and return success
+                message = set_points(training_name)
+                success_file_name = "/training/"+training_name+ "/" + training_name + "-success.html"
+                return render_template(success_file_name, message=message) #this keeps the url at the same place!! very useful
+            else:
+                flash('That is not the right place. Make sure you spell the name of this famous landmark correctly')
+
+    if (training_name == "basic-steganography"):
+        form = SteganographyPassword()
+        if form.validate_on_submit():
+            if (str(form.password.data).replace(" ", "").upper() == 'CHOMPCHOMP'):
+                #Set points in database and return success
+                message = set_points(training_name)
+                success_file_name = "/training/"+training_name+ "/" + training_name + "-success.html"
+                return render_template(success_file_name, message=message) #this keeps the url at the same place!! very useful
+            else:
+                flash('Hm, not quite. Try again')
+       
     elif (training_name == "manual-cracking"):
         form = PasswordCracking1()
         if form.validate_on_submit():
@@ -282,6 +314,39 @@ def scoreboard():
 
     return render_template('scoreboard.html', topscorers=topscorers, users_score=users_score, title='Scoreboard')
 
+#Viper Site
+@app.route("/viper")
+def viper_site():
+    return render_template('/stories/viper/viper-home.html', title='VIPER')
+
+@app.route("/viper/about")
+def viper_about():
+    return render_template('/stories/viper/viper-about.html',title='VIPER')
+
+@app.route("/viper/login", methods=['GET','POST'])
+def viper_login():
+    form = ViperPassword()
+    
+    if form.validate_on_submit():
+        if (form.password.data == '12345678'):
+            return render_template('/stories/viper/viper-members.html') 
+        flash('Invalid password.')
+    return render_template('/stories/viper/viper-login.html', form=form, title='VIPER')
+
+@app.route("/viper/code", methods=['GET','POST'])
+def viper_code():
+    form = ViperCode()
+    if form.validate_on_submit():
+        if (str(form.password.data).upper() == 'DARKNESS'):
+            return render_template('/stories/viper/viper-recruit.html') 
+        flash('Invalid password.')
+    return render_template('/stories/viper/viper-code.html', form=form, title='VIPER')
+
+@app.route("/viper/robots.txt")  
+@app.route("/viper/robots")
+def viper_robots():
+    return render_template('/stories/viper/robots.txt', title='VIPER')
+
 #Education Site
 @app.route("/education")
 def education():
@@ -294,6 +359,14 @@ def lessons():
 @app.route("/education/instructions")
 def instructions():
     return render_template('/education/instructions.html', title='Instructions')
+
+@app.route("/education/lesson-plans/web-path")
+def web_path():
+    return render_template('/education/web-path.html', title='Web Path')
+
+@app.route("/education/lesson-plans/security-path")
+def security_path():
+    return render_template('/education/security-path.html', title='Security Path')
 
 def set_points(current_training):
     #if user is logged in

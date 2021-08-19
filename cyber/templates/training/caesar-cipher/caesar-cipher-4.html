@@ -1,0 +1,97 @@
+{% extends "layout.html" %}
+<!-- this layout just goes back ../ for all the links so it doesn't break since it's in the /training/ directory -->
+<!-- may be needed for other pages too -->
+
+{% block content %}
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="card training_background">
+
+                <!-- TRAINING HEADER (Args: Category, training name, points, t_name for image, background class=default "new-colour" so can be left empty) -->
+                {% call training_header("Cryptography", training.display_name, training.points, training.training_name, "yellow-green") %}
+                {% endcall %}
+                <!-- TRAINING HEADER -->
+
+                <div class="">
+                    <div class="card-body training_card">
+                        <p>Now what if we've got a large body of text to decode? We don't want to do that painstakingly by hand, it would take forever</p>
+
+                        <p>Luckily there's plenty of websites online that allow you to encrypt and decrypt in the caesar cipher, and it will do all of the work for you</p>
+
+                        <p>One such website, is: <a href="https://www.dcode.fr/caesar-cipher" target="_blank">https://www.dcode.fr/caesar-cipher</a>. But there are many others you can find online.</p>
+
+                        <img class="img-fluid img-thumbnail mx-auto d-block" src="{{ url_for('static', filename='img/caesar-cipher/caesar-example.png') }}">
+
+                        <p>Here's the text you decrypted on the last page. First enter the encrypted message, then enter the right caesar shift (in this case it's 5), then press the "Decrypt" button.</p>
+                        <p>Try it out yourself now to decrypt the following with a caesar shift of 17:</p>
+                        <code>Ljzex kffcj zje'k tyvrkzex!</code>
+
+                        <br><br>
+                        <p>Now let's try with an encrypted message a little bigger... This time, your challenge is to decrypt with a caesar shift of 20. Once you've done it, tell me which movie this script is from.</p>
+                        <code>Uwwilxcha ni uff ehiqh fuqm
+                            iz upcuncih,
+
+
+                            nbyly cm hi qus u vyy
+                            mbiofx vy uvfy ni zfs.
+
+
+                            Cnm qcham uly nii mguff ni ayn
+                            cnm zun fcnnfy vixs izz nby aliohx.
+
+
+                            Nby vyy, iz wiolmy, zfcym uhsqus</code>
+
+                        <a href="https://www.dcode.fr/caesar-cipher" target="_blank" class="text-center"><button class="btn btn-primary">Go to Caesar Cipher Encode/Decode Website</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MINI CHALLENGE (Args: Text, hint) -->
+        {% call mini_challenge("Copy and paste the above encrypted script and decrypt it with a shift of 20. What movie is it from?", "Paste the above message into the dCode website linked above. Your movie answer should be two words. If you still don't know, try googling the decrypted message") %}
+        {% endcall %}
+        <!-- END MINI CHALLENGE -->
+
+        <!-- PAGE NAV (Args: Current page passed from routes.py, training name passed from routes.py, total number of pages) -->
+        {% call pagination(current_page, training.training_name, 5) %}
+        {% endcall %}
+        <!-- END PAGE NAV -->
+
+    </div>
+</div>
+
+
+<script>
+    function mini_challenge() {
+
+        swal({
+                text: 'The movie this script originates from is the...',
+                content: "input",
+                button: {
+                    text: "Submit",
+                    closeModal: true,
+                },
+            })
+            .then(name => {
+                if (DOMPurify.sanitize(name).toUpperCase() == "BEE MOVIE") {
+                    swal("Nice!", "That's correct, well done", "success", {
+                        button: "Next",
+                    });
+                } else {
+                    swal("Not quite!", "Have another go", "error", {
+                        button: "Return"
+                    });
+                }
+            })
+    }
+
+</script>
+
+
+
+
+
+{% endblock content %}

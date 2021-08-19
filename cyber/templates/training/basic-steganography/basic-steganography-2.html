@@ -1,0 +1,91 @@
+{% extends "layout.html" %}
+<!-- this layout just goes back ../ for all the links so it doesn't break since it's in the /training/ directory -->
+<!-- may be needed for other pages too -->
+
+{% block content %}
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="card training_background">
+
+                <!-- TRAINING HEADER (Args: Category, training name, points, t_name for image, background class=default "new-colour" so can be left empty) -->
+                {% call training_header("Steganography", training.display_name, training.points, training.training_name, "baby-plue") %}
+                {% endcall %}
+                <!-- TRAINING HEADER -->
+
+                <div class="">
+                    <div class="card-body training_card">
+
+                        <p>Did you figure it out? Stego was hiding a secret message right under our nose, but we couldn't see it because the text was white.</p>
+                        <p>Nice work, but rarely will it be that easy. The most common forms of steganography are done by tools that can encode and decode images for us. There are lots of different algorithms that can be used. Here are some exampes:</p>
+                        <ul>
+                            <li>XOR the binary bits</li>
+                            <li>Include extra data chunks that contain the hidden data but are not displayed</li>
+                            <li>Every 10th pixel, replace it with data from the hidden data instead. This should change the image quality but may not be obvious if the image is only subtly changed</li>
+                        </ul>
+
+                        <h3>Tools</h3>
+                        <p>There are many tools that implement these algorithms and you can find them online, we'll be using: <a href="https://stylesuxx.github.io/steganography/" target="_blank" class="text-center">https://stylesuxx.github.io/steganography</a></p>
+
+                        <p>Try decoding this blue stego image. You'll have to right click the image, save it to your computer, and then upload it to the website and press decode.</p>
+
+                        <img class="img-fluid img-thumbnail mx-auto d-block" src="{{ url_for('static', filename='img/basic-steganography/stego-2.png') }}">
+
+
+                        <capt>Here's an example how</capt>
+                        <img class="img-fluid img-thumbnail mx-auto d-block" src="{{ url_for('static', filename='img/basic-steganography/example.gif') }}">
+
+                        <a href="https://stylesuxx.github.io/steganography/" target="_blank" class="text-center"><button class="btn btn-primary">Go to Steganography Decode Website</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MINI CHALLENGE (Args: Text, hint) -->
+        {% call mini_challenge("Here’s a challenge for you! Can you find the secret message in the blue stego image?", "Right click and save the image to your PC, then upload it to the website linked above. Go to the decode tab, and press the decode button. See example animation for reference") %}
+        {% endcall %}
+        <!-- END MINI CHALLENGE -->
+
+        <!-- PAGE NAV (Args: Current page passed from routes.py, training name passed from routes.py, total number of pages) -->
+        {% call pagination(current_page, training.training_name, 4) %}
+        {% endcall %}
+        <!-- END PAGE NAV -->
+
+    </div>
+</div>
+
+
+<script>
+    function mini_challenge() {
+
+        swal({
+                text: 'Please enter the password...',
+                content: "input",
+                button: {
+                    text: "Submit",
+                    closeModal: true,
+                },
+            })
+            .then(name => {
+                if (DOMPurify.sanitize(name).toUpperCase() == "BIGFOOT") {
+                    swal("Nice!", "That's correct, well done", "success", {
+                        button: "Next",
+                    });
+                } else {
+                    swal("Not quite!", "Guess a different password from the list", "error", {
+                        button: "Return"
+                    });
+                }
+            })
+
+
+    }
+
+</script>
+
+
+
+
+
+{% endblock content %}

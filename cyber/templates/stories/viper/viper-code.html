@@ -1,0 +1,20 @@
+{% extends "/stories/viper/viper-layout.html" %}
+{% block content %}
+<h2>DID YOU FIND US?</h2>
+<p>VIPER COLLECTIVE, ACCESS ONLY FOR THE CHOSEN</p>
+<form method="POST" action="" autocomplete="off">
+    {{ form.hidden_tag() }}
+
+    <label for="password">{{ form.password.label }}</label>
+    {{ form.password(class="form-control") }}
+
+    <button type="submit" value="Login">Login</button>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+
+    <p>{{ messages[-1] }}</p>
+
+    {% endif %}
+    {% endwith %}
+</form>
+{% endblock content %}

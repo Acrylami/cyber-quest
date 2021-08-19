@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+<!-- this layout just goes back ../ for all the links so it doesn't break since it's in the /training/ directory -->
+<!-- may be needed for other pages too -->
+
+{% block content %}
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="card training_background">
+
+                <!-- TRAINING HEADER (Args: Category, training name, points, t_name for image, background class=default "new-colour" so can be left empty) -->
+                {% call training_header("Steganography", training.display_name, training.points, training.training_name, "baby-plue") %}
+                {% endcall %}
+                <!-- TRAINING HEADER -->
+
+                <div class="">
+                    <div class="card-body training_card">
+
+                        <p>If you've had a look at some of the cryptography training, you'll know it's possible to hide a secret message inside text. But what if it was possible to hide secret messages in images too?</p>
+                        <h2>What is Steganography?</h2>
+                        <p>It is the practice of concealing messages or information within other non-secret text or data, in this case inside images.</p>
+
+                        <h3>What does it involve?</h3>
+                        <p>Hiding data in an image can be done:</p>
+                        <ul>
+                            <li>By Masking the text or data inside and image (e.g. blending the text with the background, etc..) </li>
+                            <li>Encoding messages throughout the image pixel data with tools</li>
+                            <li>Hiding messages inside chunks that don't contain image data</li>
+                        </ul>
+
+
+                        <div class="alert alert-info" role="alert">
+                            There are many ways to conceal hidden data inside images, but for this training we will look at extracting this hidden data with tools and investigation.
+                        </div>
+
+                        <h3>Find the hidden codeword in this image:</h3>
+                        <img class="img-fluid img-thumbnail mx-auto d-block" src="{{ url_for('static', filename='img/basic-steganography/stego-1.png') }}">
+                        <p>Here's our local friendly steganosaurus, Stego. First you will need to save the image. Right click on Stego and click "Save As" and keep 'em somewhere safe on your PC.</p>
+                        <p>There is a secret codeword hidden somewhere in this image, see if you can open up the image and find it.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MINI CHALLENGE (Args: Text, hint) -->
+        {% call mini_challenge("Here’s a challenge for you! Can you find the secret message in this image?", "You won't need any tools to solve this one. The code word is hidden in plain sight... Maybe it's blended into the background") %}
+        {% endcall %}
+        <!-- END MINI CHALLENGE -->
+
+        <!-- PAGE NAV (Args: Current page passed from routes.py, training name passed from routes.py, total number of pages) -->
+        {% call pagination(current_page, training.training_name, 4) %}
+        {% endcall %}
+        <!-- END PAGE NAV -->
+
+    </div>
+</div>
+
+
+<script>
+    function mini_challenge() {
+
+        swal({
+                text: 'What is the hidden codeword in the image?',
+                content: "input",
+                button: {
+                    text: "Submit",
+                    closeModal: true,
+                },
+            })
+            .then(name => {
+                if (DOMPurify.sanitize(name).toUpperCase() == "SPIKES") {
+                    swal("Nice!", "That's correct, well done", "success", {
+                        button: "Next",
+                    });
+                } else {
+                    swal("Not quite!", "Look a little closer... Maybe try the hint", "error", {
+                        button: "Return"
+                    });
+                }
+            })
+
+
+    }
+
+</script>
+
+
+
+
+
+{% endblock content %}

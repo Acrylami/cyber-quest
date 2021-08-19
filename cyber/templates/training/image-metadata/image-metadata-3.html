@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+<!-- this layout just goes back ../ for all the links so it doesn't break since it's in the /training/ directory -->
+<!-- may be needed for other pages too -->
+
+{% block content %}
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="card training_background">
+
+                <!-- TRAINING HEADER (Args: Category, training name, points, t_name for image, background class=default "new-colour" so can be left empty) -->
+                {% call training_header("OSINT", training.display_name, training.points, training.training_name, "sunset") %}
+                {% endcall %}
+                <!-- TRAINING HEADER -->
+
+                <div class="">
+                    <div class="card-body training_card">
+
+                        <p>Did you figure out her name? Good job! But that's not the only information we can find about someone from the metadata</p>
+
+                        <p>This time we've got a client who suspects that their friend has stolen their camera. They've sent us an image that their friend has taken with the camera- can you analyse the metadata and find out if the make and model match our client's missing camera?</p>
+
+                        <h2>Our suspicious image</h2>
+                        <img class="img-fluid img-thumbnail mx-auto d-block" src="{{ url_for('static', filename='img/image-metadata/scenic-view.jpg') }}">
+
+                        <p>The missing camera's model is 'Acer CE-5330'. Examine the metadata of the image above and let's see if the camera model that took this photo is the same.</p>
+
+                        <p>Did you know it's also possible to edit image metadata for yourself? To do so you just need to find an online metadata editor website. If you want to try it for yourself, we recommend this site: <a href="https://www.thexifer.net/#exif-general" target="_blank">https://www.thexifer.net/#exif-general</a></p>
+
+                        <p>Your challenge this time will be to find the 'make' of the camera that took the above photo of the sunset</p>
+                        <a href="https://www.exifdata.com/" target="_blank" class="text-center"><button class="btn btn-primary">Go to EXIF Metadata Viewer Website</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MINI CHALLENGE (Args: Text, hint) -->
+        {% call mini_challenge("What 'Make' is the camera that took the sunset photo?", "Examine the metadata for the sunset as shown above, then look at the field called 'Make'. It's not Acer, we've edited the metadata to change it to something else!") %}
+        {% endcall %}
+        <!-- END MINI CHALLENGE -->
+
+        <!-- PAGE NAV (Args: Current page passed from routes.py, training name passed from routes.py, total number of pages) -->
+        {% call pagination(current_page, training.training_name, 4) %}
+        {% endcall %}
+        <!-- END PAGE NAV -->
+
+    </div>
+</div>
+
+
+<script>
+    function mini_challenge() {
+
+        swal({
+                text: 'Please enter the password...',
+                content: "input",
+                button: {
+                    text: "Submit",
+                    closeModal: true,
+                },
+            })
+            .then(name => {
+                if (DOMPurify.sanitize(name).toUpperCase() == "CANON") {
+                    swal("Nice!", "That's correct, well done", "success", {
+                        button: "Next",
+                    });
+                } else {
+                    swal("Not quite!", "Have another look", "error", {
+                        button: "Return"
+                    });
+                }
+            })
+
+
+    }
+
+</script>
+
+
+
+
+
+{% endblock content %}

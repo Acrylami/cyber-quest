@@ -1,0 +1,34 @@
+header {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5);
+    margin: -8px;
+}
+
+header img {
+    height: 130px;
+}
+
+body {
+    background-color: #111111;
+    color: white;
+    text-align: center;
+}
+
+p {
+    color: red;
+}
+
+nav ul {
+    display: inline;
+    margin: 20px;
+
+}
+
+nav {
+    padding: 20px;
+    background: rgba(20, 0, 0, 0.5);
+}
+
+a {
+    color: white;
+}
